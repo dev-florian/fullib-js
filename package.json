@@ -3,6 +3,23 @@
   "version": "1.0.0",
   "description": "Web Agency Felix Creation",
   "main": "index.js",
-  "author": "Felix",
-  "license": "MIT"
+  "author": "Florian Thubé (f.the@sfr.fr)",
+  "license": "MIT",
+  "homepage": "https://github.com/dev-florian/animation-felix",
+  "bugs": "https://github.com/dev-florian/animation-felix/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-florian/animation-felix"
+  },
+  "keywords": [
+    "javascript",
+    "anim",
+    "animation",
+    "hover",
+    "button",
+    "text",
+    "effects",
+    "css",
+    "html"
+  ]
 }

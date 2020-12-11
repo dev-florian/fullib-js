@@ -1,0 +1,15 @@
+.transition1{
+    z-index: 100;
+    position: relative;
+    overflow: hidden;
+    height: 150vh;
+}
+
+.transition1 .trans{
+    background-size: 200px;
+    background-repeat: repeat-x;
+    background-position-y: bottom;
+    width: 100vw;
+    position: absolute;
+    height: 150vh;
+}

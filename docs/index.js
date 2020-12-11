@@ -37,7 +37,7 @@ import {
 } from "./animation.js";
 
 // cursor(10, '#000000', '#ffd5ce');
-lax();
+// lax(); IMPORT LAX BEFORE UNCOMMENT
 button1();
 button3();
 button4();

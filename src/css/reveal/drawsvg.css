@@ -1,0 +1,36 @@
+.drawsvg path {
+    fill: #ffd5ce;
+    stroke-dasharray: 408;
+    stroke-dashoffset: 408;
+}
+.drawsvg.active path {
+
+    -webkit-animation: go_to 2s linear forwards;
+    -moz-animation: go_to 2s linear forwards;
+    -o-animation: go;
+}
+
+@-webkit-keyframes go_to {
+    to {
+        stroke-dashoffset: 0;
+        stroke  : #FFFFFF;
+    }
+}
+@-moz-keyframes go_to {
+    to {
+        stroke-dashoffset: 0;
+        stroke  : #FFFFFF;
+    }
+}
+@-o-keyframes go_to {
+    to {
+        stroke-dashoffset: 0;
+        stroke  : #FFFFFF;
+    }
+}
+@keyframes go_to {
+    to {
+        stroke-dashoffset: 0;
+        stroke  : #FFFFFF;
+    }
+}

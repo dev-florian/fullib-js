@@ -1,0 +1,70 @@
+#container-share .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    filter: url('#goo');
+}
+
+#container-share .button {
+    z-index: 99;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    background: linear-gradient(45deg, #B388EB, #8093F1);
+    border-radius: 20px;
+    color: #FFF;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+#container-share .social {
+    opacity: 0;
+    position: relative;
+    margin: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: inline-block;
+    color: #FFF;
+    font-size: 20px;
+    text-align: center;
+    transition: 1.2s all ease;
+}
+
+#container-share i {
+    margin-top: 10px;
+}
+
+#container-share a {
+    color: #FFF;
+}
+
+#container-share .instagram {
+    background: #d8408b;
+}
+
+#container-share .facebook {
+    background: #3b5998;
+}
+
+#container-share svg {
+    width: 22px;
+    padding-top: 4px;
+    height: 22px;
+}
+
+#container-share .youtube {
+    background: #bb0000;
+}
+
+#container-share .clicked {
+    opacity: 1;
+    transition: 1.2s all ease;
+    transform: translateY(56px);
+}

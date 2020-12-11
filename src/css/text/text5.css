@@ -1,0 +1,29 @@
+.text5 {
+    overflow: hidden;
+}
+
+.text5 span {
+    display: inline-block;
+    text-transform: uppercase;
+    transform: translate3d(-30%, -100%, 0);
+    animation-play-state: paused;
+}
+
+.text5.active span {
+    animation-play-state: running;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transition-timing-function: ease-out;
+
+}
+
+
+@keyframes rampUp {
+    0% {
+        transform: translate3d(-30%, 100%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}

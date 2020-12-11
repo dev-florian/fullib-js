@@ -1,0 +1,17 @@
+.text2{
+    -webkit-text-fill-color: transparent;
+}
+
+.text2.active{
+    -webkit-background-clip: text;
+    animation: filling 3s ease forwards;
+}
+
+@keyframes filling {
+    from{
+        background-position: center 25%;
+    }
+    to {
+        background-position: center 50%;
+    }
+}
