@@ -12,35 +12,35 @@ export function reveal1() {
                 }
             });
         }
-        loadCSS("./presets/reveal/reveal1.css");
+        import 'animation-felix/src/css/reveal/reveal1.css';
     }
 }
 
 export function reveal2() {
     let reveal2 = document.getElementsByClassName('reveal2');
     if (reveal2[0]) {
-        loadCSS("./presets/reveal/reveal2.css");
+        import 'animation-felix/src/css/reveal/reveal2.css';
     }
 }
 
 export function reveal3() {
     let reveal3 = document.getElementsByClassName('reveal3');
     if (reveal3[0]) {
-        loadCSS("./presets/reveal/reveal3.css");
+        import 'animation-felix/src/css/reveal/reveal3.css';
     }
 }
 
 export function reveal4() {
     let reveal4 = document.getElementsByClassName('reveal4');
     if (reveal4[0]) {
-        loadCSS("./presets/reveal/reveal4.css");
+        import 'animation-felix/src/css/reveal/reveal4.css';
     }
 }
 
 export function reveal5() {
     let reveal5 = document.getElementsByClassName('reveal5');
     if (reveal5[0]) {
-        loadCSS("./presets/reveal/reveal5.css");
+        import 'animation-felix/src/css/reveal/reveal5.css';
     }
 }
 
@@ -59,7 +59,7 @@ export function reveal6() {
                 }
             });
         }
-        loadCSS("./presets/reveal/reveal6.css");
+        import 'animation-felix/src/css/reveal/reveal6.css';
     }
 }
 
@@ -78,7 +78,7 @@ export function reveal7() {
                 }
             });
         }
-        loadCSS("./presets/reveal/reveal7.css");
+        import 'animation-felix/src/css/reveal/reveal7.css';
     }
 }
 
@@ -97,7 +97,7 @@ export function reveal8() {
                 }
             });
         }
-        loadCSS("./presets/reveal/reveal8.css");
+        import 'animation-felix/src/css/reveal/reveal8.css';
     }
 }
 
@@ -116,7 +116,7 @@ export function reveal9() {
                 }
             });
         }
-        loadCSS("./presets/reveal/reveal9.css");
+        import 'animation-felix/src/css/reveal/reveal9.css';
     }
 }
 
@@ -136,7 +136,7 @@ export function text1() {
                 }
             }
         }
-        loadCSS("./presets/text/text1.css");
+        import 'animation-felix/src/css/text/text1.css';
     }
 }
 
@@ -157,28 +157,28 @@ export function text2(url) {
                 }
             });
         }
-        loadCSS("./presets/text/text2.css");
+        import 'animation-felix/src/css/text/text2.css';
     }
 }
 
 export function text3() {
     let texts3 = document.getElementsByClassName('text3');
     if (texts3[0]) {
-        loadCSS("./presets/text/text3.css");
+        import 'animation-felix/src/css/text/text3.css';
     }
 }
 
 export function text4() {
     let texts4 = document.getElementsByClassName('text4');
     if (texts4[0]) {
-        loadCSS("./presets/text/text4.css");
+        import 'animation-felix/src/css/text/text4.css';
     }
 }
 
 export function text5() {
     let texts5 = document.getElementsByClassName('text5');
     if (texts5[0]) {
-        loadCSS("./presets/text/text5.css");
+        import 'animation-felix/src/css/text/text5.css';
         for (let i = 0, len = texts5.length; i < len; i++) {
             let myElem = texts5[i];
             let textMyElem = myElem.textContent;
@@ -196,7 +196,7 @@ export function text5() {
             let counter = 1;
             for (let c = 0, lenc = spans.length; c < lenc; c++) {
                 let mySpan = spans[c];
-                mySpan.style.animationDelay = counter * 0.1+'s';
+                mySpan.style.animationDelay = counter * 0.1 + 's';
                 mySpan.style.animationName = "rampUp";
                 counter++;
             }
@@ -216,7 +216,7 @@ export function text5() {
 export function text6() {
     let texts6 = document.getElementsByClassName('text6');
     if (texts6[0]) {
-        loadCSS("./presets/text/text6.css");
+        import 'animation-felix/src/css/text/text6.css';
         for (let i = 0, len = texts6.length; i < len; i++) {
             let myElem = texts6[i];
             let textMyElem = myElem.textContent;
@@ -234,7 +234,7 @@ export function text6() {
             let counter = 1;
             for (let c = 0, lenc = spans.length; c < lenc; c++) {
                 let mySpan = spans[c];
-                mySpan.style.animationDelay = counter * 0.1+'s';
+                mySpan.style.animationDelay = counter * 0.1 + 's';
                 mySpan.style.animationName = "rampUpText6";
                 counter++;
             }
@@ -254,19 +254,19 @@ export function text6() {
 export function text7() {
     let texts7 = document.getElementsByClassName('text7');
     if (texts7[0]) {
-        loadCSS("./presets/text/text7.css");
+        import 'animation-felix/src/css/text/text7.css';
     }
 }
 
 export function share() {
-    loadCSS("./presets/share/share.css");
-    loadJS("./presets/share/share.js");
+    import 'animation-felix/src/css/share/share.css';
+    import 'animation-felix/src/js/share.js';
 }
 
 export function button1() {
     let buttons1 = document.getElementsByClassName('button1');
     if (buttons1[0]) {
-        loadCSS("./presets/button/button1.css");
+        import 'animation-felix/src/css/button/button1.css';
 
         for (let i = 0, len = buttons1.length; i < len; i++) {
             let myElem = buttons1[i];
@@ -291,7 +291,7 @@ export function button1() {
 export function button3() {
     let buttons3 = document.getElementsByClassName('button3');
     if (buttons3[0]) {
-        loadCSS("./presets/button/button3.css");
+        import 'animation-felix/src/css/button/button3.css';
 
         for (let i = 0, len = buttons3.length; i < len; i++) {
             let myElem = buttons3[i];
@@ -319,7 +319,7 @@ export function button3() {
 export function button4() {
     let buttons4 = document.getElementsByClassName('button4');
     if (buttons4[0]) {
-        loadCSS("./presets/button/button4.css");
+        import 'animation-felix/src/css/button/button4.css';
 
         for (let i = 0, len = buttons4.length; i < len; i++) {
             let myElem = buttons4[i];
@@ -343,7 +343,7 @@ export function button4() {
 export function button5() {
     let buttons5 = document.getElementsByClassName('button5');
     if (buttons5[0]) {
-        loadCSS("./presets/button/button5.css");
+        import 'animation-felix/src/css/button/button5.css';
 
         for (let i = 0, len = buttons5.length; i < len; i++) {
             let myElem = buttons5[i];
@@ -366,7 +366,7 @@ export function button5() {
 export function button6() {
     let buttons6 = document.getElementsByClassName('button6');
     if (buttons6[0]) {
-        loadCSS("./presets/button/button6.css");
+        import 'animation-felix/src/css/button/button6.css';
 
         for (let i = 0, len = buttons6.length; i < len; i++) {
             let myElem = buttons6[i];
@@ -402,7 +402,7 @@ export function button6() {
 export function button7() {
     let buttons7 = document.getElementsByClassName('button7');
     if (buttons7[0]) {
-        loadCSS("./presets/button/button7.css");
+        import 'animation-felix/src/css/button/button7.css';
 
         for (let i = 0, len = buttons7.length; i < len; i++) {
             let myElem = buttons7[i];
@@ -431,7 +431,7 @@ export function button7() {
 export function button8() {
     let button8 = document.getElementsByClassName('button8');
     if (button8[0]) {
-        loadCSS("./presets/button/button8.css");
+        import 'animation-felix/src/css/button/button8.css';
 
         for (let i = 0, len = button8.length; i < len; i++) {
             let myElem = button8[i];
@@ -454,7 +454,7 @@ export function button8() {
 export function button9() {
     let buttons9 = document.getElementsByClassName('button9');
     if (buttons9[0]) {
-        loadCSS("./presets/button/button9.css");
+        import 'animation-felix/src/css/button/button9.css';
 
         for (let i = 0, len = buttons9.length; i < len; i++) {
             let myElem = buttons9[i];
@@ -483,7 +483,7 @@ export function button9() {
 export function button10() {
     let buttons10 = document.getElementsByClassName('button10');
     if (buttons10[0]) {
-        loadCSS("./presets/button/button10.css");
+        import 'animation-felix/src/css/button/button10.css';
 
         for (let i = 0, len = buttons10.length; i < len; i++) {
             let myElem = buttons10[i];
@@ -508,7 +508,7 @@ export function button10() {
 export function button11() {
     let buttons11 = document.getElementsByClassName('button11');
     if (buttons11[0]) {
-        loadCSS("./presets/button/button11.css");
+        import 'animation-felix/src/css/button/button11.css';
 
         for (let i = 0, len = buttons11.length; i < len; i++) {
             let myElem = buttons11[i];
@@ -533,7 +533,7 @@ export function button11() {
 export function button12() {
     let buttons12 = document.getElementsByClassName('button12');
     if (buttons12[0]) {
-        loadCSS( "./presets/button/button12.css");
+        import 'animation-felix/src/css/button/button12.css';
 
         for (let i = 0, len = buttons12.length; i < len; i++) {
             let myElem = buttons12[i];
@@ -556,7 +556,7 @@ export function button12() {
 export function button13() {
     let buttons13 = document.getElementsByClassName('button13');
     if (buttons13[0]) {
-        loadCSS("./presets/button/button13.css");
+        import 'animation-felix/src/css/button/button13.css';
 
         for (let i = 0, len = buttons13.length; i < len; i++) {
             let myElem = buttons13[i];
@@ -642,7 +642,7 @@ export function changeBackground(color, className, animation) {
 export function drawsvg() {
     let drawsvgs = document.getElementsByClassName('drawsvg');
     if (drawsvgs[0]) {
-        loadCSS("./presets/reveal/drawsvg.css");
+        import 'animation-felix/src/css/reveal/drawsvg.css';
         for (let i = 0, len = drawsvgs.length; i < len; i++) {
             let myElem = drawsvgs[i];
 
@@ -662,18 +662,16 @@ export function drawsvg() {
 export function transition1() {
     let transitions1 = document.getElementsByClassName('transition1');
     if (transitions1[0]) {
-        loadCSS("./presets/transition/transition1.css");
+        import 'animation-felix/src/css/transition/transition1.css';
     }
 }
 
 export function lax() {
-    loadJS(getDomain() + "/laxlibrary.js")
-    loadJS(getDomain() + "/laxxx.js");
+    import 'animation-felix/src/js/addonsLax.js';
 }
 
 export function cursor(size, colorFirst, colorSecond = null) {
-
-    loadCSS("./presets/cursor/cursor.css");
+    import 'animation-felix/src/css/cursor/cursor.css';
 
     let cursor1 = addElement('div', ['cursor', 'cursor-follower']);
     let cursor2 = null;
@@ -706,7 +704,6 @@ export function cursor(size, colorFirst, colorSecond = null) {
             }
         })
     }
-    ;
 
     for (let i = 0, len = mouseTarget.length; i < len; i++) {
         mouseTarget[i].addEventListener('mouseleave', e => {
@@ -721,7 +718,6 @@ export function cursor(size, colorFirst, colorSecond = null) {
             }
         })
     }
-    ;
 
     let onmousemove = function (e) {
         let xpos = e.pageX;
@@ -778,33 +774,6 @@ export function addElement(type, classes, options = null) {
     return newDiv;
 }
 
-export function loadCSS(cssURL) {
-    // 'cssURL' is the stylesheet's URL, i.e. /css/styles.css
-    return new Promise(function (resolve, reject) {
-        let link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = cssURL;
-        document.head.appendChild(link);
-        link.onload = function () {
-            resolve();
-            console.log('CSS has loaded!');
-        };
-    });
-}
-
-export function loadJS(jsURL) {
-    // 'cssURL' is the stylesheet's URL, i.e. /css/styles.css
-    return new Promise(function (resolve, reject) {
-        let link = document.createElement('script');
-        link.src = jsURL;
-        document.head.appendChild(link);
-        link.onload = function () {
-            resolve();
-            console.log('JS has loaded!');
-        };
-    });
-}
-
 export function getOptionLink(elem) {
     let textMyElem = elem.innerHTML;
     let linkMyElem = elem.getAttribute('href');
@@ -819,10 +788,6 @@ export function getOptionLink(elem) {
         relMyElem: relMyElem,
         targetMyElem: targetMyElem
     }
-}
-
-export function getDomain() {
-    return location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
 }
 
 export function isElementInViewport(el) {

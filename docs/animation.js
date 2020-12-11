@@ -667,8 +667,7 @@ export function transition1() {
 }
 
 export function lax() {
-    loadJS(getDomain() + "/laxlibrary.js")
-    loadJS(getDomain() + "/addonsLax.js");
+    loadJS("./addonsLax.js");
 }
 
 export function cursor(size, colorFirst, colorSecond = null) {
