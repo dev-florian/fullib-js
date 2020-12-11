@@ -1,5 +1,6 @@
-window.addEventListener('load', function () {
+import lax from 'lax.js'
 
+window.addEventListener('load', function () {
     let variablesOpacity = {
         from: 0,
         middle: 1,
@@ -57,15 +58,15 @@ window.addEventListener('load', function () {
     };
 
 
-    // lax.init();
-    //
-    // // Add a driver that we use to control our animations
-    // lax.addDriver('scrollY', function () {
-    //     return window.scrollY
-    // })
+    lax.init();
+
+// Add a driver that we use to control our animations
+    lax.addDriver('scrollY', function () {
+        return window.scrollY
+    })
 
 
-    //************************************START OPACITY**************************************
+//************************************START OPACITY**************************************
     lax.addElements('.lax-opacity-start', {
         scrollY: {                // Driver name
             opacity: [
@@ -82,10 +83,10 @@ window.addEventListener('load', function () {
             ]
         }
     })
-    //************************************END OPACITY**************************************
+//************************************END OPACITY**************************************
 
 
-    //************************************START ANIMATION TOP BOTTOM**************************************
+//************************************START ANIMATION TOP BOTTOM**************************************
     lax.addElements('.lax-down', {
         scrollY: {                // Driver name
             translateY: [
@@ -123,10 +124,10 @@ window.addEventListener('load', function () {
         }
     })
 
-    //************************************END ANIMATION LEFT RIGHT**************************************
+//************************************END ANIMATION LEFT RIGHT**************************************
 
 
-    //************************************START ANIMATION SCALES**************************************
+//************************************START ANIMATION SCALES**************************************
     lax.addElements('.lax-scale-up', {
         scrollY: {                // Driver name
             scale: [
@@ -148,19 +149,19 @@ window.addEventListener('load', function () {
     lax.addElements('.lax-scale-up-screen', {
         scrollY: {                // Driver name
             scale: [
-                ['elInY', 'elCenterY','elOutY'],  // Driver value map
-                [1, 1,8],   // Animation value map
+                ['elInY', 'elCenterY', 'elOutY'],  // Driver value map
+                [1, 1, 8],   // Animation value map
             ],
             translateY: [['elInY', 'elCenterY', 'elOutY'], [300, 0, 450]],
             opacity: [
                 ['elInY', 'elCenterY', 'elOutY-200', 'elOutY'],  // Driver value map
-                [1,1,1, 0],   // Animation value map
+                [1, 1, 1, 0],   // Animation value map
             ],
         }
     })
-    //************************************END ANIMATION SCALES**************************************
+//************************************END ANIMATION SCALES**************************************
 
-    //************************************START ANIMATION FULL ROTATE**************************************
+//************************************START ANIMATION FULL ROTATE**************************************
     lax.addElements('.lax-fullrotate-right', {
         scrollY: {                // Driver name
             rotate: [
@@ -177,9 +178,9 @@ window.addEventListener('load', function () {
             ]
         }
     })
-    //************************************END ANIMATION FULL ROTATE**************************************
+//************************************END ANIMATION FULL ROTATE**************************************
 
-    //************************************START ANIMATION FULLWIDTH**************************************
+//************************************START ANIMATION FULLWIDTH**************************************
     lax.addElements('.lax-fullwidth-left', {
         scrollY: {                // Driver name
             translateX: [
@@ -238,9 +239,9 @@ window.addEventListener('load', function () {
             ]
         }
     })
-    //************************************END ANIMATION FULLWIDTH**************************************
+//************************************END ANIMATION FULLWIDTH**************************************
 
-    //************************************START ANIMATION PARALLAX**************************************
+//************************************START ANIMATION PARALLAX**************************************
     lax.addElements('.lax-parallax-up-rotate', {
         scrollY: {
             translateY: [
@@ -351,9 +352,9 @@ window.addEventListener('load', function () {
         }
     })
 
-    //************************************END ANIMATION PARALLAX**************************************
+//************************************END ANIMATION PARALLAX**************************************
 
-    //************************************START ANIMATION ROTATE**************************************
+//************************************START ANIMATION ROTATE**************************************
 
     lax.addElements('.lax-rotate-right', {
         scrollY: {                // Driver name
@@ -373,9 +374,9 @@ window.addEventListener('load', function () {
         }
     })
 
-    //************************************END ANIMATION ROTATE**************************************
+//************************************END ANIMATION ROTATE**************************************
 
-    //************************************START ANIMATION SKEW**************************************
+//************************************START ANIMATION SKEW**************************************
 
     lax.addElements('.lax-skew-right', {
         scrollY: {                // Driver name
@@ -395,9 +396,9 @@ window.addEventListener('load', function () {
         }
     })
 
-    //************************************END ANIMATION ROTATE**************************************
+//************************************END ANIMATION ROTATE**************************************
 
-    //************************************START ANIMATION SKEW**************************************
+//************************************START ANIMATION SKEW**************************************
 
     lax.addElements('.lax-blur-start', {
         scrollY: {                // Driver name
@@ -408,8 +409,8 @@ window.addEventListener('load', function () {
         }
     })
 
-    //************************************END ANIMATION ROTATE**************************************
-    //************************************START ANIMATION TRANSITION**************************************
+//************************************END ANIMATION ROTATE**************************************
+//************************************START ANIMATION TRANSITION**************************************
     lax.addElements('.trans1', {
         scrollY: {
             translateY: [
@@ -436,9 +437,9 @@ window.addEventListener('load', function () {
             ],
         }
     })
-    //************************************END ANIMATION TRANSITION**************************************
-    //************************************START ANIMATION FIXED**************************************
-    //************************************START ANIMATION FIXED**************************************
+//************************************END ANIMATION TRANSITION**************************************
+//************************************START ANIMATION FIXED**************************************
+//************************************START ANIMATION FIXED**************************************
 
     lax.addElements('.lax-fixed-middle', {
         scrollY: {                // Driver name
@@ -451,8 +452,8 @@ window.addEventListener('load', function () {
             translateY: [['elInY', 'elCenterY', 'elOutY'], [0, 0, 'elHeight']],
         }
     })
-    //************************************END ANIMATION FIXED**************************************
 
+//************************************END ANIMATION FIXED**************************************
 });
 
 function inverse(arg) {

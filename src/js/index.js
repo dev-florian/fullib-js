@@ -1,46 +1,51 @@
 export function reveal1() {
-    let reveal1 = document.getElementsByClassName('reveal1');
-    if (reveal1[0]) {
-        for (let i = 0, len = reveal1.length; i < len; i++) {
-            let myElem = reveal1[i];
-            if (isElementInViewport(myElem)) {
-                myElem.classList.add('active');
-            }
-            window.addEventListener('scroll', function () {
+    let reveals1 = document.getElementsByClassName('reveal1');
+    if (reveals1[0]) {
+        import('animation-felix/src/css/reveal/reveal1.css').then(({ default: reveal1 }) => {
+            for (let i = 0, len = reveals1.length; i < len; i++) {
+                let myElem = reveals1[i];
                 if (isElementInViewport(myElem)) {
                     myElem.classList.add('active');
                 }
-            });
-        }
-        import 'animation-felix/src/css/reveal/reveal1.css';
+                window.addEventListener('scroll', function () {
+                    if (isElementInViewport(myElem)) {
+                        myElem.classList.add('active');
+                    }
+                });
+            }
+        }).catch(error => 'An error occurred while loading reveal1');
     }
 }
 
 export function reveal2() {
     let reveal2 = document.getElementsByClassName('reveal2');
     if (reveal2[0]) {
-        import 'animation-felix/src/css/reveal/reveal2.css';
+        import('animation-felix/src/css/reveal/reveal2.css').then(({ default: reveal2 }) => {
+        }).catch(error => 'An error occurred while loading reveal2');
     }
 }
 
 export function reveal3() {
     let reveal3 = document.getElementsByClassName('reveal3');
     if (reveal3[0]) {
-        import 'animation-felix/src/css/reveal/reveal3.css';
+        import('animation-felix/src/css/reveal/reveal3.css').then(({ default: reveal3 }) => {
+        }).catch(error => 'An error occurred while loading reveal3');
     }
 }
 
 export function reveal4() {
     let reveal4 = document.getElementsByClassName('reveal4');
     if (reveal4[0]) {
-        import 'animation-felix/src/css/reveal/reveal4.css';
+        import('animation-felix/src/css/reveal/reveal4.css').then(({ default: reveal4 }) => {
+        }).catch(error => 'An error occurred while loading reveal4');
     }
 }
 
 export function reveal5() {
     let reveal5 = document.getElementsByClassName('reveal5');
     if (reveal5[0]) {
-        import 'animation-felix/src/css/reveal/reveal5.css';
+        import('animation-felix/src/css/reveal/reveal5.css').then(({ default: reveal5 }) => {
+        }).catch(error => 'An error occurred while loading reveal5');
     }
 }
 
@@ -59,7 +64,8 @@ export function reveal6() {
                 }
             });
         }
-        import 'animation-felix/src/css/reveal/reveal6.css';
+        import('animation-felix/src/css/reveal/reveal6.css').then(({ default: reveal6 }) => {
+        }).catch(error => 'An error occurred while loading reveal6');
     }
 }
 
@@ -78,7 +84,8 @@ export function reveal7() {
                 }
             });
         }
-        import 'animation-felix/src/css/reveal/reveal7.css';
+        import('animation-felix/src/css/reveal/reveal7.css').then(({ default: reveal7 }) => {
+        }).catch(error => 'An error occurred while loading reveal7');
     }
 }
 
@@ -97,7 +104,8 @@ export function reveal8() {
                 }
             });
         }
-        import 'animation-felix/src/css/reveal/reveal8.css';
+        import('animation-felix/src/css/reveal/reveal8.css').then(({ default: reveal8 }) => {
+        }).catch(error => 'An error occurred while loading reveal8');
     }
 }
 
@@ -116,7 +124,8 @@ export function reveal9() {
                 }
             });
         }
-        import 'animation-felix/src/css/reveal/reveal9.css';
+        import('animation-felix/src/css/reveal/reveal9.css').then(({ default: reveal9 }) => {
+        }).catch(error => 'An error occurred while loading reveal9');
     }
 }
 
@@ -136,7 +145,8 @@ export function text1() {
                 }
             }
         }
-        import 'animation-felix/src/css/text/text1.css';
+        import('animation-felix/src/css/text/text1.css').then(({ default: text1 }) => {
+        }).catch(error => 'An error occurred while loading text1');
     }
 }
 
@@ -157,325 +167,331 @@ export function text2(url) {
                 }
             });
         }
-        import 'animation-felix/src/css/text/text2.css';
+        import('animation-felix/src/css/text/text2.css').then(({ default: text2 }) => {
+        }).catch(error => 'An error occurred while loading text2');
     }
 }
 
 export function text3() {
     let texts3 = document.getElementsByClassName('text3');
     if (texts3[0]) {
-        import 'animation-felix/src/css/text/text3.css';
+        import('animation-felix/src/css/text/text3.css').then(({ default: text3 }) => {
+        }).catch(error => 'An error occurred while loading text3');
     }
 }
 
 export function text4() {
     let texts4 = document.getElementsByClassName('text4');
     if (texts4[0]) {
-        import 'animation-felix/src/css/text/text4.css';
+        import('animation-felix/src/css/text/text4.css').then(({ default: text4 }) => {
+        }).catch(error => 'An error occurred while loading text4');
     }
 }
 
 export function text5() {
     let texts5 = document.getElementsByClassName('text5');
     if (texts5[0]) {
-        import 'animation-felix/src/css/text/text5.css';
-        for (let i = 0, len = texts5.length; i < len; i++) {
-            let myElem = texts5[i];
-            let textMyElem = myElem.textContent;
-            myElem.innerHTML = "";
-            let letters = 0, lengthLetter = textMyElem.length;
-            for (letters; letters < lengthLetter; letters++) {
-                if (textMyElem[letters] === " ") {
-                    myElem.innerHTML += "<span>&nbsp;</span>";
-                } else {
-                    myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
+        import('animation-felix/src/css/text/text5.css').then(({ default: text5 }) => {
+            for (let i = 0, len = texts5.length; i < len; i++) {
+                let myElem = texts5[i];
+                let textMyElem = myElem.textContent;
+                myElem.innerHTML = "";
+                let letters = 0, lengthLetter = textMyElem.length;
+                for (letters; letters < lengthLetter; letters++) {
+                    if (textMyElem[letters] === " ") {
+                        myElem.innerHTML += "<span>&nbsp;</span>";
+                    } else {
+                        myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
+                    }
                 }
-            }
 
-            let spans = myElem.children;
-            let counter = 1;
-            for (let c = 0, lenc = spans.length; c < lenc; c++) {
-                let mySpan = spans[c];
-                mySpan.style.animationDelay = counter * 0.1 + 's';
-                mySpan.style.animationName = "rampUp";
-                counter++;
-            }
+                let spans = myElem.children;
+                let counter = 1;
+                for (let c = 0, lenc = spans.length; c < lenc; c++) {
+                    let mySpan = spans[c];
+                    mySpan.style.animationDelay = counter * 0.1 + 's';
+                    mySpan.style.animationName = "rampUp";
+                    counter++;
+                }
 
-            if (isElementInViewport(myElem)) {
-                myElem.classList.add('active');
-            }
-            window.addEventListener('scroll', function () {
                 if (isElementInViewport(myElem)) {
                     myElem.classList.add('active');
                 }
-            });
-        }
+                window.addEventListener('scroll', function () {
+                    if (isElementInViewport(myElem)) {
+                        myElem.classList.add('active');
+                    }
+                });
+            }
+        }).catch(error => 'An error occurred while loading text5');
     }
 }
 
 export function text6() {
     let texts6 = document.getElementsByClassName('text6');
     if (texts6[0]) {
-        import 'animation-felix/src/css/text/text6.css';
-        for (let i = 0, len = texts6.length; i < len; i++) {
-            let myElem = texts6[i];
-            let textMyElem = myElem.textContent;
-            myElem.innerHTML = "";
-            let letters = 0, lengthLetter = textMyElem.length;
-            for (letters; letters < lengthLetter; letters++) {
-                if (textMyElem[letters] === " ") {
-                    myElem.innerHTML += "<span>&nbsp;</span>";
-                } else {
-                    myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
+        import('animation-felix/src/css/text/text6.css').then(({ default: text6 }) => {
+            for (let i = 0, len = texts6.length; i < len; i++) {
+                let myElem = texts6[i];
+                let textMyElem = myElem.textContent;
+                myElem.innerHTML = "";
+                let letters = 0, lengthLetter = textMyElem.length;
+                for (letters; letters < lengthLetter; letters++) {
+                    if (textMyElem[letters] === " ") {
+                        myElem.innerHTML += "<span>&nbsp;</span>";
+                    } else {
+                        myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
+                    }
                 }
-            }
 
-            let spans = myElem.children;
-            let counter = 1;
-            for (let c = 0, lenc = spans.length; c < lenc; c++) {
-                let mySpan = spans[c];
-                mySpan.style.animationDelay = counter * 0.1 + 's';
-                mySpan.style.animationName = "rampUpText6";
-                counter++;
-            }
+                let spans = myElem.children;
+                let counter = 1;
+                for (let c = 0, lenc = spans.length; c < lenc; c++) {
+                    let mySpan = spans[c];
+                    mySpan.style.animationDelay = counter * 0.1 + 's';
+                    mySpan.style.animationName = "rampUpText6";
+                    counter++;
+                }
 
-            if (isElementInViewport(myElem)) {
-                myElem.classList.add('active');
-            }
-            window.addEventListener('scroll', function () {
                 if (isElementInViewport(myElem)) {
                     myElem.classList.add('active');
                 }
-            });
-        }
+                window.addEventListener('scroll', function () {
+                    if (isElementInViewport(myElem)) {
+                        myElem.classList.add('active');
+                    }
+                });
+            }
+        }).catch(error => 'An error occurred while loading text6');
     }
 }
 
 export function text7() {
     let texts7 = document.getElementsByClassName('text7');
     if (texts7[0]) {
-        import 'animation-felix/src/css/text/text7.css';
+        import('animation-felix/src/css/text/text7.css').then(({ default: text7 }) => {
+        }).catch(error => 'An error occurred while loading text7');
     }
 }
 
 export function share() {
-    import 'animation-felix/src/css/share/share.css';
-    import 'animation-felix/src/js/share.js';
+    import('animation-felix/src/css/share/share.css').then(({ default: share }) => {
+    }).catch(error => 'An error occurred while loading share');
+
+    import('animation-felix/src/js/share.js').then(({ default: sharejs }) => {
+    }).catch(error => 'An error occurred while loading sharejs');
 }
 
 export function button1() {
     let buttons1 = document.getElementsByClassName('button1');
     if (buttons1[0]) {
-        import 'animation-felix/src/css/button/button1.css';
+        import('animation-felix/src/css/button/button1.css').then(({ default: button1 }) => {
+            for (let i = 0, len = buttons1.length; i < len; i++) {
+                let myElem = buttons1[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons1.length; i < len; i++) {
-            let myElem = buttons1[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button1', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button1', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton
-            });
-            let firstSpan = addElement('span', 'circle', {addTo: aLink});
-            let secondSpan = addElement('span', ['icon', 'arrow'], {addTo: firstSpan});
-            let thirdSpan = addElement('span', 'button-text', {text: optionLink.textMyElem, addTo: aLink});
-            myElem.remove();
-        }
+                let containerButton = addElement('div', 'container-button1', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button1', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton
+                });
+                let firstSpan = addElement('span', 'circle', {addTo: aLink});
+                let secondSpan = addElement('span', ['icon', 'arrow'], {addTo: firstSpan});
+                let thirdSpan = addElement('span', 'button-text', {text: optionLink.textMyElem, addTo: aLink});
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button1');
     }
 }
 
 export function button3() {
     let buttons3 = document.getElementsByClassName('button3');
     if (buttons3[0]) {
-        import 'animation-felix/src/css/button/button3.css';
+        import('animation-felix/src/css/button/button3.css').then(({ default: button3 }) => {
+            for (let i = 0, len = buttons3.length; i < len; i++) {
+                let myElem = buttons3[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons3.length; i < len; i++) {
-            let myElem = buttons3[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button3', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button3', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton
-            });
-            let firstSpan = addElement('span', '', {text: optionLink.textMyElem, addTo: aLink});
-            let secondDiv = addElement('div', 'd-inline-block', {
-                text: '<svg width="13px" height="10px" viewBox="0 0 13 10"><path d="M1,5 L11,5"></path><polyline points="8 1 12 5 8 9"></polyline></svg>',
-                addTo: aLink
-            });
-            myElem.remove();
-        }
-
+                let containerButton = addElement('div', 'container-button3', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button3', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton
+                });
+                let firstSpan = addElement('span', '', {text: optionLink.textMyElem, addTo: aLink});
+                let secondDiv = addElement('div', 'd-inline-block', {
+                    text: '<svg width="13px" height="10px" viewBox="0 0 13 10"><path d="M1,5 L11,5"></path><polyline points="8 1 12 5 8 9"></polyline></svg>',
+                    addTo: aLink
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button3');
     }
 }
 
 export function button4() {
     let buttons4 = document.getElementsByClassName('button4');
     if (buttons4[0]) {
-        import 'animation-felix/src/css/button/button4.css';
+        import('animation-felix/src/css/button/button4.css').then(({ default: button4 }) => {
+            for (let i = 0, len = buttons4.length; i < len; i++) {
+                let myElem = buttons4[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons4.length; i < len; i++) {
-            let myElem = buttons4[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button4', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button4', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-        }
-
+                let containerButton = addElement('div', 'container-button4', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button4', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button4');
     }
 }
 
 export function button5() {
     let buttons5 = document.getElementsByClassName('button5');
     if (buttons5[0]) {
-        import 'animation-felix/src/css/button/button5.css';
+        import('animation-felix/src/css/button/button5.css').then(({ default: button5 }) => {
+            for (let i = 0, len = buttons5.length; i < len; i++) {
+                let myElem = buttons5[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons5.length; i < len; i++) {
-            let myElem = buttons5[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button5', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button5', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-        }
+                let containerButton = addElement('div', 'container-button5', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button5', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button5');
     }
 }
 
 export function button6() {
     let buttons6 = document.getElementsByClassName('button6');
     if (buttons6[0]) {
-        import 'animation-felix/src/css/button/button6.css';
+        import('animation-felix/src/css/button/button6.css').then(({ default: button6 }) => {
+            for (let i = 0, len = buttons6.length; i < len; i++) {
+                let myElem = buttons6[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons6.length; i < len; i++) {
-            let myElem = buttons6[i];
-            let optionLink = getOptionLink(myElem);
+                let containerButton = addElement('div', 'container-button6', {addTo: myElem.parentNode});
 
-            let containerButton = addElement('div', 'container-button6', {addTo: myElem.parentNode});
+                for (let n = 0; n < 10; n++) {
+                    addElement('span', 'particles-circle', {addTo: containerButton});
+                }
 
-            for (let n = 0; n < 10; n++) {
-                addElement('span', 'particles-circle', {addTo: containerButton});
+                let aLink = addElement('a', 'button6', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+
+                aLink.onclick = function (e) {
+                    e.preventDefault();
+                    containerButton.classList.add('active');
+                    setTimeout(function () {
+                        containerButton.classList.remove('active');
+                    }, 2000);
+                };
             }
-
-            let aLink = addElement('a', 'button6', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-
-            aLink.onclick = function (e) {
-                e.preventDefault();
-                containerButton.classList.add('active');
-                setTimeout(function () {
-                    containerButton.classList.remove('active');
-                }, 2000);
-            };
-        }
+        }).catch(error => 'An error occurred while loading button6');
     }
 }
 
 export function button7() {
     let buttons7 = document.getElementsByClassName('button7');
     if (buttons7[0]) {
-        import 'animation-felix/src/css/button/button7.css';
+        import('animation-felix/src/css/button/button7.css').then(({ default: button7 }) => {
+            for (let i = 0, len = buttons7.length; i < len; i++) {
+                let myElem = buttons7[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons7.length; i < len; i++) {
-            let myElem = buttons7[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button7', {addTo: myElem.parentNode});
+                let containerButton = addElement('div', 'container-button7', {addTo: myElem.parentNode});
 
 
-            let aLink = addElement('a', 'button7', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
+                let aLink = addElement('a', 'button7', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
 
-            addElement('div', 'horizontal', {addTo: aLink});
-            addElement('div', 'vertical', {addTo: aLink});
+                addElement('div', 'horizontal', {addTo: aLink});
+                addElement('div', 'vertical', {addTo: aLink});
 
-            myElem.remove();
-        }
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button7');
     }
 }
 
 export function button8() {
-    let button8 = document.getElementsByClassName('button8');
-    if (button8[0]) {
-        import 'animation-felix/src/css/button/button8.css';
+    let buttons8 = document.getElementsByClassName('button8');
+    if (buttons8[0]) {
+        import('animation-felix/src/css/button/button8.css').then(({ default: button8 }) => {
+            for (let i = 0, len = buttons8.length; i < len; i++) {
+                let myElem = buttons8[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = button8.length; i < len; i++) {
-            let myElem = button8[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button8', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button8', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-        }
+                let containerButton = addElement('div', 'container-button8', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button8', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button8');
     }
 }
 
 export function button9() {
     let buttons9 = document.getElementsByClassName('button9');
     if (buttons9[0]) {
-        import 'animation-felix/src/css/button/button9.css';
+        import('animation-felix/src/css/button/button9.css').then(({ default: button9 }) => {
+            for (let i = 0, len = buttons9.length; i < len; i++) {
+                let myElem = buttons9[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons9.length; i < len; i++) {
-            let myElem = buttons9[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button9', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button9', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton
-            });
-            let firstSpan = addElement('span', '', {text: optionLink.textMyElem, addTo: aLink});
-            let secondDiv = addElement('div', 'd-inline-block', {
-                text: '<svg width="13px" height="10px" viewBox="0 0 13 10"><path d="M1,5 L11,5"></path><polyline points="8 1 12 5 8 9"></polyline></svg>',
-                addTo: aLink
-            });
-            myElem.remove();
-        }
-
+                let containerButton = addElement('div', 'container-button9', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button9', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton
+                });
+                let firstSpan = addElement('span', '', {text: optionLink.textMyElem, addTo: aLink});
+                let secondDiv = addElement('div', 'd-inline-block', {
+                    text: '<svg width="13px" height="10px" viewBox="0 0 13 10"><path d="M1,5 L11,5"></path><polyline points="8 1 12 5 8 9"></polyline></svg>',
+                    addTo: aLink
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button9');
     }
 }
 
@@ -483,24 +499,23 @@ export function button9() {
 export function button10() {
     let buttons10 = document.getElementsByClassName('button10');
     if (buttons10[0]) {
-        import 'animation-felix/src/css/button/button10.css';
+        import('animation-felix/src/css/button/button10.css').then(({ default: button10 }) => {
+            for (let i = 0, len = buttons10.length; i < len; i++) {
+                let myElem = buttons10[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons10.length; i < len; i++) {
-            let myElem = buttons10[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button10', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button10', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-        }
-
+                let containerButton = addElement('div', 'container-button10', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button10', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button10');
     }
 }
 
@@ -508,24 +523,23 @@ export function button10() {
 export function button11() {
     let buttons11 = document.getElementsByClassName('button11');
     if (buttons11[0]) {
-        import 'animation-felix/src/css/button/button11.css';
+        import('animation-felix/src/css/button/button11.css').then(({ default: button11 }) => {
+            for (let i = 0, len = buttons11.length; i < len; i++) {
+                let myElem = buttons11[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons11.length; i < len; i++) {
-            let myElem = buttons11[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button11', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button11', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-        }
-
+                let containerButton = addElement('div', 'container-button11', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button11', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button11');
     }
 }
 
@@ -533,52 +547,52 @@ export function button11() {
 export function button12() {
     let buttons12 = document.getElementsByClassName('button12');
     if (buttons12[0]) {
-        import 'animation-felix/src/css/button/button12.css';
+        import('animation-felix/src/css/button/button12.css').then(({ default: button12 }) => {
+            for (let i = 0, len = buttons12.length; i < len; i++) {
+                let myElem = buttons12[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons12.length; i < len; i++) {
-            let myElem = buttons12[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button12', {addTo: myElem.parentNode});
-            let aLink = addElement('a', 'button12', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
-            myElem.remove();
-        }
+                let containerButton = addElement('div', 'container-button12', {addTo: myElem.parentNode});
+                let aLink = addElement('a', 'button12', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button12');
     }
 }
 
 export function button13() {
     let buttons13 = document.getElementsByClassName('button13');
     if (buttons13[0]) {
-        import 'animation-felix/src/css/button/button13.css';
+        import('animation-felix/src/css/button/button13.css').then(({ default: button13 }) => {
+            for (let i = 0, len = buttons13.length; i < len; i++) {
+                let myElem = buttons13[i];
+                let optionLink = getOptionLink(myElem);
 
-        for (let i = 0, len = buttons13.length; i < len; i++) {
-            let myElem = buttons13[i];
-            let optionLink = getOptionLink(myElem);
-
-            let containerButton = addElement('div', 'container-button13', {addTo: myElem.parentNode});
+                let containerButton = addElement('div', 'container-button13', {addTo: myElem.parentNode});
 
 
-            let aLink = addElement('a', 'button13', {
-                target: optionLink.targetMyElem,
-                href: optionLink.linkMyElem,
-                id: optionLink.idMyElem,
-                rel: optionLink.relMyElem,
-                addTo: containerButton,
-                text: optionLink.textMyElem
-            });
+                let aLink = addElement('a', 'button13', {
+                    target: optionLink.targetMyElem,
+                    href: optionLink.linkMyElem,
+                    id: optionLink.idMyElem,
+                    rel: optionLink.relMyElem,
+                    addTo: containerButton,
+                    text: optionLink.textMyElem
+                });
 
-            addElement('div', 'horizontal', {addTo: aLink});
-            addElement('div', 'vertical', {addTo: aLink});
+                addElement('div', 'horizontal', {addTo: aLink});
+                addElement('div', 'vertical', {addTo: aLink});
 
-            myElem.remove();
-        }
+                myElem.remove();
+            }
+        }).catch(error => 'An error occurred while loading button13');
     }
 }
 
@@ -642,36 +656,40 @@ export function changeBackground(color, className, animation) {
 export function drawsvg() {
     let drawsvgs = document.getElementsByClassName('drawsvg');
     if (drawsvgs[0]) {
-        import 'animation-felix/src/css/reveal/drawsvg.css';
-        for (let i = 0, len = drawsvgs.length; i < len; i++) {
-            let myElem = drawsvgs[i];
+        import('animation-felix/src/css/reveal/drawsvg.css').then(({ default: drawsvg }) => {
+            for (let i = 0, len = drawsvgs.length; i < len; i++) {
+                let myElem = drawsvgs[i];
 
-            if (isElementInViewport(myElem)) {
-                myElem.classList.add('active');
-            }
-
-            window.addEventListener('scroll', function () {
                 if (isElementInViewport(myElem)) {
                     myElem.classList.add('active');
                 }
-            });
-        }
+
+                window.addEventListener('scroll', function () {
+                    if (isElementInViewport(myElem)) {
+                        myElem.classList.add('active');
+                    }
+                });
+            }
+        }).catch(error => 'An error occurred while loading drawsvg');
     }
 }
 
 export function transition1() {
     let transitions1 = document.getElementsByClassName('transition1');
     if (transitions1[0]) {
-        import 'animation-felix/src/css/transition/transition1.css';
+        import('animation-felix/src/css/transition/transition1.css').then(({ default: transition1 }) => {
+        }).catch(error => 'An error occurred while loading transition1');
     }
 }
 
-export function lax() {
-    import 'animation-felix/src/js/addonsLax.js';
+export function laxAddons() {
+    import('animation-felix/src/js/addonsLax.js').then(({ default: addonsLax }) => {
+    }).catch(error => 'An error occurred while loading addonsLax');
 }
 
 export function cursor(size, colorFirst, colorSecond = null) {
-    import 'animation-felix/src/css/cursor/cursor.css';
+    import('animation-felix/src/css/cursor/cursor.css').then(({ default: cursor }) => {
+    }).catch(error => 'An error occurred while loading cursor');
 
     let cursor1 = addElement('div', ['cursor', 'cursor-follower']);
     let cursor2 = null;

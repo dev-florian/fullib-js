@@ -1,6 +1,6 @@
 import {
     cursor,
-    lax,
+    laxAddons,
     button1,
     button3,
     button4,
@@ -34,10 +34,10 @@ import {
     changeBackground,
     transition1,
     drawsvg,
-} from "./animation.js";
+} from "animation-felix";
 
-// cursor(10, '#000000', '#ffd5ce');
-// lax(); IMPORT LAX BEFORE UNCOMMENT
+cursor(10, '#000000', '#ffd5ce');
+laxAddons();
 button1();
 button3();
 button4();

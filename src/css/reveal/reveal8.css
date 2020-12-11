@@ -18,9 +18,22 @@
 }
 
 .reveal8.active:after {
-    right: 90%;
-    transition: all 1s;
+    -webkit-animation: reveal8keyframe 1s ease-in-out forwards;
+    -moz-animation: reveal8keyframe 1s ease-in-out forwards;
+    -o-animation: reveal8keyframe 1s ease-in-out forwards;
+    animation: reveal8keyframe 1s ease-in-out forwards;
 }
+
+@keyframes reveal8keyframe {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: 90%;
+    }
+}
+
 
 
 

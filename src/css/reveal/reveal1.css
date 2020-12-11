@@ -8,12 +8,9 @@
 }
 
 .reveal1 {
-    --animation-delay: 0s;
-    --animation-duration: 1500ms;
-    --animation-iterations: 1;
+
     position: relative;
     font-size: 20px;
-    animation-name: clip-text-reveal1;
     color: #000;
     white-space: nowrap;
     cursor: default;
@@ -30,6 +27,7 @@
     background-color: #ffd5ce;
     transform-origin: 0 50%;
     pointer-events: none;
+    animation-play-state: paused;
 }
 
 
@@ -66,6 +64,7 @@
 
 .reveal1.active:after{
     animation-name: text-revealer-reveal1;
+    animation-play-state: running;
 }
 
 

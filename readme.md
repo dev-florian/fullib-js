@@ -3,7 +3,10 @@ Multiple animation Library in full javascript
 
 ## Installation
 At least use a version of laxxx >= 2.0
-
+Use yarn :
+```python
+yard add animation-felix
+```
 ## List of laxxx classes
 ```python
 lax-opacity-start

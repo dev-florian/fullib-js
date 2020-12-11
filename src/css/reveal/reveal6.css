@@ -2,6 +2,7 @@
     position: relative;
     z-index: 1;
     font-size: 38px;
+    transition: height 8s;
 }
 
 .reveal6:after {
@@ -14,14 +15,25 @@
     pointer-events: none;
     position: absolute;
     z-index: -1;
-    transition: all 1s;
+    transition: height 8s;
 }
 
 .reveal6.active:after {
-    height: 40%;
-    transition: all 1s;
+    -webkit-animation: reveal6keyframe 1s ease-in-out forwards;
+    -moz-animation: reveal6keyframe 1s ease-in-out forwards;
+    -o-animation: reveal6keyframe 1s ease-in-out forwards;
+    animation: reveal6keyframe 1s ease-in-out forwards;
 }
 
+@keyframes reveal6keyframe {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 40%;
+    }
+}
 
 
 

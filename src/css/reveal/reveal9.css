@@ -18,6 +18,19 @@
 }
 
 .reveal9.active:after {
-    left: 90%;
-    transition: all 1s;
+    -webkit-animation: reveal9keyframe 1s ease-in-out forwards;
+    -moz-animation: reveal9keyframe 1s ease-in-out forwards;
+    -o-animation: reveal9keyframe 1s ease-in-out forwards;
+    animation: reveal9keyframe 1s ease-in-out forwards;
 }
+
+@keyframes reveal9keyframe {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 90%;
+    }
+}
+

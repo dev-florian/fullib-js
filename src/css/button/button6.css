@@ -1,3 +1,8 @@
+.container-button6{
+    display: inline-block;
+    position: relative;
+}
+
 .container-button6 .button6{
     padding: 10px 25px;
     background: #ffd5ce;
