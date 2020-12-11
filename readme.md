@@ -1,7 +1,11 @@
-##################INSTALL#########################
-AT LEAST INSTALL LAXX >= 2.0
+# ANIMATION FELIX
+Multiple animation Library in full javascript
 
-##################LAX ANIM CLASSES#########################
+## Installation
+At least use a version of laxxx >= 2.0
+
+## List of laxxx classes
+```python
 lax-opacity-start
 lax-opacity-end
 lax-down
@@ -41,33 +45,46 @@ lax-rotate-right lax-opacity-start
 lax-skew-left
 lax-skew-right
 lax-blur-start
+```
 
-CUMULABLE CLASSES
-
-##################SVG ANIM CLASSES#########################
+## List of svg classes
+```python
 drawsvg
-##########################################
+```
 
-##################TRANSITION ANIM CLASSES#########################
+## List of transition classes
+```python
 transition1
+```
 
-ex using it :
+### Usage example
+```python
 <div class="transition1">
     <div class="trans trans1" data-lax-anchor="self" style="background-image: url('./img/bg1.png')"></div>
     <div class="trans trans2" data-lax-anchor="self" style="background-image: url('./img/bg2.png')"></div>
     <div class="trans trans3" data-lax-anchor="self" style="background-image: url('./img/bg3.png')"></div>
 </div>
+```
 
-##########################################
-##################CURSOR ANIM CLASSES#########################
+## List of cursor classes
+```python
 custom-cursor
 titlezoomcursor
-##########################################
-##################TEXT ANIM CLASSES#########################
+```
+
+## List of text classes
+```python
 text1
 text2
-##########################################
-##################REVEAL ANIM CLASSES#########################
+text3
+text4
+text5
+text6
+text7
+```
+
+## List of reveal classes
+```python
 reveal1
 reveal2
 reveal3
@@ -77,9 +94,10 @@ reveal6
 reveal7
 reveal8
 reveal9
-##################BUTTON ANIM CLASSES#########################
+```
+### List of button classes
+```python
 button1
-button2
 button3
 button4
 button5
@@ -90,4 +108,4 @@ button9
 button10
 button11
 button12
-##########################################
+```
