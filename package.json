@@ -1,6 +1,6 @@
 {
   "name": "animation-felix",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "Web Agency Felix Creation",
   "main": "src/js/index.js",
   "author": "Florian Thubé (f.the@sfr.fr)",
@@ -10,6 +10,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dev-florian/animation-felix"
+  },
+  "dependencies": {
+    "gsap": "^2.1.3",
+    "hover-effect": "^1.1.0",
+    "lax.js": "^2.0.2",
+    "three": "^0.99.0"
   },
   "keywords": [
     "javascript",

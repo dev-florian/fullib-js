@@ -1,0 +1,64 @@
+.button15 {
+    background: #ffd5ce;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    padding: 15px 45px 15px 15px;
+    transition: all .5s;
+}
+
+.button15 span{
+    position: relative;
+    z-index: 1;
+}
+
+.button15:before {
+    content: "";
+    background: #fbc1b7;
+    position: absolute;
+    left:0;
+    width: 0;
+    top: 0;
+    height: 50%;
+    transition: all .5s;
+}
+
+.button15:after {
+    content: "";
+    background: #fbc1b7;
+    position: absolute;
+    right:0;
+    bottom: 0;
+    width: 0;
+    height: 50%;
+    transition: all .5s;
+}
+
+.button15 span:before{
+    content: "";
+    position: absolute;
+    background: #fbc1b7;
+    height: 1px;
+    right: -45px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    transition: all .5s;
+}
+
+.button15:hover:before,
+.button15:hover:after{
+    width: 100%;
+    transition: all .5s;
+}
+
+.button15:hover span{
+    color: #fff;
+    transition: all .5s;
+}
+
+.button15:hover span:before{
+    background: #fff;
+    width: 30px;
+    transition: all .5s;
+}

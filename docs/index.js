@@ -13,6 +13,8 @@ import {
     button11,
     button12,
     button13,
+    button14,
+    button15,
     share,
     text1,
     text2,
@@ -34,10 +36,15 @@ import {
     changeBackground,
     transition1,
     drawsvg,
+    menu1,
+    menu2,
+    menu3,
+    menu4,
+    menu5,
 } from "animation-felix";
 
-cursor(10, '#000000', '#ffd5ce');
 laxAddons();
+cursor(10, '#000000', '#ffd5ce');
 button1();
 button3();
 button4();
@@ -50,6 +57,8 @@ button10();
 button11();
 button12();
 button13();
+button14();
+button15();
 share();
 text1();
 text2("https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg");
@@ -71,3 +80,8 @@ parallax1(2);
 changeBackground("#ffd5ce", 'change-background', 'linear');
 transition1();
 drawsvg();
+menu1();
+menu2();
+menu3();
+menu4();
+menu5();

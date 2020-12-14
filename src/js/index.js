@@ -1,7 +1,7 @@
 export function reveal1() {
     let reveals1 = document.getElementsByClassName('reveal1');
     if (reveals1[0]) {
-        import('animation-felix/src/css/reveal/reveal1.css').then(({ default: reveal1 }) => {
+        import('animation-felix/src/css/reveal/reveal1.css').then(({default: reveal1}) => {
             for (let i = 0, len = reveals1.length; i < len; i++) {
                 let myElem = reveals1[i];
                 if (isElementInViewport(myElem)) {
@@ -20,7 +20,7 @@ export function reveal1() {
 export function reveal2() {
     let reveal2 = document.getElementsByClassName('reveal2');
     if (reveal2[0]) {
-        import('animation-felix/src/css/reveal/reveal2.css').then(({ default: reveal2 }) => {
+        import('animation-felix/src/css/reveal/reveal2.css').then(({default: reveal2}) => {
         }).catch(error => 'An error occurred while loading reveal2');
     }
 }
@@ -28,7 +28,7 @@ export function reveal2() {
 export function reveal3() {
     let reveal3 = document.getElementsByClassName('reveal3');
     if (reveal3[0]) {
-        import('animation-felix/src/css/reveal/reveal3.css').then(({ default: reveal3 }) => {
+        import('animation-felix/src/css/reveal/reveal3.css').then(({default: reveal3}) => {
         }).catch(error => 'An error occurred while loading reveal3');
     }
 }
@@ -36,7 +36,7 @@ export function reveal3() {
 export function reveal4() {
     let reveal4 = document.getElementsByClassName('reveal4');
     if (reveal4[0]) {
-        import('animation-felix/src/css/reveal/reveal4.css').then(({ default: reveal4 }) => {
+        import('animation-felix/src/css/reveal/reveal4.css').then(({default: reveal4}) => {
         }).catch(error => 'An error occurred while loading reveal4');
     }
 }
@@ -44,7 +44,7 @@ export function reveal4() {
 export function reveal5() {
     let reveal5 = document.getElementsByClassName('reveal5');
     if (reveal5[0]) {
-        import('animation-felix/src/css/reveal/reveal5.css').then(({ default: reveal5 }) => {
+        import('animation-felix/src/css/reveal/reveal5.css').then(({default: reveal5}) => {
         }).catch(error => 'An error occurred while loading reveal5');
     }
 }
@@ -64,7 +64,7 @@ export function reveal6() {
                 }
             });
         }
-        import('animation-felix/src/css/reveal/reveal6.css').then(({ default: reveal6 }) => {
+        import('animation-felix/src/css/reveal/reveal6.css').then(({default: reveal6}) => {
         }).catch(error => 'An error occurred while loading reveal6');
     }
 }
@@ -84,7 +84,7 @@ export function reveal7() {
                 }
             });
         }
-        import('animation-felix/src/css/reveal/reveal7.css').then(({ default: reveal7 }) => {
+        import('animation-felix/src/css/reveal/reveal7.css').then(({default: reveal7}) => {
         }).catch(error => 'An error occurred while loading reveal7');
     }
 }
@@ -104,7 +104,7 @@ export function reveal8() {
                 }
             });
         }
-        import('animation-felix/src/css/reveal/reveal8.css').then(({ default: reveal8 }) => {
+        import('animation-felix/src/css/reveal/reveal8.css').then(({default: reveal8}) => {
         }).catch(error => 'An error occurred while loading reveal8');
     }
 }
@@ -124,7 +124,7 @@ export function reveal9() {
                 }
             });
         }
-        import('animation-felix/src/css/reveal/reveal9.css').then(({ default: reveal9 }) => {
+        import('animation-felix/src/css/reveal/reveal9.css').then(({default: reveal9}) => {
         }).catch(error => 'An error occurred while loading reveal9');
     }
 }
@@ -145,7 +145,7 @@ export function text1() {
                 }
             }
         }
-        import('animation-felix/src/css/text/text1.css').then(({ default: text1 }) => {
+        import('animation-felix/src/css/text/text1.css').then(({default: text1}) => {
         }).catch(error => 'An error occurred while loading text1');
     }
 }
@@ -167,7 +167,7 @@ export function text2(url) {
                 }
             });
         }
-        import('animation-felix/src/css/text/text2.css').then(({ default: text2 }) => {
+        import('animation-felix/src/css/text/text2.css').then(({default: text2}) => {
         }).catch(error => 'An error occurred while loading text2');
     }
 }
@@ -175,7 +175,7 @@ export function text2(url) {
 export function text3() {
     let texts3 = document.getElementsByClassName('text3');
     if (texts3[0]) {
-        import('animation-felix/src/css/text/text3.css').then(({ default: text3 }) => {
+        import('animation-felix/src/css/text/text3.css').then(({default: text3}) => {
         }).catch(error => 'An error occurred while loading text3');
     }
 }
@@ -183,7 +183,7 @@ export function text3() {
 export function text4() {
     let texts4 = document.getElementsByClassName('text4');
     if (texts4[0]) {
-        import('animation-felix/src/css/text/text4.css').then(({ default: text4 }) => {
+        import('animation-felix/src/css/text/text4.css').then(({default: text4}) => {
         }).catch(error => 'An error occurred while loading text4');
     }
 }
@@ -191,7 +191,7 @@ export function text4() {
 export function text5() {
     let texts5 = document.getElementsByClassName('text5');
     if (texts5[0]) {
-        import('animation-felix/src/css/text/text5.css').then(({ default: text5 }) => {
+        import('animation-felix/src/css/text/text5.css').then(({default: text5}) => {
             for (let i = 0, len = texts5.length; i < len; i++) {
                 let myElem = texts5[i];
                 let textMyElem = myElem.textContent;
@@ -230,7 +230,7 @@ export function text5() {
 export function text6() {
     let texts6 = document.getElementsByClassName('text6');
     if (texts6[0]) {
-        import('animation-felix/src/css/text/text6.css').then(({ default: text6 }) => {
+        import('animation-felix/src/css/text/text6.css').then(({default: text6}) => {
             for (let i = 0, len = texts6.length; i < len; i++) {
                 let myElem = texts6[i];
                 let textMyElem = myElem.textContent;
@@ -269,23 +269,23 @@ export function text6() {
 export function text7() {
     let texts7 = document.getElementsByClassName('text7');
     if (texts7[0]) {
-        import('animation-felix/src/css/text/text7.css').then(({ default: text7 }) => {
+        import('animation-felix/src/css/text/text7.css').then(({default: text7}) => {
         }).catch(error => 'An error occurred while loading text7');
     }
 }
 
 export function share() {
-    import('animation-felix/src/css/share/share.css').then(({ default: share }) => {
+    import('animation-felix/src/css/share/share.css').then(({default: share}) => {
     }).catch(error => 'An error occurred while loading share');
 
-    import('animation-felix/src/js/share.js').then(({ default: sharejs }) => {
+    import('animation-felix/src/js/share.js').then(({default: sharejs}) => {
     }).catch(error => 'An error occurred while loading sharejs');
 }
 
 export function button1() {
     let buttons1 = document.getElementsByClassName('button1');
     if (buttons1[0]) {
-        import('animation-felix/src/css/button/button1.css').then(({ default: button1 }) => {
+        import('animation-felix/src/css/button/button1.css').then(({default: button1}) => {
             for (let i = 0, len = buttons1.length; i < len; i++) {
                 let myElem = buttons1[i];
                 let optionLink = getOptionLink(myElem);
@@ -310,7 +310,7 @@ export function button1() {
 export function button3() {
     let buttons3 = document.getElementsByClassName('button3');
     if (buttons3[0]) {
-        import('animation-felix/src/css/button/button3.css').then(({ default: button3 }) => {
+        import('animation-felix/src/css/button/button3.css').then(({default: button3}) => {
             for (let i = 0, len = buttons3.length; i < len; i++) {
                 let myElem = buttons3[i];
                 let optionLink = getOptionLink(myElem);
@@ -337,7 +337,7 @@ export function button3() {
 export function button4() {
     let buttons4 = document.getElementsByClassName('button4');
     if (buttons4[0]) {
-        import('animation-felix/src/css/button/button4.css').then(({ default: button4 }) => {
+        import('animation-felix/src/css/button/button4.css').then(({default: button4}) => {
             for (let i = 0, len = buttons4.length; i < len; i++) {
                 let myElem = buttons4[i];
                 let optionLink = getOptionLink(myElem);
@@ -360,7 +360,7 @@ export function button4() {
 export function button5() {
     let buttons5 = document.getElementsByClassName('button5');
     if (buttons5[0]) {
-        import('animation-felix/src/css/button/button5.css').then(({ default: button5 }) => {
+        import('animation-felix/src/css/button/button5.css').then(({default: button5}) => {
             for (let i = 0, len = buttons5.length; i < len; i++) {
                 let myElem = buttons5[i];
                 let optionLink = getOptionLink(myElem);
@@ -383,7 +383,7 @@ export function button5() {
 export function button6() {
     let buttons6 = document.getElementsByClassName('button6');
     if (buttons6[0]) {
-        import('animation-felix/src/css/button/button6.css').then(({ default: button6 }) => {
+        import('animation-felix/src/css/button/button6.css').then(({default: button6}) => {
             for (let i = 0, len = buttons6.length; i < len; i++) {
                 let myElem = buttons6[i];
                 let optionLink = getOptionLink(myElem);
@@ -419,7 +419,7 @@ export function button6() {
 export function button7() {
     let buttons7 = document.getElementsByClassName('button7');
     if (buttons7[0]) {
-        import('animation-felix/src/css/button/button7.css').then(({ default: button7 }) => {
+        import('animation-felix/src/css/button/button7.css').then(({default: button7}) => {
             for (let i = 0, len = buttons7.length; i < len; i++) {
                 let myElem = buttons7[i];
                 let optionLink = getOptionLink(myElem);
@@ -448,7 +448,7 @@ export function button7() {
 export function button8() {
     let buttons8 = document.getElementsByClassName('button8');
     if (buttons8[0]) {
-        import('animation-felix/src/css/button/button8.css').then(({ default: button8 }) => {
+        import('animation-felix/src/css/button/button8.css').then(({default: button8}) => {
             for (let i = 0, len = buttons8.length; i < len; i++) {
                 let myElem = buttons8[i];
                 let optionLink = getOptionLink(myElem);
@@ -471,7 +471,7 @@ export function button8() {
 export function button9() {
     let buttons9 = document.getElementsByClassName('button9');
     if (buttons9[0]) {
-        import('animation-felix/src/css/button/button9.css').then(({ default: button9 }) => {
+        import('animation-felix/src/css/button/button9.css').then(({default: button9}) => {
             for (let i = 0, len = buttons9.length; i < len; i++) {
                 let myElem = buttons9[i];
                 let optionLink = getOptionLink(myElem);
@@ -499,7 +499,7 @@ export function button9() {
 export function button10() {
     let buttons10 = document.getElementsByClassName('button10');
     if (buttons10[0]) {
-        import('animation-felix/src/css/button/button10.css').then(({ default: button10 }) => {
+        import('animation-felix/src/css/button/button10.css').then(({default: button10}) => {
             for (let i = 0, len = buttons10.length; i < len; i++) {
                 let myElem = buttons10[i];
                 let optionLink = getOptionLink(myElem);
@@ -523,7 +523,7 @@ export function button10() {
 export function button11() {
     let buttons11 = document.getElementsByClassName('button11');
     if (buttons11[0]) {
-        import('animation-felix/src/css/button/button11.css').then(({ default: button11 }) => {
+        import('animation-felix/src/css/button/button11.css').then(({default: button11}) => {
             for (let i = 0, len = buttons11.length; i < len; i++) {
                 let myElem = buttons11[i];
                 let optionLink = getOptionLink(myElem);
@@ -547,7 +547,7 @@ export function button11() {
 export function button12() {
     let buttons12 = document.getElementsByClassName('button12');
     if (buttons12[0]) {
-        import('animation-felix/src/css/button/button12.css').then(({ default: button12 }) => {
+        import('animation-felix/src/css/button/button12.css').then(({default: button12}) => {
             for (let i = 0, len = buttons12.length; i < len; i++) {
                 let myElem = buttons12[i];
                 let optionLink = getOptionLink(myElem);
@@ -570,7 +570,7 @@ export function button12() {
 export function button13() {
     let buttons13 = document.getElementsByClassName('button13');
     if (buttons13[0]) {
-        import('animation-felix/src/css/button/button13.css').then(({ default: button13 }) => {
+        import('animation-felix/src/css/button/button13.css').then(({default: button13}) => {
             for (let i = 0, len = buttons13.length; i < len; i++) {
                 let myElem = buttons13[i];
                 let optionLink = getOptionLink(myElem);
@@ -593,6 +593,89 @@ export function button13() {
                 myElem.remove();
             }
         }).catch(error => 'An error occurred while loading button13');
+    }
+}
+
+export function button14() {
+    let buttons14 = document.getElementsByClassName('button14');
+    if (buttons14[0]) {
+        import('animation-felix/src/css/button/button14.css').then(({default: button14}) => {
+        }).catch(error => 'An error occurred while loading button14');
+    }
+}
+
+export function button15() {
+    let buttons15 = document.getElementsByClassName('button15');
+    if (buttons15[0]) {
+        import('animation-felix/src/css/button/button15.css').then(({default: button15}) => {
+            for (let i = 0, len = buttons15.length; i < len; i++) {
+                let myElem = buttons15[i];
+                let textContent = myElem.textContent;
+                myElem.textContent = "";
+                addElement('span', '', {addTo: myElem, text: textContent});
+            }
+        }).catch(error => 'An error occurred while loading button15');
+    }
+}
+
+export function menu1() {
+    let menus1 = document.getElementsByClassName('menu1');
+    if (menus1[0]) {
+        import('animation-felix/src/css/menu/menu1.css').then(({default: menu1}) => {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
+            {
+                document.getElementById('main-navigation-nav').classList.toggle('nav-active');
+            }
+        }).catch(error => 'An error occurred while loading menu1');
+    }
+}
+
+export function menu2() {
+    let menus2 = document.getElementsByClassName('menu2');
+    if (menus2[0]) {
+        import('animation-felix/src/css/menu/menu2.css').then(({default: menu2}) => {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
+            {
+                document.getElementById('main-navigation-nav').classList.toggle('nav-active');
+            }
+        }).catch(error => 'An error occurred while loading menu2');
+    }
+}
+
+export function menu3() {
+    let menus3 = document.getElementsByClassName('menu3');
+    if (menus3[0]) {
+        import('animation-felix/src/css/menu/menu3.css').then(({default: menu3}) => {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
+            {
+                document.getElementById('main-navigation-nav').classList.toggle('nav-active');
+            }
+        }).catch(error => 'An error occurred while loading menu3');
+    }
+}
+
+export function menu4() {
+    let menus4 = document.getElementsByClassName('menu4');
+    if (menus4[0]) {
+        import('animation-felix/src/css/menu/menu4.css').then(({default: menu4}) => {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
+            {
+                document.getElementById('main-navigation-nav').classList.toggle('nav-active');
+            }
+        }).catch(error => 'An error occurred while loading menu4');
+    }
+}
+
+
+export function menu5() {
+    let menus5 = document.getElementsByClassName('menu5');
+    if (menus5[0]) {
+        import('animation-felix/src/css/menu/menu5.css').then(({default: menu5}) => {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
+            {
+                document.getElementById('main-navigation-nav').classList.toggle('nav-active');
+            }
+        }).catch(error => 'An error occurred while loading menu4');
     }
 }
 
@@ -656,7 +739,7 @@ export function changeBackground(color, className, animation) {
 export function drawsvg() {
     let drawsvgs = document.getElementsByClassName('drawsvg');
     if (drawsvgs[0]) {
-        import('animation-felix/src/css/reveal/drawsvg.css').then(({ default: drawsvg }) => {
+        import('animation-felix/src/css/reveal/drawsvg.css').then(({default: drawsvg}) => {
             for (let i = 0, len = drawsvgs.length; i < len; i++) {
                 let myElem = drawsvgs[i];
 
@@ -677,79 +760,81 @@ export function drawsvg() {
 export function transition1() {
     let transitions1 = document.getElementsByClassName('transition1');
     if (transitions1[0]) {
-        import('animation-felix/src/css/transition/transition1.css').then(({ default: transition1 }) => {
+        import('animation-felix/src/css/transition/transition1.css').then(({default: transition1}) => {
         }).catch(error => 'An error occurred while loading transition1');
     }
 }
 
 export function laxAddons() {
-    import('animation-felix/src/js/addonsLax.js').then(({ default: addonsLax }) => {
+    import('animation-felix/src/js/addonsLax.js').then(({default: addonsLax}) => {
     }).catch(error => 'An error occurred while loading addonsLax');
 }
 
 export function cursor(size, colorFirst, colorSecond = null) {
-    import('animation-felix/src/css/cursor/cursor.css').then(({ default: cursor }) => {
-    }).catch(error => 'An error occurred while loading cursor');
+    if (document.getElementsByClassName('custom-cursor')[0]) {
+        import('animation-felix/src/css/cursor/cursor.css').then(({default: cursor}) => {
+        }).catch(error => 'An error occurred while loading cursor');
 
-    let cursor1 = addElement('div', ['cursor', 'cursor-follower']);
-    let cursor2 = null;
-    if (colorSecond) {
-        cursor2 = addElement('div', ['cursor', 'cursor-dot']);
-    }
-
-    cursor1.style.width = size + 'px';
-    cursor1.style.height = size + 'px';
-    cursor1.style.background = colorFirst;
-
-    if (cursor2) {
-        cursor2.style.width = size + 'px';
-        cursor2.style.height = size + 'px';
-        cursor2.style.background = colorSecond;
-    }
-
-
-    let mouseTarget = document.getElementsByClassName('titlezoomcursor');
-    for (let i = 0, len = mouseTarget.length; i < len; i++) {
-        mouseTarget[i].addEventListener('mouseenter', e => {
-            cursor1.classList.add('focus');
-            cursor1.style.width = size * 4 + 'px';
-            cursor1.style.height = size * 4 + 'px';
-
-            if (cursor2) {
-                cursor2.classList.add('focus');
-                cursor2.style.width = size * 4 + 'px';
-                cursor2.style.height = size * 4 + 'px';
-            }
-        })
-    }
-
-    for (let i = 0, len = mouseTarget.length; i < len; i++) {
-        mouseTarget[i].addEventListener('mouseleave', e => {
-            cursor1.classList.remove('focus');
-            cursor1.style.width = size + 'px';
-            cursor1.style.height = size + 'px';
-
-            if (cursor2) {
-                cursor2.classList.remove('focus');
-                cursor2.style.width = size + 'px';
-                cursor2.style.height = size + 'px';
-            }
-        })
-    }
-
-    let onmousemove = function (e) {
-        let xpos = e.pageX;
-        let ypos = e.pageY;
-        cursor1.style.left = xpos + 'px';
-        cursor1.style.top = ypos + 'px';
-
+        let cursor1 = addElement('div', ['cursor', 'cursor-follower']);
+        let cursor2 = null;
         if (colorSecond) {
-            cursor2.style.left = xpos + 'px';
-            cursor2.style.top = ypos + 'px';
+            cursor2 = addElement('div', ['cursor', 'cursor-dot']);
         }
-    }
 
-    document.addEventListener('mousemove', onmousemove);
+        cursor1.style.width = size + 'px';
+        cursor1.style.height = size + 'px';
+        cursor1.style.background = colorFirst;
+
+        if (cursor2) {
+            cursor2.style.width = size + 'px';
+            cursor2.style.height = size + 'px';
+            cursor2.style.background = colorSecond;
+        }
+
+
+        let mouseTarget = document.getElementsByClassName('titlezoomcursor');
+        for (let i = 0, len = mouseTarget.length; i < len; i++) {
+            mouseTarget[i].addEventListener('mouseenter', e => {
+                cursor1.classList.add('focus');
+                cursor1.style.width = size * 4 + 'px';
+                cursor1.style.height = size * 4 + 'px';
+
+                if (cursor2) {
+                    cursor2.classList.add('focus');
+                    cursor2.style.width = size * 4 + 'px';
+                    cursor2.style.height = size * 4 + 'px';
+                }
+            })
+        }
+
+        for (let i = 0, len = mouseTarget.length; i < len; i++) {
+            mouseTarget[i].addEventListener('mouseleave', e => {
+                cursor1.classList.remove('focus');
+                cursor1.style.width = size + 'px';
+                cursor1.style.height = size + 'px';
+
+                if (cursor2) {
+                    cursor2.classList.remove('focus');
+                    cursor2.style.width = size + 'px';
+                    cursor2.style.height = size + 'px';
+                }
+            })
+        }
+
+        let onmousemove = function (e) {
+            let xpos = e.pageX;
+            let ypos = e.pageY;
+            cursor1.style.left = xpos + 'px';
+            cursor1.style.top = ypos + 'px';
+
+            if (colorSecond) {
+                cursor2.style.left = xpos + 'px';
+                cursor2.style.top = ypos + 'px';
+            }
+        }
+
+        document.addEventListener('mousemove', onmousemove);
+    }
 }
 
 export function addElement(type, classes, options = null) {

@@ -1,17 +1,16 @@
 {
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "dependencies": {
-    "animation-felix": "^1.0.*",
-    "encore": "^0.0.30-beta",
-    "lax": "0.0.40",
-    "lax.js": "^2.0.2"
+    "animation-felix": "^1.0.25",
+    "css-loader": "^5.0.1",
+    "lax.js": "^2.0.2",
+    "style-loader": "^2.0.0"
   },
   "devDependencies": {
-    "css-loader": "^5.0.1",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.10.0",
+    "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0"
   }
 }
