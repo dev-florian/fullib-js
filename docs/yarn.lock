@@ -221,9 +221,14 @@ ajv@^6.12.5:
     uri-js "^4.2.2"
 
 animation-felix@^1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/animation-felix/-/animation-felix-1.0.25.tgz#ec51993b1bc2e62c21ead5fcf80c1b2484d99ee2"
-  integrity sha512-2zlMu11ta4N/4HcpDww4MpWTBFiTzEWcYySUV3/K+f3vhe/MuGR2MYHyJ6OXF4/SM+gZfHZ9kNiK9sSzF3CetA==
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/animation-felix/-/animation-felix-1.0.26.tgz#be7395cf1c2c00e5ac6a0a574342bb71ca4f7e50"
+  integrity sha512-W47eFcWYQs3uzWfLmoA1EnuM2W7p4Sj+Wz0vNGpVAjNglCo3PunVVV0N9XMkYcX/xTniviMa6njgtOup8PHWyQ==
+  dependencies:
+    gsap "^2.1.3"
+    hover-effect "^1.1.0"
+    lax.js "^2.0.2"
+    three "^0.99.0"
 
 ansi-colors@^4.1.1:
   version "4.1.1"
@@ -503,6 +508,11 @@ graceful-fs@^4.1.2, graceful-fs@^4.2.4:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 
+gsap@^2.0.2, gsap@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-2.1.3.tgz#c63ee3a50f0b7dc3b46ed0845bb0f09049feb944"
+  integrity sha512-8RFASCqi2FOCBuv7X4o7M6bLdy+1hbR0azg+MG7zz+EVsI+OmJblYsTk0GEepQd2Jg/ItMPiVTibF7r3EVxjZQ==
+
 has-flag@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
@@ -519,6 +529,14 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+hover-effect@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/hover-effect/-/hover-effect-1.1.0.tgz#b2687f46826f353792a8c1d877f2eed0f3f69235"
+  integrity sha512-172ezjW88PYOHEerHzQWmkMXaAx4hOerE+BQ3iAN+n3Xza+TczuJKgkYlCaHhcGFUdG7is/1UcepCJECNeFscg==
+  dependencies:
+    gsap "^2.0.2"
+    three "^0.99.0"
 
 human-signals@^1.1.1:
   version "1.1.1"
@@ -1000,6 +1018,11 @@ terser@^5.3.8:
     commander "^2.20.0"
     source-map "~0.7.2"
     source-map-support "~0.5.19"
+
+three@^0.99.0:
+  version "0.99.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.99.0.tgz#65711fda7a16501da83948121437d824df1fea19"
+  integrity sha512-DmNNq6H6nRGaqxScJ8x7v5VjdtDZR72oTVwDdKbB2BYNFxCkAoo9vdFAznEsMu9YzTV2yFvbVs7qHRzvJZzTIg==
 
 tslib@^1.9.0:
   version "1.14.1"

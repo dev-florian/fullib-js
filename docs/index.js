@@ -41,6 +41,8 @@ import {
     menu3,
     menu4,
     menu5,
+    webgl,
+    webgl2,
 } from "animation-felix";
 
 laxAddons();
@@ -85,3 +87,5 @@ menu2();
 menu3();
 menu4();
 menu5();
+webgl();
+webgl2('effect2');

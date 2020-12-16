@@ -1,22 +1,44 @@
 {
-  "name": "animation-felix",
-  "version": "1.0.26",
-  "description": "Web Agency Felix Creation",
-  "main": "src/js/index.js",
-  "author": "Florian Thubé (f.the@sfr.fr)",
-  "license": "MIT",
-  "homepage": "https://github.com/dev-florian/animation-felix",
-  "bugs": "https://github.com/dev-florian/animation-felix/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dev-florian/animation-felix"
+  "_from": "animation-felix@^1.0.26",
+  "_id": "animation-felix@1.0.26",
+  "_inBundle": false,
+  "_integrity": "sha512-W47eFcWYQs3uzWfLmoA1EnuM2W7p4Sj+Wz0vNGpVAjNglCo3PunVVV0N9XMkYcX/xTniviMa6njgtOup8PHWyQ==",
+  "_location": "/animation-felix",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "animation-felix@^1.0.26",
+    "name": "animation-felix",
+    "escapedName": "animation-felix",
+    "rawSpec": "^1.0.26",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.26"
   },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/animation-felix/-/animation-felix-1.0.26.tgz",
+  "_shasum": "be7395cf1c2c00e5ac6a0a574342bb71ca4f7e50",
+  "_spec": "animation-felix@^1.0.26",
+  "_where": "D:\\wamp64\\www\\animation-felix-use",
+  "author": {
+    "name": "Florian Thubé",
+    "url": "f.the@sfr.fr"
+  },
+  "bugs": {
+    "url": "https://github.com/dev-florian/animation-felix/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "gsap": "^2.1.3",
     "hover-effect": "^1.1.0",
     "lax.js": "^2.0.2",
     "three": "^0.99.0"
   },
+  "deprecated": false,
+  "description": "Web Agency Felix Creation",
+  "homepage": "https://github.com/dev-florian/animation-felix",
   "keywords": [
     "javascript",
     "anim",
@@ -27,5 +49,13 @@
     "effects",
     "css",
     "html"
-  ]
+  ],
+  "license": "MIT",
+  "main": "src/js/index.js",
+  "name": "animation-felix",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-florian/animation-felix.git"
+  },
+  "version": "1.0.26"
 }

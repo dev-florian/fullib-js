@@ -14,14 +14,16 @@
         text-align: center;
     }
 </style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 <body id="body" class="">
 <!-- HTML -->
 <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -44,12 +46,42 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/pages/hover-effect">Hover effect</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/hover-effect2">Hover effect2</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-
-<div id="hovereffect" data-media1="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" data-media2="https://cdn.pixabay.com/photo/2014/02/27/16/10/tree-276014_960_720.jpg" data-distortion="https://raw.githubusercontent.com/robin-dela/hover-effect/master/example/img/displacement/16.jpg"></div>
+<div class="container-fluid mt-5">
+    <div class="row" style="height: 49vh">
+        <div class="col-6 p-0">
+            <div class="hover-effect" style="height: 100%;"
+                 data-media1="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/balloon.jpg"
+                 data-media2="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/balloon2.jpg"
+                 data-distortion="https://raw.githubusercontent.com/robin-dela/hover-effect/master/example/img/displacement/16.jpg"></div>
+        </div>
+        <div class="col-6 p-0" style="background: tomato"></div>
+    </div>
+    <div class="row" style="height: 49vh">
+        <div class="col-6 p-0" style="background: rosybrown"></div>
+        <div class="col-6 p-0">
+            <div class="hover-effect" style="height: 100%;"
+                 data-media1="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice.jpg"
+                 data-media2="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice2.jpg"
+                 data-distortion="https://raw.githubusercontent.com/robin-dela/hover-effect/master/example/img/displacement/12.jpg"></div>
+        </div>
+    </div>
+    <div class="row" style="height: 49vh">
+        <div class="col-6 p-0" style="background: rosybrown"></div>
+        <div class="col-6 p-0">
+            <div class="hover-effect" style="height: 100%;"
+                 data-media1="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice.jpg"
+                 data-media2="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice.jpg"
+                 data-distortion="https://raw.githubusercontent.com/robin-dela/hover-effect/master/example/img/displacement/12.jpg"></div>
+        </div>
+    </div>
+</div>
 
 <script src="../build/bundle.js"></script>
 </body>

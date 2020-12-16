@@ -622,8 +622,7 @@ export function menu1() {
     let menus1 = document.getElementsByClassName('menu1');
     if (menus1[0]) {
         import('animation-felix/src/css/menu/menu1.css').then(({default: menu1}) => {
-            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
-            {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function () {
                 document.getElementById('main-navigation-nav').classList.toggle('nav-active');
             }
         }).catch(error => 'An error occurred while loading menu1');
@@ -634,8 +633,7 @@ export function menu2() {
     let menus2 = document.getElementsByClassName('menu2');
     if (menus2[0]) {
         import('animation-felix/src/css/menu/menu2.css').then(({default: menu2}) => {
-            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
-            {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function () {
                 document.getElementById('main-navigation-nav').classList.toggle('nav-active');
             }
         }).catch(error => 'An error occurred while loading menu2');
@@ -646,8 +644,7 @@ export function menu3() {
     let menus3 = document.getElementsByClassName('menu3');
     if (menus3[0]) {
         import('animation-felix/src/css/menu/menu3.css').then(({default: menu3}) => {
-            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
-            {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function () {
                 document.getElementById('main-navigation-nav').classList.toggle('nav-active');
             }
         }).catch(error => 'An error occurred while loading menu3');
@@ -658,8 +655,7 @@ export function menu4() {
     let menus4 = document.getElementsByClassName('menu4');
     if (menus4[0]) {
         import('animation-felix/src/css/menu/menu4.css').then(({default: menu4}) => {
-            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
-            {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function () {
                 document.getElementById('main-navigation-nav').classList.toggle('nav-active');
             }
         }).catch(error => 'An error occurred while loading menu4');
@@ -671,8 +667,7 @@ export function menu5() {
     let menus5 = document.getElementsByClassName('menu5');
     if (menus5[0]) {
         import('animation-felix/src/css/menu/menu5.css').then(({default: menu5}) => {
-            document.getElementsByClassName('navbar-toggler')[0].onclick = function()
-            {
+            document.getElementsByClassName('navbar-toggler')[0].onclick = function () {
                 document.getElementById('main-navigation-nav').classList.toggle('nav-active');
             }
         }).catch(error => 'An error occurred while loading menu4');
@@ -768,6 +763,32 @@ export function transition1() {
 export function laxAddons() {
     import('animation-felix/src/js/addonsLax.js').then(({default: addonsLax}) => {
     }).catch(error => 'An error occurred while loading addonsLax');
+}
+
+export function webgl() {
+    import('hover-effect').then(({default: hoverObject}) => {
+        let distortions = document.getElementsByClassName('hover-effect');
+        for (let i = 0, len = distortions.length; i < len; i++) {
+            let myElem = distortions[i];
+            let image1 = myElem.getAttribute('data-media1');
+            let distortion = myElem.getAttribute('data-distortion');
+            let image2 = myElem.getAttribute('data-media2');
+
+            let myAnimation = new hoverObject({
+                parent: myElem,
+                intensity: 0.3,
+                image1: image1,
+                image2: image2,
+                displacementImage: distortion
+            });
+        }
+    }).catch(error => 'An error occurred while loading transition1');
+}
+
+export function webgl2(id) {
+    import('animation-felix/src/js/webgl/Scene').then(({default: Scene}) => {
+        window.scene = new Scene(id)
+    }).catch(error => 'An error occurred while loading transition1');
 }
 
 export function cursor(size, colorFirst, colorSecond = null) {
