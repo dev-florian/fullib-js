@@ -43,6 +43,7 @@ import {
     menu5,
     webgl,
     webgl2,
+    blotter,
 } from "animation-felix";
 
 laxAddons();
@@ -89,3 +90,4 @@ menu4();
 menu5();
 webgl();
 webgl2('effect2');
+blotter();

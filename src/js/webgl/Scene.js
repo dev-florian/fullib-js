@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import Figure from './Figure'
 
-const perspective = 800
+const perspective = 500
 
 export default class Scene {
     constructor(id) {

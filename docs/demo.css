@@ -1,0 +1,55 @@
+#blotter{
+    background: #2b313e;
+}
+#blotter img{
+    max-width: 420px;
+    opacity: 0.4;
+    transition: opacity .5s;
+}
+#blotter img:hover{
+    opacity: 1;
+    transition: opacity .5s;
+}
+#blotter .row{
+  margin-bottom: -190px !important;
+}
+#blotter .row:nth-child(odd) .blotter{
+    transform: translate(150px, -150px);
+}
+#blotter .row:nth-child(even) .blotter{
+    transform: translate(-150px, -150px);
+}
+
+
+#hovereffect{
+    background: #2b313e;
+}
+#hovereffect img,#hovereffect canvas{
+    max-width: 420px;
+    opacity: 0.4;
+    transition: opacity .5s;
+}
+#hovereffect img:hover, #hovereffect canvas:hover{
+    opacity: 1;
+    transition: opacity .5s;
+}
+#hovereffect .row{
+  margin-bottom: -190px !important;
+}
+
+
+#hovereffect2{
+    background: #2b313e;
+}
+#hovereffect2 img{
+    width: 512px;
+    opacity: 0.4;
+    transition: opacity .5s;
+}
+#hovereffect2 canvas:hover{
+    opacity: 1;
+    transition: opacity .5s;
+}
+#hovereffect2 .row{
+  margin-bottom: -190px !important;
+}

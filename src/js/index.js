@@ -274,6 +274,63 @@ export function text7() {
     }
 }
 
+export function blotter() {
+    let blotters = document.getElementsByClassName('blotter');
+    if (blotters[0]) {
+        bottlerFirstScript();
+    }
+}
+
+function bottlerFirstScript() {
+    var url = "https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js";
+
+    var script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    var done = false;
+    script.onload = script.onreadystatechange = function () {
+        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+            bottlerSecondScript();
+        }
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+function bottlerSecondScript() {
+    var url = "https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/liquidDistortMaterial.min.js";
+
+    var script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    var done = false;
+    script.onload = script.onreadystatechange = function () {
+        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+            bottlerThirdScript();
+        }
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+function bottlerThirdScript() {
+    var url = "https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/rollingDistortMaterial.min.js";
+
+    var script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    var done = false;
+    script.onload = script.onreadystatechange = function () {
+        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+            runBottler();
+        }
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+function runBottler() {
+    import('animation-felix/src/js/blotter/index').then(({default: blotter}) => {
+    }).catch(error => 'An error occurred while loading blotter');
+}
+
 export function share() {
     import('animation-felix/src/css/share/share.css').then(({default: share}) => {
     }).catch(error => 'An error occurred while loading share');
@@ -766,29 +823,34 @@ export function laxAddons() {
 }
 
 export function webgl() {
-    import('hover-effect').then(({default: hoverObject}) => {
-        let distortions = document.getElementsByClassName('hover-effect');
-        for (let i = 0, len = distortions.length; i < len; i++) {
-            let myElem = distortions[i];
-            let image1 = myElem.getAttribute('data-media1');
-            let distortion = myElem.getAttribute('data-distortion');
-            let image2 = myElem.getAttribute('data-media2');
+    let distortions = document.getElementsByClassName('hover-effect');
+    if (distortions[0]) {
+        import('hover-effect').then(({default: hoverObject}) => {
 
-            let myAnimation = new hoverObject({
-                parent: myElem,
-                intensity: 0.3,
-                image1: image1,
-                image2: image2,
-                displacementImage: distortion
-            });
-        }
-    }).catch(error => 'An error occurred while loading transition1');
+            for (let i = 0, len = distortions.length; i < len; i++) {
+                let myElem = distortions[i];
+                let image1 = myElem.getAttribute('data-media1');
+                let distortion = myElem.getAttribute('data-distortion');
+                let image2 = myElem.getAttribute('data-media2');
+
+                let myAnimation = new hoverObject({
+                    parent: myElem,
+                    intensity: 0.3,
+                    image1: image1,
+                    image2: image2,
+                    displacementImage: distortion
+                });
+            }
+        }).catch(error => 'An error occurred while loading transition1');
+    }
 }
 
 export function webgl2(id) {
-    import('animation-felix/src/js/webgl/Scene').then(({default: Scene}) => {
-        window.scene = new Scene(id)
-    }).catch(error => 'An error occurred while loading transition1');
+    if (document.getElementById(id)) {
+        import('animation-felix/src/js/webgl/Scene').then(({default: Scene}) => {
+            window.scene = new Scene(id)
+        }).catch(error => 'An error occurred while loading webgl');
+    }
 }
 
 export function cursor(size, colorFirst, colorSecond = null) {
@@ -887,6 +949,14 @@ export function addElement(type, classes, options = null) {
 
     if (options && options.target) {
         newDiv.setAttribute('target', options.target);
+    }
+
+    if (options && options.type) {
+        newDiv.setAttribute('type', options.type);
+    }
+
+    if (options && options.src) {
+        newDiv.setAttribute('src', options.src);
     }
 
     if (options && options.addTo) {
