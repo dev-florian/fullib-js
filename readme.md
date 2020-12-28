@@ -206,50 +206,6 @@ menu5();
                 </div>
             </div>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/pages/lax">Lax</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/text">Text</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/buttons">Buttons</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/reveal">Reveal</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu">Menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/hover-effect">Hover effect</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/hover-effect2">Hover effect 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu">menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu2">menu2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu3">menu3</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu4">menu4</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu5">menu5</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/blotter">blotter</a>
-                </li>
-            </ul>
-        </div>
     </div>
 </nav>
 
@@ -297,11 +253,11 @@ import {blotter} from "animation-felix";
 blotter();
 
 <div class="blotter" data-blotter-effect="liquid" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120" data-blotter-color="#c69f64">ABC</div>
+```
 Warning : 
 -You have to put the blotter className to your element
 -You have to only put a valid string in the div
 -The font must be loaded before the plugin
-```
 
 ### Image Hover effect
 ```python
