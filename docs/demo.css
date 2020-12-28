@@ -13,6 +13,9 @@
 #blotter .row{
   margin-bottom: -190px !important;
 }
+#blotter .blotter{
+    font-family: 'Russo One', sans-serif;
+}
 #blotter .row:nth-child(odd) .blotter{
     transform: translate(150px, -150px);
 }
