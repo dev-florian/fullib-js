@@ -31,7 +31,7 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "gsap": "^2.1.3",
+    "gsap": "^3.6.0",
     "hover-effect": "^1.1.0",
     "lax.js": "^2.0.2",
     "lottie-web": "^5.7.5",
@@ -58,5 +58,5 @@
     "type": "git",
     "url": "git+https://github.com/dev-florian/animation-felix.git"
   },
-  "version": "1.0.32"
+  "version": "1.0.34"
 }
