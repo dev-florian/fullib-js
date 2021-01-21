@@ -826,13 +826,6 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@lottiefiles/lottie-interactivity@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@lottiefiles/lottie-interactivity/-/lottie-interactivity-0.1.3.tgz#0d26f5fca2472b52e4223838efdf5bc50d1a8836"
-  integrity sha512-11GA5anKm7allHVKBFjeenyUYJXjisItf8gxU+v5AEmoo1wfiHNWCAuKyEWL8wNO2DijDJ1uhaYCAsIUxIgl4g==
-  dependencies:
-    core-js "3"
-
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -1130,10 +1123,10 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-animation-felix@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/animation-felix/-/animation-felix-1.0.3.tgz#c53ae5c349b35af86999363b691b9fb21e351b2e"
-  integrity sha512-H2A+O9t0SCSMZVB/pQRv4lLWahhFGoX8z00+2mRsu58IOSaA1bQ0QbQsZdRtj+kOpn8ZIljWNgE75kZNDVYaHg==
+animation-felix@^1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/animation-felix/-/animation-felix-1.0.32.tgz#6ae864fcd4113c211621bc32a5f37080be807f66"
+  integrity sha512-lZyATCdzNCxUqnu7rXRnixOSoOEoURKNrIKME/hsTmOziMgujlYqM3BatvG4Wt7cqeRbwWKJ+cgd1fe0f1nuHw==
   dependencies:
     gsap "^2.1.3"
     hover-effect "^1.1.0"
@@ -1522,11 +1515,6 @@ core-js-compat@^3.8.0:
   dependencies:
     browserslist "^4.16.0"
     semver "7.0.0"
-
-core-js@3:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.8.2.tgz#0a1fd6709246da9ca8eff5bb0cbd15fba9ac7044"
-  integrity sha512-FfApuSRgrR6G5s58casCBd9M2k+4ikuu4wbW6pJyYU7bd9zvFc9qf7vr5xmrZOhT9nn+8uwlH1oRR9jTnFoA3A==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"

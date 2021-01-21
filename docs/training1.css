@@ -1,0 +1,205 @@
+
+
+.doublecards .firstcard {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 1;
+}
+
+.doublecards .firstcard img {
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.doublecards .secondcard {
+    padding: 50px;
+}
+
+.customcard {
+    box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.customcard img {
+    max-width: calc(100% - 70px);
+    margin-top: -100px;
+    box-shadow: 0 15px 35px -5px rgba(50, 88, 130, 0.32);
+    border-radius: 15px;
+}
+
+.newtypecard {
+    background: #fff;
+    box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+}
+
+.newtypecard img {
+    max-width: 100%;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: animBgnewtypecard 5s infinite linear;
+}
+
+.newtypecard svg {
+    max-width: 20px;
+    cursor: pointer;
+    height: auto;
+}
+
+.newtypecard h3 {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+@keyframes animBgnewtypecard {
+    from {
+        object-position: 0 0;
+    }
+
+    50% {
+        object-position: 0 -20px;
+    }
+
+    to {
+        object-position: 0 0;
+    }
+}
+
+.cardchapter {
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 150px;
+    box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+}
+
+.cardchapter .left {
+
+    background: #2a265f;
+    padding: 15px;
+}
+
+.cardchapter .left .sub {
+    opacity: 0.6;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cardchapter .left .title {
+    color: #fff;
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.cardchapter .left a {
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.cardchapter .right .container-button8 .button8:before {
+    background: #2a265f;
+}
+
+.cardchapter .right .container-button8 .button8:after {
+    background: #2a265f;
+    opacity: .6;
+}
+
+.cardchapter .right .title {
+    color: #2a265f;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.cardchapter .right .sub {
+    color: #2a265f;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cardchapter .right .container-button8 {
+    text-align: right;
+}
+
+.cardchapter .right .container-button8 a {
+    color: #fff;
+}
+
+.cardchapter .chapter {
+    position: absolute;
+    top: 10px;
+    right: 53px;
+}
+
+.cardchapter .chapter:before {
+    content: "";
+    position: absolute;
+    top: 27px;
+    right: -25px;
+    width: 70px;
+    height: 5px;
+    background: #2a265f;
+    border-radius: 20px;
+    border: 1px solid #2a265f;
+}
+
+.cardchapter .chapter:after {
+    content: "";
+    position: absolute;
+    top: 28px;
+    right: -24px;
+    width: 29px;
+    height: 3px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.circlewhite {
+    position: absolute;
+    right: -150px;
+    top: -150px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    width: 500px;
+    height: 500px;
+    transform: rotate(0deg);
+    animation: circleanim 10s infinite linear;
+}
+
+.circlewhite:before {
+    content: "";
+    position: absolute;
+    right: 470px;
+    top: 224px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+@keyframes circleanim {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#ez9uiemj3kbq1{
+    max-width: 250px;
+}

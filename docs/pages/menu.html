@@ -21,7 +21,7 @@
 <!-- HTML -->
 <nav class="menu1 fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <div class="nav-but-wrap">
                 <div class="menu-icon hover-target">
@@ -45,9 +45,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/pages/reveal">Reveal</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/menu">Menu</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/pages/hover-effect">Hover effect</a>
@@ -106,5 +103,15 @@
     </ul>
 </div>
 <script src="../build/bundle.js"></script>
+<script>
+    if (window.innerWidth < 991) {
+        let menuButton = document.querySelector('.navbar-toggler');
+        let menuContainer = document.getElementById('navbarNav');
+
+        menuButton.onclick = function (e) {
+            menuContainer.classList.toggle('d-block');
+        }
+    }
+</script>
 </body>
 </html>

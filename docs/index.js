@@ -44,13 +44,26 @@ import {
     webgl,
     webgl2,
     blotter,
-    lottie
+    lottie,
+    mousemove,
+    generateBulb,
+    imageBlob
 } from "animation-felix";
 
-// import {cube} from './threejs/threejsdemo'
-
 laxAddons();
-cursor(10, '#000000', '#ffd5ce');
+cursor({
+    activeFirstCursor: true,
+    activeSecondCursor: false,
+    currentDiv: "#index",
+    zoomOnDiv: ".chapter",
+    firstCursor: {
+        size: 10,
+        backgroundColor: "#000000",
+        border: "1px solid #000000",
+        type: 'square', // round or square
+        transition: "top .1s, left .1s, width .5s, height .5s",
+    }
+});
 button1();
 button3();
 button4();
@@ -67,7 +80,9 @@ button14();
 button15();
 share();
 text1();
-text2("https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg");
+text2({
+    media: "https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg",
+});
 text3();
 text4();
 text5();
@@ -82,8 +97,15 @@ reveal6();
 reveal7();
 reveal8();
 reveal9();
-parallax1(2);
-changeBackground("#ffd5ce", 'change-background', 'linear');
+parallax1({
+    currentDiv: ".parallax1",
+    force: 2
+});
+changeBackground({
+    backgroundColor: "#ffd5ce",
+    currentDiv: ".change-background",
+    animation: "1s linear",
+});
 transition1();
 drawsvg();
 menu1();
@@ -92,9 +114,26 @@ menu3();
 menu4();
 menu5();
 webgl();
-webgl2('effect2');
+webgl2({
+    id: 'effect2'
+});
+
 blotter();
 lottie();
+generateBulb({
+    currentDiv: ".generate-bulb",
+    referTo: ".mycontainer",
+    backgroundColor: "transparent",
+    minSize: 5,
+    maxSize: 30,
+    border: "1px solid #1a2b63",
+    numberOfBulb: 49,
+    type: 'round', //round or square
+    classNames: ['round', 'lax-parallax-right'],
+    fromLeft: -200, // if animation on better to see element arrived on screen cutted
+    differentSpeed: true //only available for lax-parallax-right and if numberOfBulb < 50
+});
 
-// cube();
+mousemove();
+imageBlob();
 

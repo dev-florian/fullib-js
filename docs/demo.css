@@ -36,11 +36,6 @@
     opacity: 1;
     transition: opacity .5s;
 }
-#hovereffect .row{
-  margin-bottom: -190px !important;
-}
-
-
 #hovereffect2{
     background: #2b313e;
 }

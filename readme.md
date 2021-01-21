@@ -1,5 +1,23 @@
 # ANIMATION FELIX
+![Pres](github-ressources/pres.jpg?raw=true "Pres")
+
 Multiple animation Library in full javascript
+
+## News 1.0.33
+
+![Rocket Power](github-ressources/rocket-power.jpg?raw=true "Rocket Power")
+
+- Transforming array to object on call
+- Corrections for responsive
+- Refractor for better performance
+- Adding options on all callable function {currentDiv : ".myDiv"} for better customization
+- NEW ANIMATION : mousemove
+- NEW ANIMATION : generateBulb
+- NEW ANIMATION : imageBlob
+- BIG UPDATE : cursor
+- 3 NEW BUTTONS
+
+
 
 ## Installation
 Use yarn :
@@ -15,7 +33,10 @@ Dependencies
 ```
 Those will be automatically installed when running yard add animation-felix
 
-## List of laxxx classes
+## LAX LIBRARY
+https://github.com/alexfoxy/lax.js
+
+### List of custom classes
 ```python
 lax-opacity-start
 lax-opacity-end
@@ -70,7 +91,8 @@ laxAddons();
 ```
 Then add the class to your div !
 
-## List of svg classes
+## DRAWSVG
+Put by default this class on your div :
 ```python
 drawsvg
 ```
@@ -79,23 +101,40 @@ How To use ?
 import {drawSvg} from "animation-felix";
 drawSvg();
 ```
-Then add the class to your svg !
 
-## List of cursor classes
-```python
-custom-cursor
-titlezoomcursor
-```
+## CURSOR
+Display a custom cursor
+
 How To use ?
 ```python
 import {cursor} from "animation-felix";
-cursor(10, '#000000', '#ffd5ce');
-cursor(size, firstColor, secondColor);
+cursor({
+    activeFirstCursor: true, //essential
+    activeSecondCursor: false, //essential
+    currentDiv: "#body", //essential
+    zoomOnDiv: ".tohover",
+    firstCursor: {
+        size: 10,
+        backgroundColor: "#000000",
+        border: "1px solid #000000",
+        type: 'square', // round or square
+        transition: "top .1s, left .1s, width .5s, height .5s",
+    }
+    secondCursor: {
+        size: 10,
+        backgroundColor: "#000000",
+        border: "1px solid #000000",
+        type: 'square', // round or square
+        transition: "top .25s, left .25s, width .7s, height .7s",
+    }
+});
 ```
 Then add "custom-cursor" to your body !
 If you want to zoom cursor on elements, simply add the class "titlezoomcursor" to the elements wanted
 
-## List of text classes
+## TEXT
+Put by default one class on your div.
+
 ```python
 text1
 text2
@@ -105,20 +144,26 @@ text5
 text6
 text7
 ```
-How To use ?
-```python
-import {text1,text2,text3,text4,text5,text6,text7} from "animation-felix";
-text1();
-text2(string : backgroundUrl);
-text3();
-text4();
-text5();
-text6();
-text7();
-```
-Simply add the class on the text ('text1', 'text2'......) for different view.
 
-## List of reveal classes
+How To use ?
+
+Easy example for 'text1'
+```python
+import {text1} from "animation-felix";
+text1();
+```
+
+Exceptions
+```python
+import {text2} from "animation-felix";
+text2({media: "myAbsoluteUrlImage"});
+```
+Simply add the class on the text ('text1', 'text2'......) for different view or add {currentDiv: ".myDiv"} for customization.
+
+## REVEAL
+
+Put by default one class on your div.
+
 ```python
 reveal1
 reveal2
@@ -130,22 +175,24 @@ reveal7
 reveal8
 reveal9
 ```
-How To use ?
-```python
-import {reveal1,reveal2,reveal3,reveal4,reveal5,reveal6,reveal7,reveal8,reveal9} from "animation-felix";
-reveal1();
-reveal2();
-reveal3();
-reveal4();
-reveal5();
-reveal6();
-reveal7();
-reveal8();
-reveal9();
-```
-Simply add the class to your div or p ('reveal1', 'reveal2' ....)
 
-### List of button classes
+How To use ?
+
+Easy example for 'reveal1'
+```python
+import {reveal1} from "animation-felix";
+reveal1();
+
+<div class="reveal1 d-inline-block">REVEALING TEXT</div>
+```
+
+
+### BUTTONS
+
+How To use ?
+
+Put by default one class on your 'a' balise.
+
 ```python
 button1
 button3
@@ -158,41 +205,40 @@ button9
 button10
 button11
 button12
+button13
+button14
+button15
 ```
-How To use ?
-```python
-import {button1,button3,button4,button5,button6,button7,button8,button9,button10,button11,button12,button13,button14,button15} from "animation-felix";
-button1();
-button3();
-button4();
-button5();
-button6();
-button7();
-button8();
-button9();
-button10();
-button11();
-button12();
-button13();
-button14();
-button15();
-```
-Simply add the class to your a balise ('button1', 'button2' ....)
 
-### List of menu classes
+Easy example for 'button1'
+
+```python
+import {button1} from "animation-felix";
+button1();
+
+<a class="button1 text-center" href="https://www.npmjs.com/package/animation-felix" target="_blank">CLICK ME</a>
+```
+
+
+## MENU
+
+How to use ?
+
+Put by default one class on your div.
+
+```python
 menu1
 menu2
 menu3
 menu4
 menu5
-How to use ?
+```
+
+Easy example for 'menu1'
+
 ```python
-import {menu1, menu2,menu3,menu4,menu5} from "animation-felix";
+import {menu1} from "animation-felix";
 menu1();
-menu2();
-menu3();
-menu4();
-menu5();
 
 <nav class="menu1 fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -236,7 +282,8 @@ menu5();
 ```
 
 ## WEBGL
-### Blotter effect ( text distortion on scroll)
+### Blotter effect ( text distortion on scroll )
+
 List of effects 
 ```python
 liquid
@@ -247,7 +294,11 @@ rolling-3
 rolling-4
 rolling-5
 ```
-How tu use ?
+
+How to use ?
+
+Easy example for 'liquid'
+
 ```python
 import {blotter} from "animation-felix";
 blotter();
@@ -264,6 +315,8 @@ Warning :
 hover-effect
 ```
 How to use ?
+
+Easy example
 ```python
 import {webgl} from "animation-felix";
 webgl();
@@ -281,9 +334,11 @@ Warning: the div parent must have a height
 hover-effect
 ```
 How to use ?
+
+Easy example
 ```python
 import {webgl2} from "animation-felix";
-webgl2(myId);
+webgl2({id: 'myIdString'});
 
 <img
 src="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice2.jpg"
@@ -291,32 +346,99 @@ data-hover="https://raw.githubusercontent.com/robin-dela/hover-effect/master/ima
 class="tile__image"
 alt="My image"
 />
-<canvas id="myId">
+<canvas id="myIdString">
 </canvas>
 ```
 Warning: the div parent must have a height
 
-## List of other classes
-### Change color of bg if in viewport
+## Change color of bg if in viewport
 ```python
 change-background
 ```
 How to use ?
+
+Easy example
 ```python
 import {changeBackground} from "animation-felix";
-changeBackground("#ffd5ce", 'change-background', 'linear');
-changeBackground("color", 'className', 'animationCss');
+changeBackground({
+    backgroundColor: "#ffd5ce", //bgColor
+    currentDiv: ".change-background", //divInViewPort
+    animation: "1s linear" //Animation
+});
 ```
 
-### Transition with lax
-How to use ?
-```python
-import { transition1} from "animation-felix";
-transition1();
+## LOTTIE
+https://lottiefiles.com/community
 
-<div class="transition1">
-    <div class="trans trans1" data-lax-anchor="self" style="background-image: url('./img/bg1.png')"></div>
-    <div class="trans trans2" data-lax-anchor="self" style="background-image: url('./img/bg2.png')"></div>
-    <div class="trans trans3" data-lax-anchor="self" style="background-image: url('./img/bg3.png')"></div>
+How to use ?
+
+Easy example
+```python
+import { lottie } from "animation-felix";
+lottie();
+
+<div class="mt-5 mb-5 lottie" data-lottie-scroll="false" data-lottie-click="true" data-lottie-hover="false" data-lottie-file="../../lottie/button.json" style="width: 150px;"></div>
+```
+
+## MOUSEMOOVE [NEW]
+
+When mooving the mouse, it mooves the content ( related to mouse position )
+
+How to use ?
+
+Easy example
+```python
+import {mousemove} from "animation-felix";
+mousemove();
+
+<div class="firstcard mousemove" data-speed="3">
+  <img width="50" height="50" src="https://images.freeimages.com/images/large-previews/08e/up-close-personal-2-1359478.jpg">
 </div>
 ```
+
+## IMAGEBLOB [NEW]
+
+Add a round blob effect to your image
+
+How to use ?
+
+Easy example
+```python
+import {imageBlob} from "animation-felix";
+imageBlob();
+
+<img class="blobed" alt="blob" width="400" height="400" src="https://outsmartlabs.com/medias/images/redcharlie-fCRFjmM8Ll4-unsplash.jpg">
+```
+
+Warning :
+Don't forget to add with and height attribute ( default take 400 x 400 )
+
+## GENERATE BULBS [NEW]
+
+Add a round blob effect to your image
+
+How to use ?
+
+Easy example
+```python
+import {generateBulb} from "animation-felix";
+generateBulb({
+    currentDiv: ".generate-bulb", //default
+    referTo: ".mycontainer", //parentDiv ( default take the parent )
+    backgroundColor: "transparent",
+    minSize: 5,
+    maxSize: 30,
+    border: "1px solid #1a2b63",
+    numberOfBulb: 49, // number of elem to create
+    type: 'round', //round or square
+    classNames: ['round', 'lax-parallax-right'], // add classes for all elems created
+    fromLeft: -200, // if animation on better to see element arrived on screen cutted
+    differentSpeed: true //only available for lax-parallax-right and if numberOfBulb < 50
+});
+
+<div class="generate-bulb"></div>
+```
+
+Warning :
+
+

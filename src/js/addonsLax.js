@@ -339,10 +339,25 @@ window.addEventListener('load', function () {
         scrollY: {                // Driver name
             translateX: [
                 ['elInY', 'elOutY'],  // Driver value map
-                [variablesParallaxLeftRight.from, variablesParallaxLeftRight.to],   // Animation value map
+                {
+                767: [100, -50],   // Animation value map
+                768: [variablesParallaxLeftRight.from, variablesParallaxLeftRight.to],   // Animation value map
+                }
             ]
         }
     })
+
+    for (let g = 0; g < 50; g++) {
+        lax.addElements('.lax-parallax-right-'+g, {
+            scrollY: {                // Driver name
+                translateX: [
+                    ['elInY', 'elOutY'],  // Driver value map
+                    [inverse(variablesParallaxLeftRight.from), inverse(variablesParallaxLeftRight.to) + g * 8],   // Animation value map
+                ]
+            }
+        })
+    }
+
     lax.addElements('.lax-parallax-right', {
         scrollY: {                // Driver name
             translateX: [
@@ -443,7 +458,7 @@ window.addEventListener('load', function () {
 
     lax.addElements('.lax-fixed-middle', {
         scrollY: {                // Driver name
-            translateY: [['elInY', 'elCenterY', 'elOutY'], [300, 0, 450]],
+            translateY: [['elInY', 'elCenterY', 'elOutY'], [0, 0, 'screenHeight-200']],
         }
     })
 
