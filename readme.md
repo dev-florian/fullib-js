@@ -3,6 +3,9 @@
 
 Multiple animation Library in full javascript
 
+## News 1.0.34
+- Fixed gsap vulnerabilities
+
 ## News 1.0.33
 
 ![Rocket Power](github-ressources/rocket-power.jpg?raw=true "Rocket Power")
