@@ -1,0 +1,38 @@
+.reveal7 {
+    position: relative;
+    z-index: 1;
+    font-size: 38px;
+}
+
+.reveal7:after {
+    content: "";
+    background: #ffd5ce;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    transition: all 1s;
+}
+
+.reveal7.active:after {
+    -webkit-animation: reveal7keyframe 1s ease-in-out forwards;
+    -moz-animation: reveal7keyframe 1s ease-in-out forwards;
+    -o-animation: reveal7keyframe 1s ease-in-out forwards;
+    animation: reveal7keyframe 1s ease-in-out forwards;
+}
+
+@keyframes reveal7keyframe {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 40%;
+    }
+}
+
+
+

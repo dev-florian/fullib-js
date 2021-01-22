@@ -1,0 +1,48 @@
+.container-button8 .button8 {
+    position: relative;
+    letter-spacing: 0.25em;
+    margin: 0 auto;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    outline: none;
+    color: #000;
+}
+
+.container-button8 .button8:after,
+.container-button8 .button8:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: -2;
+}
+
+.container-button8 .button8:before {
+    background-color: #ffd5ce;
+    top: -25%;
+    left: 10%;
+}
+
+.container-button8 .button8:after {
+    background-color: #fbc1b7;
+    top: 25%;
+    left: 50%;
+}
+
+.container-button8 .button8:hover:after,
+.container-button8 .button8:hover:before {
+    top: 0;
+}
+
+.container-button8 .button8:hover:after {
+    left: 45%;
+}
+
+.container-button8 .button8:hover:before {
+    left: 0;
+}
+
+.container-button8 .button8 {
+    text-decoration: none;
+}

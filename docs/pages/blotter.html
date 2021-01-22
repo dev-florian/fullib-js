@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .row, h1 {
+        text-align: center;
+    }
+
+    #blotter{
+        background: #2b313e;
+    }
+    #blotter img{
+        max-width: 420px;
+        opacity: 0.4;
+        transition: opacity .5s;
+    }
+    #blotter img:hover{
+        opacity: 1;
+        transition: opacity .5s;
+    }
+    #blotter .row{
+        margin-bottom: -190px !important;
+    }
+    #blotter .blotter{
+        font-family: 'Russo One', sans-serif;
+    }
+    #blotter .row:nth-child(odd) .blotter{
+        transform: translate(150px, -150px);
+    }
+    #blotter .row:nth-child(even) .blotter{
+        transform: translate(-150px, -150px);
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="../demo.css" rel="stylesheet">
+
+<body id="blotter" class="">
+<!-- HTML -->
+<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/pages/lax">Lax</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/text">Text</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/buttons">Buttons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/reveal">Reveal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/menu">menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/menu2">menu2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/menu3">menu3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/menu4">menu4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/menu5">menu5</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/blotter">blotter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pages/lottie">lottie</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container pt-5 mb-5 mt-5">
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="liquid" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">ABC
+            </div>
+        </div>
+        <div class="col-lg-6 p-0"></div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0"></div>
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="liquid-2" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">DEF
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="rolling" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">GHI
+            </div>
+        </div>
+        <div class="col-lg-6 p-0"></div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0"></div>
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="rolling-2" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">JKL
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="rolling-3" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">ADB
+            </div>
+        </div>
+        <div class="col-lg-6 p-0"></div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0"></div>
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="rolling-4" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">PQR
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-6 p-0">
+            <img class="lax-down" src="https://images.pexels.com/photos/1450082/pexels-photo-1450082.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <div class="blotter" data-blotter-effect="rolling-5" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120"
+                 data-blotter-color="#c69f64">STU
+            </div>
+        </div>
+        <div class="col-lg-6 p-0"></div>
+    </div>
+</div>
+
+<script src="../build/bundle.js"></script>
+<script>
+    if (window.innerWidth < 991) {
+        let menuButton = document.querySelector('.navbar-toggler');
+        let menuContainer = document.getElementById('navbarNav');
+
+        menuButton.onclick = function (e) {
+            menuContainer.classList.toggle('d-block');
+        }
+    }
+</script>
+</body>
+</html>

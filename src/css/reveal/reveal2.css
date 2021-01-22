@@ -1,0 +1,27 @@
+.reveal2 {
+    position: relative;
+    z-index: 1;
+    font-size: 38px;
+}
+
+.reveal2:after{
+    content:"";
+    background: #ffd5ce;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40%;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.reveal2:hover:after{
+   height: 100%;
+    transition: all 0.5s;
+}
+
+
+
+

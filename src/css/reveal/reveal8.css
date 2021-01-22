@@ -1,0 +1,40 @@
+.reveal8 {
+    position: relative;
+    z-index: 1;
+    font-size: 38px;
+}
+
+.reveal8:after {
+    content: "";
+    background: #ffd5ce;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    transition: all 1s;
+}
+
+.reveal8.active:after {
+    -webkit-animation: reveal8keyframe 1s ease-in-out forwards;
+    -moz-animation: reveal8keyframe 1s ease-in-out forwards;
+    -o-animation: reveal8keyframe 1s ease-in-out forwards;
+    animation: reveal8keyframe 1s ease-in-out forwards;
+}
+
+@keyframes reveal8keyframe {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: 90%;
+    }
+}
+
+
+
+
+

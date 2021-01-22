@@ -1,0 +1,88 @@
+.blob {
+    transform: scale(0.9);
+    transition: opacity .3s cubic-bezier(.25, .46, .45, .94), transform .3s cubic-bezier(.25, .46, .45, .94), -webkit-transform .3s cubic-bezier(.25, .46, .45, .94);
+    display: block;
+}
+
+.blob .blob-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 53% 47% 64% 36%/55% 59% 41% 45%;
+    overflow: hidden;
+    animation: blob 10s infinite linear, rotateBlob 20s infinite linear;
+    will-change: border-radius;
+    margin: 0 auto;
+}
+
+.blob .blob-inner .blob-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: rotateBlobImg 20s infinite linear reverse;
+    will-change: transform;
+    overflow: hidden;
+}
+
+.blob .blob-inner .blob-img  {
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes rotateBlob {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes blob {
+    from {
+        border-bottom-left-radius: 36% 45%;
+        border-bottom-right-radius: 64% 41%;
+        border-top-left-radius: 53% 55%;
+        border-top-right-radius: 47% 59%;
+    }
+    25% {
+        border-bottom-left-radius: 52% 70%;
+        border-bottom-right-radius: 48% 64%;
+        border-top-left-radius: 34% 30%;
+        border-top-right-radius: 66% 36%;
+    }
+    50% {
+        border-bottom-left-radius: 65% 51%;
+        border-bottom-right-radius: 35% 48%;
+        border-top-left-radius: 60% 49%;
+        border-top-right-radius: 40% 52%;
+    }
+    75% {
+        border-bottom-left-radius: 42% 74%;
+        border-bottom-right-radius: 58% 32%;
+        border-top-left-radius: 43% 26%;
+        border-top-right-radius: 57% 68%;
+    }
+    to {
+        border-bottom-left-radius: 36% 45%;
+        border-bottom-right-radius: 64% 41%;
+        border-top-left-radius: 53% 55%;
+        border-top-right-radius: 47% 59%;
+    }
+}
+
+@keyframes rotateBlobImg {
+    from {
+        transform: rotate(0) scale(1.2);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.2);
+    }
+}

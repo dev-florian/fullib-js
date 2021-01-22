@@ -1,15 +1,15 @@
-# ANIMATION FELIX
+# FULLIB-JS
 ![Pres](github-ressources/pres.jpg?raw=true "Pres")
 
 Multiple animation Library in full javascript
 
-## News 1.0.34
-- Fixed gsap vulnerabilities
-
-## News 1.0.33
+## News 1.1.1
+- Removed useless dependencies
+## News 1.1.0
 
 ![Rocket Power](github-ressources/rocket-power.jpg?raw=true "Rocket Power")
 
+- PUBLIC ACCESS
 - Transforming array to object on call
 - Corrections for responsive
 - Refractor for better performance
@@ -19,6 +19,8 @@ Multiple animation Library in full javascript
 - NEW ANIMATION : imageBlob
 - BIG UPDATE : cursor
 - 3 NEW BUTTONS
+- Add minify js
+- Removing WebGls hover effect (too heavy)
 
 
 
