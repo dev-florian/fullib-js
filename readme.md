@@ -24,7 +24,11 @@ https://dev-florian.github.io/fullib-js/
 - Add minify js
 - Removing WebGls hover effect (too heavy)
 
-
+## WORKING FOR 1.2.0
+- NEW ANIM : Aerobit ( full css )
+- IMAGEBLOB : Adding option for auto-responsive
+- BLOTTER : check the issue on mobile device ( not displaying )
+- LAX : better responsive
 
 ## Installation
 Use yarn :
