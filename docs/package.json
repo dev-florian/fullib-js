@@ -4,10 +4,9 @@
     "build": "webpack"
   },
   "dependencies": {
-    "animation-felix": "^1.0.32",
     "browser-sync-webpack-plugin": "^2.3.0",
+    "fullib-js": "^1.0.1",
     "glslify-loader": "^2.0.0",
-    "hover-effect": "^1.1.0",
     "lax.js": "^2.0.2",
     "lottie-web": "^5.7.5",
     "raw-loader": "^4.0.2",

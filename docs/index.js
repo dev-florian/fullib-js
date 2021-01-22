@@ -41,14 +41,12 @@ import {
     menu3,
     menu4,
     menu5,
-    webgl,
-    webgl2,
     blotter,
     lottie,
     mousemove,
     generateBulb,
     imageBlob
-} from "animation-felix";
+} from "fullib-js";
 
 laxAddons();
 cursor({
@@ -113,10 +111,6 @@ menu2();
 menu3();
 menu4();
 menu5();
-webgl();
-webgl2({
-    id: 'effect2'
-});
 
 blotter();
 lottie();
