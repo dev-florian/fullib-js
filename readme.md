@@ -33,14 +33,12 @@ https://dev-florian.github.io/fullib-js/
 ## Installation
 Use yarn :
 ```python
-yard add animation-felix
+yard add fullib-js
 ```
 Dependencies
 ```python
-"gsap": "^2.1.3",
-"hover-effect": "^1.1.0",
-"lax.js": "^2.0.2",
-"three": "^0.99.0"
+"lax.js": "^2.0.3",
+"lottie-web": "^5.7.6"
 ```
 Those will be automatically installed when running yard add animation-felix
 
@@ -97,7 +95,7 @@ trans3
 ```
 How To use ?
 ```python
-import {laxAddons} from "animation-felix";
+import {laxAddons} from "fullib-js";
 laxAddons();
 ```
 Then add the class to your div !
@@ -109,7 +107,7 @@ drawsvg
 ```
 How To use ?
 ```python
-import {drawSvg} from "animation-felix";
+import {drawSvg} from "fullib-js";
 drawSvg();
 ```
 
@@ -118,7 +116,7 @@ Display a custom cursor
 
 How To use ?
 ```python
-import {cursor} from "animation-felix";
+import {cursor} from "fullib-js";
 cursor({
     activeFirstCursor: true, //essential
     activeSecondCursor: false, //essential
@@ -160,13 +158,13 @@ How To use ?
 
 Easy example for 'text1'
 ```python
-import {text1} from "animation-felix";
+import {text1} from "fullib-js";
 text1();
 ```
 
 Exceptions
 ```python
-import {text2} from "animation-felix";
+import {text2} from "fullib-js";
 text2({media: "myAbsoluteUrlImage"});
 ```
 Simply add the class on the text ('text1', 'text2'......) for different view or add {currentDiv: ".myDiv"} for customization.
@@ -191,7 +189,7 @@ How To use ?
 
 Easy example for 'reveal1'
 ```python
-import {reveal1} from "animation-felix";
+import {reveal1} from "fullib-js";
 reveal1();
 
 <div class="reveal1 d-inline-block">REVEALING TEXT</div>
@@ -224,7 +222,7 @@ button15
 Easy example for 'button1'
 
 ```python
-import {button1} from "animation-felix";
+import {button1} from "fullib-js";
 button1();
 
 <a class="button1 text-center" href="https://www.npmjs.com/package/animation-felix" target="_blank">CLICK ME</a>
@@ -248,7 +246,7 @@ menu5
 Easy example for 'menu1'
 
 ```python
-import {menu1} from "animation-felix";
+import {menu1} from "fullib-js";
 menu1();
 
 <nav class="menu1 fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
@@ -311,7 +309,7 @@ How to use ?
 Easy example for 'liquid'
 
 ```python
-import {blotter} from "animation-felix";
+import {blotter} from "fullib-js";
 blotter();
 
 <div class="blotter" data-blotter-effect="liquid" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120" data-blotter-color="#c69f64">ABC</div>
@@ -321,47 +319,6 @@ Warning :
 -You have to only put a valid string in the div
 -The font must be loaded before the plugin
 
-### Image Hover effect
-```python
-hover-effect
-```
-How to use ?
-
-Easy example
-```python
-import {webgl} from "animation-felix";
-webgl();
-
-<div class="hover-effect" style="height: 100%;"
-data-media1="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/balloon.jpg"
-data-media2="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/balloon2.jpg"
-data-distortion="https://raw.githubusercontent.com/robin-dela/hover-effect/master/example/img/displacement/16.jpg"></div>
-</div>
-```
-Warning: the div parent must have a height
-
-### Image Hover effect 2
-```python
-hover-effect
-```
-How to use ?
-
-Easy example
-```python
-import {webgl2} from "animation-felix";
-webgl2({id: 'myIdString'});
-
-<img
-src="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice2.jpg"
-data-hover="https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/ice.jpg"
-class="tile__image"
-alt="My image"
-/>
-<canvas id="myIdString">
-</canvas>
-```
-Warning: the div parent must have a height
-
 ## Change color of bg if in viewport
 ```python
 change-background
@@ -370,7 +327,7 @@ How to use ?
 
 Easy example
 ```python
-import {changeBackground} from "animation-felix";
+import {changeBackground} from "fullib-js";
 changeBackground({
     backgroundColor: "#ffd5ce", //bgColor
     currentDiv: ".change-background", //divInViewPort
@@ -385,7 +342,7 @@ How to use ?
 
 Easy example
 ```python
-import { lottie } from "animation-felix";
+import { lottie } from "fullib-js";
 lottie();
 
 <div class="mt-5 mb-5 lottie" data-lottie-scroll="false" data-lottie-click="true" data-lottie-hover="false" data-lottie-file="../../lottie/button.json" style="width: 150px;"></div>
@@ -399,7 +356,7 @@ How to use ?
 
 Easy example
 ```python
-import {mousemove} from "animation-felix";
+import {mousemove} from "fullib-js";
 mousemove();
 
 <div class="firstcard mousemove" data-speed="3">
@@ -415,7 +372,7 @@ How to use ?
 
 Easy example
 ```python
-import {imageBlob} from "animation-felix";
+import {imageBlob} from "fullib-js";
 imageBlob();
 
 <img class="blobed" alt="blob" width="400" height="400" src="https://outsmartlabs.com/medias/images/redcharlie-fCRFjmM8Ll4-unsplash.jpg">
@@ -432,7 +389,7 @@ How to use ?
 
 Easy example
 ```python
-import {generateBulb} from "animation-felix";
+import {generateBulb} from "fullib-js";
 generateBulb({
     currentDiv: ".generate-bulb", //default
     referTo: ".mycontainer", //parentDiv ( default take the parent )
@@ -449,7 +406,5 @@ generateBulb({
 
 <div class="generate-bulb"></div>
 ```
-
-Warning :
 
 
