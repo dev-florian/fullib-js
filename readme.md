@@ -3,6 +3,8 @@
 
 Multiple animation Library in full javascript
 
+https://dev-florian.github.io/fullib-js/
+
 ## News 1.1.1
 - Removed useless dependencies
 ## News 1.1.0
