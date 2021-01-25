@@ -558,7 +558,7 @@ function bottlerFirstScript() {
     var done = false;
     script.onload = script.onreadystatechange = function () {
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            bottlerSecondScript(Blotter);
+            bottlerSecondScript();
         }
     };
     document.getElementsByTagName("head")[0].appendChild(script);
@@ -573,7 +573,7 @@ function bottlerSecondScript() {
     var done = false;
     script.onload = script.onreadystatechange = function () {
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            bottlerThirdScript(Blotter);
+            bottlerThirdScript();
         }
     };
     document.getElementsByTagName("head")[0].appendChild(script);

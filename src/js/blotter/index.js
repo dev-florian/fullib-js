@@ -157,8 +157,16 @@ for (let i = 0, len = blotters.length; i < len; i++) {
 let currentScroll = window.pageYOffset;
 
 // It will go from 0 (not scrolling) to 0.9 (scrolling at a speed of maxscroll).
-const maxscroll = 20;
-const uniformValuesRange = [0, 0.1];
+let maxscroll = 20;
+let uniformValuesRange = [0, 0.1];
+let uniformN = 0.05;
+
+if (window.innerWidth < 991) {
+    maxscroll = 20;
+    uniformValuesRange = [0.8, 0.9];
+    uniformN = 0.02;
+}
+
 // Using requestAnimationFrame + linear interpolation for the effect.
 const render = () => {
     // Current scroll position
@@ -166,13 +174,13 @@ const render = () => {
     // How much was scrolled from the last repaint.
     const scrolled = Math.abs(newScroll - currentScroll);
     // Get the new value of volatility.
-    liquidVolatility = MathUtils.lerp(liquidVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.9), 0.05);
-    rollingVolatility = MathUtils.lerp(rollingVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), 0.03);
-    liquid2Volatility = MathUtils.lerp(liquid2Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), 0.05);
-    rolling2Volatility = MathUtils.lerp(rolling2Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), 0.05);
-    rolling3Volatility = MathUtils.lerp(rolling3Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), 0.05);
-    rolling4Volatility = MathUtils.lerp(rolling4Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), 0.05);
-    rolling5Volatility = MathUtils.lerp(rolling5Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), 0.05);
+    liquidVolatility = MathUtils.lerp(liquidVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.9), uniformN);
+    rollingVolatility = MathUtils.lerp(rollingVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
+    liquid2Volatility = MathUtils.lerp(liquid2Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
+    rolling2Volatility = MathUtils.lerp(rolling2Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
+    rolling3Volatility = MathUtils.lerp(rolling3Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
+    rolling4Volatility = MathUtils.lerp(rolling4Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
+    rolling5Volatility = MathUtils.lerp(rolling5Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
     // Set the volatility.
     liquid.uniforms.uVolatility.value = liquidVolatility;
     rolling.uniforms.uSineDistortAmplitude.value = rollingVolatility;
