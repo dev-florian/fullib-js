@@ -1,6 +1,9 @@
 export function imageBlob(options) {
     let imageBulbsDiv = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.blobed');
-    if (imageBulbsDiv)[0]
+    let currentWindowWidth = window.innerWidth;
+    let autoResponsive = options.autoResponsive ? options.autoResponsive : true;
+
+    if (imageBulbsDiv) [0]
     {
         import('fullib-js/src/css/imageBlob/imageBlob.css').then(({default: blob}) => {
             for (let i = 0; i < imageBulbsDiv.length; i++) {
@@ -36,6 +39,34 @@ export function imageBlob(options) {
                 medium.style.maxWidth = imageWidth ? imageWidth + "px" : '400px';
                 medium.style.minHeight = imageHeight ? imageHeight + "px" : '400px';
                 medium.style.maxHeight = imageHeight ? imageHeight + "px" : '400px';
+
+
+                if (autoResponsive && currentWindowWidth < 767) {
+                    let sizeResized = currentWindowWidth - 80;
+                    if (sizeResized < imageWidth) {
+                        medium.style.minWidth = sizeResized + "px";
+                        medium.style.maxWidth = sizeResized + "px";
+                        medium.style.minHeight = sizeResized + "px";
+                        medium.style.maxHeight = sizeResized + "px";
+                    }
+                }
+
+                if (currentWindowWidth < 767) {
+                    window.addEventListener("resize", function () {
+                        if (autoResponsive) {
+                            let resizedWindowWidth = window.innerWidth;
+                            if (resizedWindowWidth < 767) {
+                                let sizeResized = resizedWindowWidth - 80;
+                                if (sizeResized < imageWidth) {
+                                    medium.style.minWidth = sizeResized + "px";
+                                    medium.style.maxWidth = sizeResized + "px";
+                                    medium.style.minHeight = sizeResized + "px";
+                                    medium.style.maxHeight = sizeResized + "px";
+                                }
+                            }
+                        }
+                    });
+                }
             }
         }).catch(error => 'An error occurred while loading imageBlob');
     }
@@ -1092,83 +1123,85 @@ export function laxAddons() {
 }
 
 export function cursor(options) {
-    if (document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.custom-cursor')[0]) {
-        import('fullib-js/src/css/cursor/cursor.css').then(({default: cursor}) => {
-        }).catch(error => 'An error occurred while loading cursor');
+    if (window.innerWidth > 991) {
+        if (document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.custom-cursor')[0]) {
+            import('fullib-js/src/css/cursor/cursor.css').then(({default: cursor}) => {
+            }).catch(error => 'An error occurred while loading cursor');
 
-        let cursor1 = null;
-        if (options.activeFirstCursor) {
-            cursor1 = addElement('div', ['cursor', 'cursor-follower']);
-            cursor1.style.backgroundColor = options.firstCursor && options.firstCursor.backgroundColor ? options.firstCursor.backgroundColor : "#000000";
-            cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
-            cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
-            cursor1.style.border = options.firstCursor && options.firstCursor.border ? options.firstCursor.border : "";
-            cursor1.style.transition = options.firstCursor && options.firstCursor.transition ? options.firstCursor.transition : "top .1, left .1, width .5s, height .5s";
-            cursor1.style.borderRadius = options.firstCursor && options.firstCursor.type === "round" ? "50%" : options.firstCursor && options.firstCursor.type === "square" ? "0" : "50%";
-        }
+            let cursor1 = null;
+            if (options.activeFirstCursor) {
+                cursor1 = addElement('div', ['cursor', 'cursor-follower']);
+                cursor1.style.backgroundColor = options.firstCursor && options.firstCursor.backgroundColor ? options.firstCursor.backgroundColor : "#000000";
+                cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
+                cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
+                cursor1.style.border = options.firstCursor && options.firstCursor.border ? options.firstCursor.border : "";
+                cursor1.style.transition = options.firstCursor && options.firstCursor.transition ? options.firstCursor.transition : "top .1, left .1, width .5s, height .5s";
+                cursor1.style.borderRadius = options.firstCursor && options.firstCursor.type === "round" ? "50%" : options.firstCursor && options.firstCursor.type === "square" ? "0" : "50%";
+            }
 
-        let cursor2 = null;
-        if (options.activeSecondCursor) {
-            cursor2 = addElement('div', ['cursor', 'cursor-dot']);
-            cursor2.style.backgroundColor = options.secondCursor && options.secondCursor.backgroundColor ? options.secondCursor.backgroundColor : "#000000";
-            cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
-            cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
-            cursor2.style.border = options.secondCursor && options.secondCursor.border ? options.secondCursor.border : "";
-            cursor2.style.transition = options.secondCursor && options.secondCursor.transition ? options.secondCursor.transition : "top .25s, left .25s, width .7s, height .7s";
-            cursor2.style.borderRadius = options.secondCursor && options.secondCursor.type === "round" ? "50%" : options.secondCursor && options.secondCursor.type === "square" ? "0" : "50%";
-        }
+            let cursor2 = null;
+            if (options.activeSecondCursor) {
+                cursor2 = addElement('div', ['cursor', 'cursor-dot']);
+                cursor2.style.backgroundColor = options.secondCursor && options.secondCursor.backgroundColor ? options.secondCursor.backgroundColor : "#000000";
+                cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
+                cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
+                cursor2.style.border = options.secondCursor && options.secondCursor.border ? options.secondCursor.border : "";
+                cursor2.style.transition = options.secondCursor && options.secondCursor.transition ? options.secondCursor.transition : "top .25s, left .25s, width .7s, height .7s";
+                cursor2.style.borderRadius = options.secondCursor && options.secondCursor.type === "round" ? "50%" : options.secondCursor && options.secondCursor.type === "square" ? "0" : "50%";
+            }
 
-        let mouseTargets = document.querySelectorAll(options && options.zoomOnDiv ? options.zoomOnDiv : '.titlezoomcursor');
+            let mouseTargets = document.querySelectorAll(options && options.zoomOnDiv ? options.zoomOnDiv : '.titlezoomcursor');
 
-        for (let i = 0, len = mouseTargets.length; i < len; i++) {
-            let mouseTarget = mouseTargets[i];
-            mouseTarget.style.cursor = "none";
+            for (let i = 0, len = mouseTargets.length; i < len; i++) {
+                let mouseTarget = mouseTargets[i];
+                mouseTarget.style.cursor = "none";
 
-            mouseTarget.addEventListener('mouseenter', e => {
+                mouseTarget.addEventListener('mouseenter', e => {
+                    if (cursor1) {
+                        cursor1.classList.add('focus');
+                        cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size * 4 + 'px' : 10 * 4 + 'px';
+                        cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size * 4 + 'px' : 10 * 4 + 'px';
+                    }
+
+                    if (cursor2) {
+                        cursor2.classList.add('focus');
+                        cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size * 4 + 'px' : 5 * 4 + 'px';
+                        cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size * 4 + 'px' : 5 * 4 + 'px';
+                    }
+                })
+
+                mouseTarget.addEventListener('mouseleave', e => {
+                    if (cursor1) {
+                        cursor1.classList.remove('focus');
+                        cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : 10 + 'px';
+                        cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : 10 + 'px';
+                    }
+
+                    if (cursor2) {
+                        cursor2.classList.remove('focus');
+                        cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : 5 + 'px';
+                        cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : 5 + 'px';
+                    }
+                })
+            }
+
+            let onmousemove = function (e) {
+                let xpos = e.pageX;
+                let ypos = e.pageY;
+
                 if (cursor1) {
-                    cursor1.classList.add('focus');
-                    cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size * 4 + 'px' : 10 * 4 + 'px';
-                    cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size * 4 + 'px' : 10 * 4 + 'px';
+                    cursor1.style.left = xpos + 'px';
+                    cursor1.style.top = ypos + 'px';
                 }
 
                 if (cursor2) {
-                    cursor2.classList.add('focus');
-                    cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size * 4 + 'px' : 5 * 4 + 'px';
-                    cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size * 4 + 'px' : 5 * 4 + 'px';
+                    cursor2.style.left = xpos + 'px';
+                    cursor2.style.top = ypos + 'px';
                 }
-            })
-
-            mouseTarget.addEventListener('mouseleave', e => {
-                if (cursor1) {
-                    cursor1.classList.remove('focus');
-                    cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : 10 + 'px';
-                    cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : 10 + 'px';
-                }
-
-                if (cursor2) {
-                    cursor2.classList.remove('focus');
-                    cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : 5 + 'px';
-                    cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : 5 + 'px';
-                }
-            })
-        }
-
-        let onmousemove = function (e) {
-            let xpos = e.pageX;
-            let ypos = e.pageY;
-
-            if (cursor1) {
-                cursor1.style.left = xpos + 'px';
-                cursor1.style.top = ypos + 'px';
             }
 
-            if (cursor2) {
-                cursor2.style.left = xpos + 'px';
-                cursor2.style.top = ypos + 'px';
-            }
+            document.addEventListener('mousemove', onmousemove);
         }
-
-        document.addEventListener('mousemove', onmousemove);
     }
 }
 

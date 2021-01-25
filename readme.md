@@ -4,7 +4,10 @@
 Multiple animation Library in full javascript
 
 https://dev-florian.github.io/fullib-js/
-
+## News 1.1.2
+- Correction responsive for website
+- Adding autoResponsive option for imageblob
+- Removing cursor cursor for Mobile & Tablet
 ## News 1.1.1
 - Removed useless dependencies
 ## News 1.1.0

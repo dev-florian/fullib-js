@@ -1,5 +1,4 @@
 .blob {
-    transform: scale(0.9);
     transition: opacity .3s cubic-bezier(.25, .46, .45, .94), transform .3s cubic-bezier(.25, .46, .45, .94), -webkit-transform .3s cubic-bezier(.25, .46, .45, .94);
     display: block;
 }
