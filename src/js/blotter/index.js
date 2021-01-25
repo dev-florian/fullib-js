@@ -22,7 +22,7 @@ let rolling = new Blotter.RollingDistortMaterial(),
 liquid.uniforms.uSpeed.value = .5;
 liquid.uniforms.uVolatility.value = 0;
 liquid.uniforms.uSeed.value = 0.4;
-let liquidVolatility = 1;
+let liquidVolatility = 0.1;
 
 // liquid-2
 liquid2.uniforms.uSpeed.value = .9;
@@ -72,7 +72,7 @@ rolling4.uniforms.uNoiseDistortAmplitude.value = 0.85
 rolling4.uniforms.uDistortPosition.value = [0, 0]
 rolling4.uniforms.uRotation.value = 0
 rolling4.uniforms.uSpeed.value = 0
-let rolling4Volatility = 0.35;
+let rolling4Volatility = 0.1;
 
 // rolling-5
 rolling5.uniforms.uSineDistortSpread.value = 0.74
@@ -163,8 +163,8 @@ let uniformN = 0.05;
 
 if (window.innerWidth < 991) {
     maxscroll = 20;
-    uniformValuesRange = [0.8, 0.9];
-    uniformN = 0.02;
+    uniformValuesRange = [0, 0.01];
+    uniformN = 0.01;
 }
 
 // Using requestAnimationFrame + linear interpolation for the effect.
@@ -174,7 +174,7 @@ const render = () => {
     // How much was scrolled from the last repaint.
     const scrolled = Math.abs(newScroll - currentScroll);
     // Get the new value of volatility.
-    liquidVolatility = MathUtils.lerp(liquidVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.9), uniformN);
+    liquidVolatility = MathUtils.lerp(liquidVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
     rollingVolatility = MathUtils.lerp(rollingVolatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
     liquid2Volatility = MathUtils.lerp(liquid2Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
     rolling2Volatility = MathUtils.lerp(rolling2Volatility, Math.min(MathUtils.lineEq(uniformValuesRange[1], uniformValuesRange[0], maxscroll, 0, scrolled), 0.2), uniformN);
