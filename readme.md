@@ -4,6 +4,10 @@
 Multiple animation Library in full javascript
 
 https://dev-florian.github.io/fullib-js/
+## News 1.1.3
+- BLOTTER : Mobile now displaying !
+- BLOTTER : Reduce animation to avoid lags on mobile
+- CURSOR : Adding option 'removeAt'
 ## News 1.1.2
 - Correction responsive for website
 - Adding autoResponsive option for imageblob
@@ -29,9 +33,8 @@ https://dev-florian.github.io/fullib-js/
 
 ## WORKING FOR 1.2.0
 - NEW ANIM : Aerobit ( full css )
-- IMAGEBLOB : Adding option for auto-responsive
-- BLOTTER : check the issue on mobile device ( not displaying )
 - LAX : better responsive
+- And more...
 
 ## Installation
 Use yarn :

@@ -1123,7 +1123,8 @@ export function laxAddons() {
 }
 
 export function cursor(options) {
-    if (window.innerWidth > 991) {
+    let removeAt = options.removeAt ? options.removeAt : 991;
+    if (window.innerWidth > removeAt) {
         if (document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.custom-cursor')[0]) {
             import('fullib-js/src/css/cursor/cursor.css').then(({default: cursor}) => {
             }).catch(error => 'An error occurred while loading cursor');
