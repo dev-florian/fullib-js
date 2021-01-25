@@ -15,7 +15,7 @@ let rolling = new Blotter.RollingDistortMaterial(),
     rolling3 = new Blotter.RollingDistortMaterial(),
     rolling4 = new Blotter.RollingDistortMaterial(),
     rolling5 = new Blotter.RollingDistortMaterial(),
-    liquid = new Blotter.LiquidDistortMaterial()
+    liquid = new Blotter.LiquidDistortMaterial(),
     liquid2 = new Blotter.LiquidDistortMaterial()
 
 // liquid

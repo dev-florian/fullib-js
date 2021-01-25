@@ -550,7 +550,7 @@ export function blotter() {
 }
 
 function bottlerFirstScript() {
-    var url = "https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js";
+    var url = "https://gitcdn.link/repo/codrops/TextDistortionEffects/master/js/blotter.min.js";
 
     var script = document.createElement('script');
     script.src = url;
@@ -558,7 +558,7 @@ function bottlerFirstScript() {
     var done = false;
     script.onload = script.onreadystatechange = function () {
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            bottlerSecondScript();
+            bottlerSecondScript(Blotter);
         }
     };
     document.getElementsByTagName("head")[0].appendChild(script);
@@ -573,7 +573,7 @@ function bottlerSecondScript() {
     var done = false;
     script.onload = script.onreadystatechange = function () {
         if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            bottlerThirdScript();
+            bottlerThirdScript(Blotter);
         }
     };
     document.getElementsByTagName("head")[0].appendChild(script);
@@ -595,8 +595,8 @@ function bottlerThirdScript() {
 }
 
 function runBottler() {
-    import('fullib-js/src/js/blotter/index').then(({default: blotter}) => {
-    }).catch(error => 'An error occurred while loading blotter');
+    import('fullib-js/src/js/blotter/index').then(({default: indexBlotter}) => {
+    }).catch(error => 'An error occurred while loading indexBlotter');
 }
 
 export function share() {
