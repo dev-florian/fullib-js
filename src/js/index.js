@@ -78,19 +78,14 @@ export function generateBulb(options) {
 
     let minSize = options.minSize ? options.minSize : 5;
     let maxSize = options.maxSize ? options.maxSize : 30;
-    let indexArray = null;
-
-    if (options.classNames && options.classNames.includes('lax-parallax-right') && options.numberOfBulb < 50 && options.differentSpeed) {
-        indexArray = options.classNames.indexOf('lax-parallax-right');
-    }
 
     if (bulbsDiv[0] && maxSize > minSize) {
         for (let i = 0; i < bulbsDiv.length; i++) {
             let containerDiv = bulbsDiv[i];
             for (let g = 0; g < options.numberOfBulb; g++) {
 
-                if (indexArray) {
-                    options.classNames[indexArray] = 'lax-parallax-right-' + g;
+                if (options.animationClass && options.classNames) {
+                    options.classNames.push(options.animationClass + '-' + g);
                 }
 
                 let element = addElement('div', options.classNames, {addTo: containerDiv});
@@ -107,23 +102,112 @@ export function generateBulb(options) {
                 element.style.top = randomTop + 'px';
                 element.style.zIndex = options.zIndex ? options.zIndex : 0;
                 element.style.border = options.border ? options.border : "";
+
+                options.classNames.pop();
             }
         }
     }
 }
 
 
-export function mousemove() {
+export function mousemove(options) {
     document.addEventListener("mousemove", parallaxOnMouse);
 
     function parallaxOnMouse(e) {
-        this.querySelectorAll('.mousemove').forEach(layer => {
+        let selector = options && options.currentDiv ? options.currentDiv : '.mousemove';
+        let force = options && options.force ? options.force : 100;
+
+        this.querySelectorAll(selector).forEach(layer => {
             const speed = layer.getAttribute('data-speed');
-            const x = (window.innerWidth - e.pageX * speed) / 100;
-            const y = (window.innerHeight - e.pageY * speed) / 100;
+            const x = (window.innerWidth - e.pageX * speed) / force;
+            const y = (window.innerHeight - e.pageY * speed) / force;
             layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
         })
     }
+}
+
+
+export function orbit(options) {
+    import('fullib-js/src/css/orbit/orbit.css').then(({default: orbit}) => {
+        let divTarget = options && options.currentDiv ? options.currentDiv : ".orbit";
+
+        //General
+        let position = options && options.position ? options.position : "right-top";
+        let indexPixel = options && options.indexPixel ? options.indexPixel : 150;
+        let inverseRotation = options && options.inverseRotation ? options.inverseRotation : false;
+
+        //line
+        let lineDisplay = options && options.line && options.line.display ? options.line.display : true;
+        let lineBorderColor = options && options.line && options.line.borderColor ? options.line.borderColor : "#ffffff";
+        let lineBorderSize = options && options.line && options.line.borderSize ? options.line.borderSize : 3;
+        let lineSize = options && options.line && options.line.size ? options.line.size : 500;
+
+        //Bulb
+        let bulbDisplay = options && options.bulb && options.bulb.display ? options.bulb.display : true;
+
+        let orbits = document.querySelectorAll(divTarget);
+        for (let i = 0; i < orbits.length; i++) {
+            let orbit = orbits[0];
+
+            if (inverseRotation) {
+                orbit.style.animationDirection = "reverse";
+            }
+
+            if (lineDisplay) {
+                orbit.classList.add('orbit');
+                orbit.style.border = lineBorderSize + "px solid " + lineBorderColor;
+                orbit.style.width = lineSize + "px";
+                orbit.style.height = lineSize + "px";
+
+                if (position === "right-top") {
+                    orbit.style.right = -indexPixel + "px";
+                    orbit.style.top = -indexPixel + "px";
+                } else if (position === "right-bottom") {
+                    orbit.style.right = -indexPixel + "px";
+                    orbit.style.bottom = -indexPixel + "px";
+                } else if (position === "left-top") {
+                    orbit.style.left = -indexPixel + "px";
+                    orbit.style.top = -indexPixel + "px";
+                } else if (position === "left-bottom") {
+                    orbit.style.left = -indexPixel + "px";
+                    orbit.style.bottom = -indexPixel + "px";
+                }
+
+                if (bulbDisplay) {
+                    //Bulb
+                    let bulbBackgroundColor = options && options.bulb && options.bulb.backgroundColor ? options.bulb.backgroundColor : "#000000";
+                    let bulbBorder = options && options.bulb && options.bulb.border ? options.bulb.border : "";
+                    let bulbSize = options && options.bulb && options.bulb.size ? options.bulb.size : 50;
+                    let bulbPosition = bulbSize / 2;
+
+                    let beforeElem = addElement('div', 'orbit-before', {addTo: orbit});
+
+                    beforeElem.style.setProperty("--data-backgroundColor", bulbBackgroundColor);
+                    beforeElem.style.setProperty("--data-border", bulbBorder);
+                    beforeElem.style.setProperty("--data-width", bulbSize + 'px');
+                    beforeElem.style.setProperty("--data-height", bulbSize + 'px');
+
+                    if (position === "right-top") {
+                        beforeElem.style.setProperty("--data-right", -bulbPosition + 'px');
+                        beforeElem.style.setProperty("--data-top", '50%');
+                    } else if (position === "right-bottom") {
+                        beforeElem.style.setProperty("--data-right", -bulbPosition + 'px');
+                        beforeElem.style.setProperty("--data-bottom", '50%');
+                    } else if (position === "left-top") {
+                        beforeElem.style.setProperty("--data-left", -bulbPosition + 'px');
+                        beforeElem.style.setProperty("--data-top", '50%');
+                    } else if (position === "left-bottom") {
+                        beforeElem.style.setProperty("--data-left", -bulbPosition + 'px');
+                        beforeElem.style.setProperty("--data-bottom", '50%');
+                    }
+                }
+            } else {
+                orbit.style.display = "none";
+            }
+
+        }
+
+    }).catch(error => 'An error occurred while loading orbit');
 }
 
 export function lottie() {
@@ -382,19 +466,25 @@ export function text2(options) {
     if (texts2[0]) {
         for (let i = 0, len = texts2.length; i < len; i++) {
             let myElem = texts2[i];
+            let media = myElem.getAttribute('data-backgroundImage');
             myElem.classList.add('text2');
 
-            myElem.style.backgroundImage = "url('" + options.media + "')";
+            if (media) {
+                myElem.style.backgroundImage = "url('" + media + "')";
 
-            if (isElementInViewport(myElem)) {
-                myElem.classList.add('active');
-            }
 
-            window.addEventListener('scroll', function () {
                 if (isElementInViewport(myElem)) {
                     myElem.classList.add('active');
                 }
-            });
+
+                window.addEventListener('scroll', function () {
+                    if (isElementInViewport(myElem)) {
+                        myElem.classList.add('active');
+                    }
+                });
+            } else {
+                console.log('text2 has no media configured : data-backgroundImage');
+            }
         }
         import('fullib-js/src/css/text/text2.css').then(({default: text2}) => {
         }).catch(error => 'An error occurred while loading text2');
@@ -1023,16 +1113,42 @@ export function menu5(options) {
     }
 }
 
-export function parallax1(options) {
-    let parallaxs1 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : ".parallax1");
+export function parallax(options) {
+    let parallaxs = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : ".parallax");
 
-    if (parallaxs1[0]) {
-        let forceInitial = options.force;
+    if (parallaxs[0]) {
+        let forceInitial = options && options.force ? options.force : 2;
         let lastScrollTop = 0;
+        let force = 0;
+        let height = options && options.height ? options.height : 200;
+        let backgroundSize = options && options.backgroundSize ? options.backgroundSize : 'cover';
+        let backgroundRepeat = options && options.backgroundRepeat ? options.backgroundRepeat : 'no-repeat';
+        let backgroundDirection = options && options.backgroundDirection ? options.backgroundDirection : 'center';
+        let responsives = options && options.responsive ? options.responsive : null;
+        let documentWidth = window.innerWidth;
 
-        for (let i = 0, len = parallaxs1.length; i < len; i++) {
-            let myElem = parallaxs1[i];
-            myElem.classList.add('parallax1');
+        for (let i = 0, len = parallaxs.length; i < len; i++) {
+            let myElem = parallaxs[i];
+            let media = myElem.getAttribute('data-backgroundImage');
+
+            if (responsives) {
+                for (let ab = 0, len = responsives.length; ab < len; ab++) {
+                    let responsiveObject = responsives[ab];
+                    if (documentWidth < responsiveObject.mediaQuery) {
+                        height = responsiveObject.height ? responsiveObject.height : height;
+                        forceInitial = responsiveObject.force ? responsiveObject.force : forceInitial;
+                        backgroundSize = responsiveObject.backgroundSize ? responsiveObject.backgroundSize : backgroundSize;
+                        backgroundRepeat = responsiveObject.backgroundRepeat ? responsiveObject.backgroundRepeat : backgroundRepeat;
+                        backgroundDirection = responsiveObject.backgroundDirection ? responsiveObject.backgroundDirection : backgroundDirection;
+                    }
+                }
+            }
+            myElem.classList.add('parallax');
+            myElem.style.backgroundImage = "url('" + media + "')";
+            myElem.style.minHeight = height + "px";
+            myElem.style.backgroundSize = backgroundSize;
+            myElem.style.backgroundRepeat = backgroundRepeat;
+            myElem.style.backgroundPosition = backgroundDirection + ' ' + '0px';
 
             window.addEventListener('scroll', function () {
                 let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
@@ -1047,8 +1163,11 @@ export function parallax1(options) {
                         yPos = -forceInitial + force;
                     }
                     force = yPos;
-                    let coords = '0% ' + -yPos + 'px';
-                    myElem.style.backgroundPosition = coords;
+
+                    if (yPos < height && yPos > 0) {
+                        let coords = backgroundDirection + ' ' + -yPos + 'px';
+                        myElem.style.backgroundPosition = coords;
+                    }
                 }
                 lastScrollTop = st <= 0 ? 0 : st;
             }, false);
@@ -1117,9 +1236,105 @@ export function transition1(options) {
     }
 }
 
-export function laxAddons() {
-    import('fullib-js/src/js/addonsLax.js').then(({default: addonsLax}) => {
-    }).catch(error => 'An error occurred while loading addonsLax');
+export function gsapScroll() {
+    import('fullib-js/src/js/gsapScroll.js').then(({default: gsapScroll}) => {
+    }).catch(error => 'An error occurred while loading gsapScroll');
+}
+
+export function createAnimationFromTo(options) {
+    let div = options.div;
+    let toggleActions = options.toggleActions ? options.toggleActions : '';
+    let start = options.start ? options.start : '';
+    let scrub = options.scrub ? options.scrub : false;
+    let end = options.end ? options.end : false;
+    let pin = options.pin ? options.pin : false;
+    let snap = options.snap ? options.snap : false;
+
+    if (!options.animation) {
+        console.log('Error on gsapScroll : createAnimationFromTo');
+        console.log(div);
+    }
+
+    gsap.utils.toArray(div).forEach(box => {
+        if (box.classList.contains('onscroll')) {
+            scrub = true;
+            if (box.classList.contains('onfull')) {
+                end = "";
+            } else {
+                end = "+=30%";
+            }
+        }
+
+        let animateIn = gsap.timeline({
+            scrollTrigger: {
+                trigger: box,
+                toggleActions: toggleActions,
+                start: start,
+                end: end,
+                scrub: scrub,
+                pin: pin,
+                snap: snap,
+            }
+        });
+
+        animateIn.fromTo(box, options.animation.from, options.animation.to);
+    });
+}
+
+export function createAnimationTo(options) {
+    let div = options.div;
+    let scrub = options.scrub ? options.scrub : false;
+    let end = options.end ? options.end : false;
+    let pin = options.pin ? options.pin : false;
+    let snap = options.snap ? options.snap : false;
+    let xPercent = options.xPercent ? options.xPercent : "";
+    let ease = options.ease ? options.ease : "none";
+    let trigger = options.trigger ? options.trigger : "";
+    let container = options.container ? options.container : "";
+    let duration = options.duration ? options.duration : "";
+
+    if (options.type && options.type === "scroll-horizontal") {
+        let divs = gsap.utils.toArray(div);
+        gsap.to(divs, {
+            xPercent: -100 * (divs.length - 1),
+            ease: ease,
+            scrollTrigger: {
+                trigger: container,
+                pin: pin,
+                scrub: scrub,
+                snap: 1 / (divs.length - 1),
+                // base vertical scrolling on how wide the container is so it feels more natural.
+                end: () => "+=" + document.querySelector(container).offsetWidth
+            }
+        });
+    } else if (options.type && options.type === "scroll-vertical") {
+
+        let divs = gsap.utils.toArray(div);
+
+        function goToSection(div) {
+            gsap.to(window, {
+                scrollTo: {y: div, autoKill: false},
+                duration: duration,
+                ease: ease
+            });
+        }
+
+        divs.forEach(div => {
+            ScrollTrigger.create({
+                trigger: div,
+                onEnter: () => goToSection(div),
+            });
+
+            ScrollTrigger.create({
+                trigger: div,
+                start: "bottom bottom",
+                onEnterBack: () => goToSection(div),
+            });
+        });
+
+    } else {
+       //WORKING ON
+    }
 }
 
 export function cursor(options) {

@@ -1,6 +1,7 @@
 import {
     cursor,
-    laxAddons,
+    gsapScroll,
+    createAnimationFromTo,
     button1,
     button3,
     button4,
@@ -32,7 +33,7 @@ import {
     reveal7,
     reveal8,
     reveal9,
-    parallax1,
+    parallax,
     changeBackground,
     transition1,
     drawsvg,
@@ -45,15 +46,18 @@ import {
     lottie,
     mousemove,
     generateBulb,
-    imageBlob
+    imageBlob,
+    orbit
 } from "fullib-js";
 
-laxAddons();
+gsapScroll();
+
 cursor({
     activeFirstCursor: true,
     activeSecondCursor: false,
     currentDiv: "#index",
     zoomOnDiv: ".chapter",
+    removeAt: 991,
     firstCursor: {
         size: 10,
         backgroundColor: "#000000",
@@ -78,9 +82,7 @@ button14();
 button15();
 share();
 text1();
-text2({
-    media: "https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg",
-});
+text2();
 text3();
 text4();
 text5();
@@ -95,9 +97,19 @@ reveal6();
 reveal7();
 reveal8();
 reveal9();
-parallax1({
-    currentDiv: ".parallax1",
-    force: 2
+parallax({
+    currentDiv: ".parallax",
+    force: 8,
+    height: 250,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundDirection: 'center', //left center right 0% 50%.....
+    responsive: [{
+        mediaQuery: 767,
+        force: 2,
+        height: 100,
+    }
+    ]
 });
 changeBackground({
     backgroundColor: "#ffd5ce",
@@ -111,7 +123,6 @@ menu2();
 menu3();
 menu4();
 menu5();
-
 blotter();
 lottie();
 generateBulb({
@@ -123,11 +134,68 @@ generateBulb({
     border: "1px solid #1a2b63",
     numberOfBulb: 49,
     type: 'round', //round or square
-    classNames: ['round', 'lax-parallax-right'],
+    classNames: ['round'],
+    animationClass: 'customanimation',
     fromLeft: -200, // if animation on better to see element arrived on screen cutted
     differentSpeed: true //only available for lax-parallax-right and if numberOfBulb < 50
 });
 
 mousemove();
-imageBlob();
+imageBlob({autoResponsive: true});
+orbit({
+    currentDiv: '.circlewhite',
+    position: 'right-top', //right-top right-bottom left-top left-bottom
+    indexPixel: 150,
+    inverseRotation: true,
+    line: {
+        display: true,
+        borderColor: "#ffffff",
+        borderSize: 3,
+        size: 400
+    },
+    bulb: {
+        display: true,
+        backgroundColor: '#ffffff',
+        color: '#ffffff',
+        size: 50
+    }
+});
+
+if(document.querySelectorAll('.round')){
+    for (let g = 0; g < 50; g++) {
+        createAnimationFromTo({
+            div: '.customanimation-'+g,
+            toggleActions: 'restart pause restart pause',
+            start: 'top 100%',
+            end: "+=100%",
+            scrub: true,
+            animation: {
+                from: {
+                    x: '0px'
+                },
+                to: {
+                    x: g * 12 +'px'
+                }
+            }
+        });
+    }
+}
+
+createAnimationFromTo({
+    div: '.line',
+    toggleActions: 'restart pause restart pause',
+    start: 'top top',
+    end: "+=100%",
+    scrub: true,
+    pin: true,
+    animation: {
+        from: {
+            height:"0%"
+        },
+        to: {
+            height:"100%"
+        }
+    }
+});
+
 

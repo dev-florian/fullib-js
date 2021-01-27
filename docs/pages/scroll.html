@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .row, h1 {
+        text-align: center;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<body id="body" class="">
+
+
+<div id="content">
+
+
+    <!-- HTML -->
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://dev-florian.github.io/fullib-js/">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page"
+                           href="https://dev-florian.github.io/fullib-js/pages/scroll">Scroll</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/text">Text</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/buttons">Buttons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/reveal">Reveal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu">menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu2">menu2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu3">menu3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu4">menu4</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu5">menu5</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/blotter">blotter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/lottie">lottie</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="position-relative" style="height: 100vh; background: #f45365">
+        <div class="position-absolute text-white"
+             style="font-size: 30px; font-weight: bold; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+            SCROLL DOWN
+        </div>
+    </div>
+    <div class="wave" style="background: #fff;">
+        <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#f45365" fill-opacity="1"
+                  d="M0,64L48,80C96,96,192,128,288,160C384,192,480,224,576,240C672,256,768,256,864,224C960,192,1056,128,1152,112C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        </svg>
+    </div>
+
+    <div class="container pt-5 mt-5">
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="scroll-lefttoright">scroll-lefttoright</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-righttoleft">scroll-righttoleft</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-toptobottom">scroll-toptobottom</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-bottomtotop">scroll-bottomtotop</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-rotateleft">scroll-rotateleft</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-rotateright">scroll-rotateright</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-scaleup">scroll-scaleup</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-scaledown">scroll-scaledown</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-toptobottom scroll-opacity">scroll-opacity scroll-toptobottom</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-parallaxleft">scroll-parallaxleft</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-parallaxright">scroll-parallaxright</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-light-parallaxright">scroll-light-parallaxright</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-light-parallaxleft">scroll-light-parallaxleft</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-light-parallaxtop">scroll-light-parallaxtop</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center scroll-light-parallaxbottom">scroll-light-parallaxbottom</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center onscroll onfull scroll-full-rotateleft">scroll-full-rotateleft</h2>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2 class="text-center onscroll onfull scroll-full-rotateright">scroll-full-rotateright</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-12">
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+            <div class="onscroll scroll-opacity mt-2 mb-2"
+                 style="background: tomato; width: 100%; height: 100px;"></div>
+        </div>
+    </div>
+
+    <div class="horizontal-container" style="display: flex;flex-wrap: nowrap; width: 300vw; height: 100vh">
+        <section class="section-horizontal"
+                 style="background: pink; width: 100vw; height: 100vh; display: flex;justify-content: center;align-items: center;font-weight: 600;font-size: 1.5em;text-align: center;color: white;position: relative;box-sizing: border-box;padding: 10px;">
+            ONE
+        </section>
+        <section class="section-horizontal"
+                 style="background: tomato; width: 100vw; height: 100vh; display: flex;justify-content: center;align-items: center;font-weight: 600;font-size: 1.5em;text-align: center;color: white;position: relative;box-sizing: border-box;padding: 10px;">
+            TWO
+        </section>
+        <section class="section-horizontal"
+                 style="background: purple; width: 100vw; height: 100vh; display: flex;justify-content: center;align-items: center;font-weight: 600;font-size: 1.5em;text-align: center;color: white;position: relative;box-sizing: border-box;padding: 10px;">
+            THREE
+        </section>
+    </div>
+
+    <div class="vertical-container">
+        <section class="section-vertical"
+                 style="background: pink; height: 100vh; display: flex;justify-content: center;align-items: center;font-weight: 600;font-size: 1.5em;text-align: center;color: white;position: relative;box-sizing: border-box;padding: 10px;">
+            ONE
+        </section>
+        <section class="section-vertical"
+                 style="background: tomato; height: 100vh; display: flex;justify-content: center;align-items: center;font-weight: 600;font-size: 1.5em;text-align: center;color: white;position: relative;box-sizing: border-box;padding: 10px;">
+            TWO
+        </section>
+        <section class="section-vertical"
+                 style="background: purple; height: 100vh; display: flex;justify-content: center;align-items: center;font-weight: 600;font-size: 1.5em;text-align: center;color: white;position: relative;box-sizing: border-box;padding: 10px;">
+            THREE
+        </section>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
+<script src="../build/bundle.js" async></script>
+<script>
+    if (window.innerWidth < 991) {
+        let menuButton = document.querySelector('.navbar-toggler');
+        let menuContainer = document.getElementById('navbarNav');
+
+        menuButton.onclick = function (e) {
+            menuContainer.classList.toggle('d-block');
+        }
+    }
+</script>
+</body>
+</html>

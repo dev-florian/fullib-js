@@ -4,6 +4,18 @@
 Multiple animation Library in full javascript
 
 https://dev-florian.github.io/fullib-js/
+## News 1.2.0
+
+![Scroll down](github-ressources/scroll-down.jpg?raw=true "Scroll down")
+
+- NEW ANIMATION : orbit
+- UPDATE : text2
+- BIG UPDATE : parallax
+- REMOVED LAX
+- NEW ANIMATIONS GSAP
+- CORRECTION LOTTIE
+- CREATE YOUR CUSTOM ANIMATIONS
+
 ## News 1.1.3
 - BLOTTER : Mobile now displaying !
 - BLOTTER : Reduce animation to avoid lags on mobile
@@ -31,11 +43,6 @@ https://dev-florian.github.io/fullib-js/
 - Add minify js
 - Removing WebGls hover effect (too heavy)
 
-## WORKING FOR 1.2.0
-- NEW ANIM : Aerobit ( full css )
-- LAX : better responsive
-- And more...
-
 ## Installation
 Use yarn :
 ```python
@@ -46,65 +53,114 @@ Dependencies
 "lax.js": "^2.0.3",
 "lottie-web": "^5.7.6"
 ```
-Those will be automatically installed when running yard add animation-felix
 
-## LAX LIBRARY
+## GSAP LIBRARY
 https://github.com/alexfoxy/lax.js
 
 ### List of custom classes
 ```python
-lax-opacity-start
-lax-opacity-end
-lax-down
-lax-up
-lax-left
-lax-right
-lax-top lax-opacity-start
-lax-down lax-opacity-start
-lax-left lax-opacity-start
-lax-right lax-opacity-start
-lax-scale-up
-lax-scale-down
-lax-fullwidth-left
-lax-fullwidth-right
-lax-fullwidth-left-rotate
-lax-fullwidth-right-rotate
-lax-middlewith-left
-lax-middlewith-right
-lax-parallax-up
-lax-parallax-down
-lax-parallax-left
-lax-parallax-right
-lax-fullrotate-right
-lax-fullrotate-left
-lax-parallax-up-rotate
-lax-parallax-down-rotate
-lax-parallax-left-rotate
-lax-parallax-right-rotate
-lax-parallax-up lax-opacity-start
-lax-parallax-down lax-opacity-start
-lax-parallax-left lax-opacity-start
-lax-parallax-right lax-opacity-start
-lax-rotate-left
-lax-rotate-right
-lax-rotate-left lax-opacity-start
-lax-rotate-right lax-opacity-start
-lax-skew-left
-lax-skew-right
-lax-blur-start
-lax-scale-up-screen
-lax-fixed-middle
-lax-fixed-middle-soft
-trans1
-trans2
-trans3
+scroll-lefttoright
+scroll-righttoleft
+scroll-toptobottom
+scroll-bottomtotop
+scroll-rotateleft
+scroll-rotateright
+scroll-scaleup
+scroll-scaledown
+scroll-opacity scroll-toptobottom
+scroll-parallaxleft
+scroll-parallaxright
+scroll-light-parallaxleft
+scroll-light-parallaxright
+scroll-light-parallaxtop
+scroll-light-parallaxbottom
+scroll-full-rotateleft
+scroll-full-rotateright
 ```
 How To use ?
 ```python
-import {laxAddons} from "fullib-js";
-laxAddons();
+import {gsapScroll} from "fullib-js";
+gsapScroll();
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
 ```
 Then add the class to your div !
+
+### CUSTOM ANIMATION
+How to use ?
+```python
+import {createAnimationFromTo} from "fullib-js";
+
+//scroll opacity 0 to 1 animation
+//reference to gsap library
+gsap.registerPlugin(ScrollTrigger);
+createAnimationFromTo({
+    div: '.scroll-opacity',
+    toggleActions: 'restart pause restart pause',
+    start: "top 100%",
+    animation: {
+        from: {
+            autoAlpha: 0
+        },
+        to: {
+            autoAlpha: 1,
+            duration: 1,
+        }
+    }
+});
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
+```
+
+How the function looks like ?
+```python
+export function createAnimationFromTo(options) {
+    let div = options.div;
+    let toggleActions = options.toggleActions ? options.toggleActions : '';
+    let start = options.start ? options.start : '';
+    let scrub = options.scrub ? options.scrub : false;
+    let end = options.end ? options.end : false;
+    let pin = options.pin ? options.pin : false;
+    let snap = options.snap ? options.snap : false;
+
+    if (!options.animation) {
+        console.log('Error on gsapScroll : createAnimationFromTo');
+        console.log(div);
+    }
+
+    gsap.utils.toArray(div).forEach(box => {
+        if (box.classList.contains('onscroll')) {
+            scrub = true;
+            if (box.classList.contains('onfull')) {
+                end = "";
+            } else {
+                end = "+=30%";
+            }
+        }
+
+        let animateIn = gsap.timeline({
+            scrollTrigger: {
+                trigger: box,
+                toggleActions: toggleActions,
+                start: start,
+                end: end,
+                scrub: scrub,
+                pin: pin,
+                snap: snap,
+            }
+        });
+
+        animateIn.fromTo(box, options.animation.from, options.animation.to);
+    });
+}
+```
+
+
 
 ## DRAWSVG
 Put by default this class on your div :
@@ -168,10 +224,12 @@ import {text1} from "fullib-js";
 text1();
 ```
 
-Exceptions
+Exceptions [UPDATE]
 ```python
 import {text2} from "fullib-js";
-text2({media: "myAbsoluteUrlImage"});
+text2();
+
+ <div class="text2" data-backgroundImage="https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg">NATURE</div>
 ```
 Simply add the class on the text ('text1', 'text2'......) for different view or add {currentDiv: ".myDiv"} for customization.
 
@@ -370,7 +428,7 @@ mousemove();
 </div>
 ```
 
-## IMAGEBLOB [NEW]
+## IMAGEBLOB
 
 Add a round blob effect to your image
 
@@ -387,7 +445,7 @@ imageBlob();
 Warning :
 Don't forget to add with and height attribute ( default take 400 x 400 )
 
-## GENERATE BULBS [NEW]
+## GENERATE BULBS
 
 Add a round blob effect to your image
 
@@ -411,6 +469,64 @@ generateBulb({
 });
 
 <div class="generate-bulb"></div>
+```
+
+## ORBIT [NEW]
+
+Add an orbit on your page !
+
+How to use ?
+
+Easy example
+```python
+import {orbit} from "fullib-js";
+orbit({
+    currentDiv: '.circlewhite',
+    position: 'right-top', //right-top right-bottom left-top left-bottom
+    indexPixel: 150,
+    inverseRotation: true,
+    line: {
+        display: true,
+        borderColor: "#ffffff",
+        borderSize: 3,
+        size: 400
+    },
+    bulb: {
+        display: true,
+        backgroundColor: '#ffffff',
+        color: '#ffffff',
+        size: 50
+    }
+});
+
+<div class="circlewhite"></div>
+```
+
+## PARALLAX [BIG UPDATE]
+
+Add an orbit on your page !
+
+How to use ?
+
+Easy example
+```python
+import {parallax} from "fullib-js";
+parallax({
+    currentDiv: ".parallax",
+    force: 8,
+    height: 250,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundDirection: 'center', //left center right 0% 50%.....
+    responsive: [{
+        mediaQuery: 767,
+        force: 2,
+        height: 100,
+    }
+    ]
+});
+
+ <div class="parallax" data-backgroundImage="./img/parallax.jpg"></div>
 ```
 
 
