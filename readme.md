@@ -4,6 +4,12 @@
 Multiple animation Library in full javascript
 
 https://dev-florian.github.io/fullib-js/
+## News 1.3.0
+- NEW ANIMATIONS CREATION *TEXT SPLIT*
+- CORRECTION OF BUGS
+- ADDING COMMMENTARY
+
+
 ## News 1.2.0
 
 ![Scroll down](github-ressources/scroll-down.jpg?raw=true "Scroll down")
@@ -50,8 +56,64 @@ yard add fullib-js
 ```
 Dependencies
 ```python
-"lax.js": "^2.0.3",
 "lottie-web": "^5.7.6"
+```
+
+## [NEW] TextSplit Creation
+How To use ?
+```python
+import {splitText} from "fullib-js";
+
+//BASIC EXAMPLE
+splitText({
+    animationName: 'split5',
+    parent: '.split5',
+    className: 'letter',
+    animation: {
+        keyframe: {
+            from: {
+                transform: 'scale(1.5)'
+            },
+            to: {
+                transform: 'scale(1)'
+            }
+        }
+    }
+});
+
+<div class="split5">I AM A TEST</div>
+```
+Other example
+```python
+import {splitText} from "fullib-js";
+
+//ADVANCED EXEMPLE
+splitText({
+    animationName: 'split4',
+    parent: '.split4',
+    className: 'letter',
+    animation: {
+        iterations: 1,
+        duration: 1000,
+        word: true,
+        center: true,
+        reverse: true,
+        delay: 200,
+        keyframe: {
+            from: {
+                'letter-spacing': '10px',
+            },
+            "50%": {
+                'letter-spacing': '2px',
+            },
+            to: {
+                'letter-spacing': '0px',
+            }
+        }
+    }
+});
+
+<div class="split4">I AM A TEST</div>
 ```
 
 ## GSAP LIBRARY
@@ -412,7 +474,7 @@ lottie();
 <div class="mt-5 mb-5 lottie" data-lottie-scroll="false" data-lottie-click="true" data-lottie-hover="false" data-lottie-file="../../lottie/button.json" style="width: 150px;"></div>
 ```
 
-## MOUSEMOOVE [NEW]
+## MOUSEMOOVE
 
 When mooving the mouse, it mooves the content ( related to mouse position )
 
@@ -471,7 +533,7 @@ generateBulb({
 <div class="generate-bulb"></div>
 ```
 
-## ORBIT [NEW]
+## ORBIT
 
 Add an orbit on your page !
 
@@ -502,7 +564,7 @@ orbit({
 <div class="circlewhite"></div>
 ```
 
-## PARALLAX [BIG UPDATE]
+## PARALLAX
 
 Add an orbit on your page !
 

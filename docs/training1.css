@@ -167,39 +167,6 @@
     border-radius: 20px;
 }
 
-.circlewhite {
-    position: absolute;
-    right: -150px;
-    top: -150px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background: transparent;
-    width: 500px;
-    height: 500px;
-    transform: rotate(0deg);
-    animation: circleanim 10s infinite linear;
-}
-
-.circlewhite:before {
-    content: "";
-    position: absolute;
-    right: 470px;
-    top: 224px;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border-radius: 50%;
-}
-
-@keyframes circleanim {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 #ez9uiemj3kbq1{
     max-width: 250px;
 }

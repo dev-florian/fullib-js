@@ -1,6 +1,7 @@
 import {
     cursor,
     gsapScroll,
+    gsapSplit,
     createAnimationFromTo,
     button1,
     button3,
@@ -35,7 +36,6 @@ import {
     reveal9,
     parallax,
     changeBackground,
-    transition1,
     drawsvg,
     menu1,
     menu2,
@@ -50,7 +50,10 @@ import {
     orbit
 } from "fullib-js";
 
+
+
 gsapScroll();
+gsapSplit();
 
 cursor({
     activeFirstCursor: true,
@@ -116,7 +119,6 @@ changeBackground({
     currentDiv: ".change-background",
     animation: "1s linear",
 });
-transition1();
 drawsvg();
 menu1();
 menu2();
