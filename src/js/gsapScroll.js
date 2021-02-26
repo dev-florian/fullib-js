@@ -3,7 +3,10 @@ import {
     createAnimationTo
 } from "fullib-js";
 
+
+
 gsap.registerPlugin(ScrollTrigger);
+
 
 createAnimationFromTo({
     div: '.scroll-lefttoright',

@@ -1,4 +1,7 @@
+//FUNCTION TO ADD BLOB ANIMATION TO YOUR IMAGE
 export function imageBlob(options) {
+
+    //PARAMAS
     let imageBulbsDiv = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.blobed');
     let currentWindowWidth = window.innerWidth;
     let autoResponsive = options.autoResponsive ? options.autoResponsive : true;
@@ -7,8 +10,9 @@ export function imageBlob(options) {
     {
         import('fullib-js/src/css/imageBlob/imageBlob.css').then(({default: blob}) => {
             for (let i = 0; i < imageBulbsDiv.length; i++) {
+
+                //PARAMS
                 let imageElem = imageBulbsDiv[i];
-                imageElem.classList.add('blob');
                 let srcElem = imageElem.getAttribute('src');
                 let classNamesElem = imageElem.classList;
                 let idElem = imageElem.getAttribute('id');
@@ -16,13 +20,14 @@ export function imageBlob(options) {
                 let imageWidth = imageElem.getAttribute('width');
                 let imageHeight = imageElem.getAttribute('height');
 
+                imageElem.classList.add('blob');
                 imageElem.remove();
 
+                //ADDING DIV TO DOM
                 let higther = addElement('div', classNamesElem, {
                     id: idElem,
                     addTo: parentElem,
                 })
-
 
                 let medium = addElement('div', 'blob-inner', {
                     id: idElem,
@@ -34,6 +39,7 @@ export function imageBlob(options) {
                     addTo: medium,
                 })
 
+                //ADDING CSS
                 little.style.backgroundImage = "url('" + srcElem + "')";
                 medium.style.minWidth = imageWidth ? imageWidth + "px" : '400px';
                 medium.style.maxWidth = imageWidth ? imageWidth + "px" : '400px';
@@ -41,6 +47,7 @@ export function imageBlob(options) {
                 medium.style.maxHeight = imageHeight ? imageHeight + "px" : '400px';
 
 
+                //AUTO RESPONSIVE
                 if (autoResponsive && currentWindowWidth < 767) {
                     let sizeResized = currentWindowWidth - 80;
                     if (sizeResized < imageWidth) {
@@ -51,18 +58,17 @@ export function imageBlob(options) {
                     }
                 }
 
-                if (currentWindowWidth < 767) {
+                //AUTO RESPONSIVE RESIZE
+                if (currentWindowWidth < 767 && autoResponsive) {
                     window.addEventListener("resize", function () {
-                        if (autoResponsive) {
-                            let resizedWindowWidth = window.innerWidth;
-                            if (resizedWindowWidth < 767) {
-                                let sizeResized = resizedWindowWidth - 80;
-                                if (sizeResized < imageWidth) {
-                                    medium.style.minWidth = sizeResized + "px";
-                                    medium.style.maxWidth = sizeResized + "px";
-                                    medium.style.minHeight = sizeResized + "px";
-                                    medium.style.maxHeight = sizeResized + "px";
-                                }
+                        let resizedWindowWidth = window.innerWidth;
+                        if (resizedWindowWidth < 767) {
+                            let sizeResized = resizedWindowWidth - 80;
+                            if (sizeResized < imageWidth) {
+                                medium.style.minWidth = sizeResized + "px";
+                                medium.style.maxWidth = sizeResized + "px";
+                                medium.style.minHeight = sizeResized + "px";
+                                medium.style.maxHeight = sizeResized + "px";
                             }
                         }
                     });
@@ -72,10 +78,11 @@ export function imageBlob(options) {
     }
 }
 
+//FUNCTION TO GENERATE BULBS
 export function generateBulb(options) {
 
+    //PARAMS
     let bulbsDiv = document.querySelectorAll(options.currentDiv ? options.currentDiv : '.generate-bulb');
-
     let minSize = options.minSize ? options.minSize : 5;
     let maxSize = options.maxSize ? options.maxSize : 30;
 
@@ -84,15 +91,17 @@ export function generateBulb(options) {
             let containerDiv = bulbsDiv[i];
             for (let g = 0; g < options.numberOfBulb; g++) {
 
+                //PARAMS RELATED FOR ONE BULB
+                let element = addElement('div', options.classNames, {addTo: containerDiv});
+                let randomWith = getRandomArbitrary(minSize, maxSize);
+                let randomTop = getRandomArbitrary(0, options.referTo ? document.querySelector(options.referTo).offsetHeight : containerDiv.parentNode.offsetHeight);
+                let randomleft = getRandomArbitrary(options.fromLeft ? options.fromLeft : -200, window.innerWidth);
+
                 if (options.animationClass && options.classNames) {
                     options.classNames.push(options.animationClass + '-' + g);
                 }
 
-                let element = addElement('div', options.classNames, {addTo: containerDiv});
-
-                let randomWith = getRandomArbitrary(minSize, maxSize);
-                let randomTop = getRandomArbitrary(0, options.referTo ? document.querySelector(options.referTo).offsetHeight : containerDiv.parentNode.offsetHeight);
-                let randomleft = getRandomArbitrary(options.fromLeft ? options.fromLeft : -200, window.innerWidth);
+                //ADDING CSS
                 element.style.backgroundColor = options.backgroundColor;
                 element.style.borderRadius = options.type === "round" ? "50%" : "0";
                 element.style.position = "absolute";
@@ -109,28 +118,35 @@ export function generateBulb(options) {
     }
 }
 
-
+//FUNCTION TO ADD MOUSEMOOVE ANIMATION
 export function mousemove(options) {
     document.addEventListener("mousemove", parallaxOnMouse);
 
     function parallaxOnMouse(e) {
+
+        //PARAMS
         let selector = options && options.currentDiv ? options.currentDiv : '.mousemove';
         let force = options && options.force ? options.force : 100;
 
         this.querySelectorAll(selector).forEach(layer => {
+
+            //PARAMS
             const speed = layer.getAttribute('data-speed');
             const x = (window.innerWidth - e.pageX * speed) / force;
             const y = (window.innerHeight - e.pageY * speed) / force;
+
+            //ADD CSS
             layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
         })
     }
 }
 
-
+//FUNCTION TO CREATE ORBIT ANIMATION
 export function orbit(options) {
     import('fullib-js/src/css/orbit/orbit.css').then(({default: orbit}) => {
-        let divTarget = options && options.currentDiv ? options.currentDiv : ".orbit";
 
+        //PARAMS
+        let divTarget = options && options.currentDiv ? options.currentDiv : ".orbit";
         //General
         let position = options && options.position ? options.position : "right-top";
         let indexPixel = options && options.indexPixel ? options.indexPixel : 150;
@@ -144,8 +160,8 @@ export function orbit(options) {
 
         //Bulb
         let bulbDisplay = options && options.bulb && options.bulb.display ? options.bulb.display : true;
-
         let orbits = document.querySelectorAll(divTarget);
+
         for (let i = 0; i < orbits.length; i++) {
             let orbit = orbits[0];
 
@@ -210,6 +226,7 @@ export function orbit(options) {
     }).catch(error => 'An error occurred while loading orbit');
 }
 
+//FUNCTION TO CREATE LOTTIE ANIMATION
 export function lottie() {
     let lotties = document.querySelectorAll('.lottie')
     let lottiesOnScroll = document.querySelectorAll('.lottie-player');
@@ -218,12 +235,12 @@ export function lottie() {
         import('lottie-web/build/player/lottie.min').then(({default: bodymovin}) => {
             for (let i = 0; i < lotties.length; i++) {
 
+                //PARAMS
                 let mydiv = lotties[i];
                 let file = mydiv.getAttribute('data-lottie-file');
                 let click = mydiv.getAttribute('data-lottie-click');
                 let hover = mydiv.getAttribute('data-lottie-hover');
                 let scroll = mydiv.getAttribute('data-lottie-scroll');
-
                 let autoplay = true;
                 let loop = true;
 
@@ -444,17 +461,7 @@ export function text1(options) {
         for (let i = 0, len = text1.length; i < len; i++) {
             let myElem = text1[i];
             myElem.classList.add('text1');
-
-            let textMyElem = myElem.textContent;
-            myElem.innerHTML = "";
-            let letters = 0, lengthLetter = textMyElem.length;
-            for (letters; letters < lengthLetter; letters++) {
-                if (textMyElem[letters] === " ") {
-                    myElem.innerHTML += " ";
-                } else {
-                    myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
-                }
-            }
+            myElem.innerHTML = myElem.textContent.replace(/\S/g, "<span>$&</span>");
         }
         import('fullib-js/src/css/text/text1.css').then(({default: text1}) => {
         }).catch(error => 'An error occurred while loading text1');
@@ -524,20 +531,9 @@ export function text5(options) {
             for (let i = 0, len = texts5.length; i < len; i++) {
                 let myElem = texts5[i];
                 myElem.classList.add('text5');
-
-                let textMyElem = myElem.textContent;
-                myElem.innerHTML = "";
-                let letters = 0, lengthLetter = textMyElem.length;
-                for (letters; letters < lengthLetter; letters++) {
-                    if (textMyElem[letters] === " ") {
-                        myElem.innerHTML += "<span>&nbsp;</span>";
-                    } else {
-                        myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
-                    }
-                }
+                myElem.innerHTML = myElem.textContent.replace(/\S/g, "<span>$&</span>");
 
                 let spans = myElem.children;
-
                 let addEffectText5 = function (elem, adding) {
                     let counter = 1;
                     for (let c = 0, lenc = spans.length; c < lenc; c++) {
@@ -586,17 +582,7 @@ export function text6(options) {
             for (let i = 0, len = texts6.length; i < len; i++) {
                 let myElem = texts6[i];
                 myElem.classList.add('text6');
-
-                let textMyElem = myElem.textContent;
-                myElem.innerHTML = "";
-                let letters = 0, lengthLetter = textMyElem.length;
-                for (letters; letters < lengthLetter; letters++) {
-                    if (textMyElem[letters] === " ") {
-                        myElem.innerHTML += "<span>&nbsp;</span>";
-                    } else {
-                        myElem.innerHTML += "<span>" + textMyElem[letters] + "</span>";
-                    }
-                }
+                myElem.innerHTML = myElem.textContent.replace(/\S/g, "<span>$&</span>");
 
                 let spans = myElem.children;
                 let counter = 1;
@@ -1038,6 +1024,7 @@ export function button15(options) {
     }
 }
 
+//FUNCTION TO CREATE DEFAULT MENU 1
 export function menu1(options) {
     let menus1 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.menu1');
     if (menus1[0]) {
@@ -1053,6 +1040,7 @@ export function menu1(options) {
     }
 }
 
+//FUNCTION TO CREATE DEFAULT MENU 2
 export function menu2(options) {
     let menus2 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.menu2');
     if (menus2[0]) {
@@ -1067,6 +1055,7 @@ export function menu2(options) {
     }
 }
 
+//FUNCTION TO CREATE DEFAULT MENU 3
 export function menu3(options) {
     let menus3 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.menu3');
     if (menus3[0]) {
@@ -1082,6 +1071,7 @@ export function menu3(options) {
     }
 }
 
+//FUNCTION TO CREATE DEFAULT MENU 4
 export function menu4(options) {
     let menus4 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.menu4');
     if (menus4[0]) {
@@ -1097,7 +1087,7 @@ export function menu4(options) {
     }
 }
 
-
+//FUNCTION TO CREATE DEFAULT MENU 5
 export function menu5(options) {
     let menus5 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.menu5');
     if (menus5[0]) {
@@ -1113,10 +1103,13 @@ export function menu5(options) {
     }
 }
 
+//FUNCTION TO ADD PARALLAX TO A BACKGROUND
 export function parallax(options) {
     let parallaxs = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : ".parallax");
 
     if (parallaxs[0]) {
+
+        //PARAMS
         let forceInitial = options && options.force ? options.force : 2;
         let lastScrollTop = 0;
         let force = 0;
@@ -1175,6 +1168,7 @@ export function parallax(options) {
     }
 }
 
+//FUNCTION TO CHANGE BACKGROUND COLOR ON DIV VIEWPORT
 export function changeBackground(options) {
     if (!options.transition) {
         options.transition = "1s linear";
@@ -1203,6 +1197,7 @@ export function changeBackground(options) {
     }
 }
 
+//FUNCTION TO DRAW LINES SVG
 export function drawsvg(options) {
     let drawsvgs = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.drawsvg');
     if (drawsvgs[0]) {
@@ -1225,62 +1220,65 @@ export function drawsvg(options) {
     }
 }
 
-export function transition1(options) {
-    let transitions1 = document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.transition1');
-    if (transitions1[0]) {
-        for (let i = 0, len = transitions1.length; i < len; i++) {
-            transitions1[i].classList.add('transition1');
-        }
-        import('fullib-js/src/css/transition/transition1.css').then(({default: transition1}) => {
-        }).catch(error => 'An error occurred while loading transition1');
-    }
-}
-
+//FUNCTION TO INIT DEFAULT ANIMATION GSAP
 export function gsapScroll() {
     import('fullib-js/src/js/gsapScroll.js').then(({default: gsapScroll}) => {
     }).catch(error => 'An error occurred while loading gsapScroll');
 }
 
-export function createAnimationFromTo(options) {
-    let div = options.div;
-    let toggleActions = options.toggleActions ? options.toggleActions : '';
-    let start = options.start ? options.start : '';
-    let scrub = options.scrub ? options.scrub : false;
-    let end = options.end ? options.end : false;
-    let pin = options.pin ? options.pin : false;
-    let snap = options.snap ? options.snap : false;
-
-    if (!options.animation) {
-        console.log('Error on gsapScroll : createAnimationFromTo');
-        console.log(div);
-    }
-
-    gsap.utils.toArray(div).forEach(box => {
-        if (box.classList.contains('onscroll')) {
-            scrub = true;
-            if (box.classList.contains('onfull')) {
-                end = "";
-            } else {
-                end = "+=30%";
-            }
-        }
-
-        let animateIn = gsap.timeline({
-            scrollTrigger: {
-                trigger: box,
-                toggleActions: toggleActions,
-                start: start,
-                end: end,
-                scrub: scrub,
-                pin: pin,
-                snap: snap,
-            }
-        });
-
-        animateIn.fromTo(box, options.animation.from, options.animation.to);
-    });
+//FUNCTION TO INIT DEFAULT ANIMATION SPLIT TEXT
+export function gsapSplit() {
+    import('fullib-js/src/js/gsapSplit.js').then(({default: gsapSplit}) => {
+    }).catch(error => 'An error occurred while loading gsapSplit');
 }
 
+//FUNCTION TO CREATE CUSTOM ANIMATION
+export function createAnimationFromTo(options) {
+    let div = options.div;
+    if (document.querySelector(div)) {
+
+        //PARAMS
+        let toggleActions = options.toggleActions ? options.toggleActions : '';
+        let start = options.start ? options.start : '';
+        let scrub = options.scrub ? options.scrub : false;
+        let end = options.end ? options.end : false;
+        let pin = options.pin ? options.pin : false;
+        let snap = options.snap ? options.snap : false;
+
+        if (!options.animation) {
+            console.log('Error on gsapScroll : createAnimationFromTo');
+            console.log(div);
+        }
+
+        //CREATE GSAP ANIMATION
+        gsap.utils.toArray(div).forEach(box => {
+            if (box.classList.contains('onscroll')) {
+                scrub = true;
+                if (box.classList.contains('onfull')) {
+                    end = "";
+                } else {
+                    end = "+=30%";
+                }
+            }
+
+            let animateIn = gsap.timeline({
+                scrollTrigger: {
+                    trigger: box,
+                    toggleActions: toggleActions,
+                    start: start,
+                    end: end,
+                    scrub: scrub,
+                    pin: pin,
+                    snap: snap,
+                }
+            });
+
+            animateIn.fromTo(box, options.animation.from, options.animation.to);
+        });
+    }
+}
+
+//FUNCTION HORIZONTAL && VERTICAL ANIMATION
 export function createAnimationTo(options) {
     let div = options.div;
     let scrub = options.scrub ? options.scrub : false;
@@ -1333,19 +1331,29 @@ export function createAnimationTo(options) {
         });
 
     } else {
-       //WORKING ON
+        //WORKING ON
     }
 }
 
+//FUNCTION TO ADD A CUSTOM CURSOR
 export function cursor(options) {
+
+    //ONLY FOR DESKTOP BY DEFAULT
     let removeAt = options.removeAt ? options.removeAt : 991;
+    let mouseTargets = document.querySelectorAll(options && options.zoomOnDiv ? options.zoomOnDiv : '.titlezoomcursor');
+
     if (window.innerWidth > removeAt) {
         if (document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.custom-cursor')[0]) {
+
+            //ADDING BASIC CSS
             import('fullib-js/src/css/cursor/cursor.css').then(({default: cursor}) => {
             }).catch(error => 'An error occurred while loading cursor');
 
+            //CURSOR1
             let cursor1 = null;
             if (options.activeFirstCursor) {
+
+                //ADDING CSS
                 cursor1 = addElement('div', ['cursor', 'cursor-follower']);
                 cursor1.style.backgroundColor = options.firstCursor && options.firstCursor.backgroundColor ? options.firstCursor.backgroundColor : "#000000";
                 cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
@@ -1355,8 +1363,11 @@ export function cursor(options) {
                 cursor1.style.borderRadius = options.firstCursor && options.firstCursor.type === "round" ? "50%" : options.firstCursor && options.firstCursor.type === "square" ? "0" : "50%";
             }
 
+            //CURSOR2 ( FOLLOWED BY THE FIRST ONE )
             let cursor2 = null;
             if (options.activeSecondCursor) {
+
+                //ADDING CSS
                 cursor2 = addElement('div', ['cursor', 'cursor-dot']);
                 cursor2.style.backgroundColor = options.secondCursor && options.secondCursor.backgroundColor ? options.secondCursor.backgroundColor : "#000000";
                 cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
@@ -1366,12 +1377,13 @@ export function cursor(options) {
                 cursor2.style.borderRadius = options.secondCursor && options.secondCursor.type === "round" ? "50%" : options.secondCursor && options.secondCursor.type === "square" ? "0" : "50%";
             }
 
-            let mouseTargets = document.querySelectorAll(options && options.zoomOnDiv ? options.zoomOnDiv : '.titlezoomcursor');
 
+            //LOOP ON EACH ELEMENT TO ZOOM IN
             for (let i = 0, len = mouseTargets.length; i < len; i++) {
                 let mouseTarget = mouseTargets[i];
                 mouseTarget.style.cursor = "none";
 
+                //MOUSEENTER : ZOOM
                 mouseTarget.addEventListener('mouseenter', e => {
                     if (cursor1) {
                         cursor1.classList.add('focus');
@@ -1386,6 +1398,7 @@ export function cursor(options) {
                     }
                 })
 
+                //MOUSEENTER : DEZOOM
                 mouseTarget.addEventListener('mouseleave', e => {
                     if (cursor1) {
                         cursor1.classList.remove('focus');
@@ -1401,6 +1414,7 @@ export function cursor(options) {
                 })
             }
 
+            //UPDATE MOOSE POSITION ON THE PAGE
             let onmousemove = function (e) {
                 let xpos = e.pageX;
                 let ypos = e.pageY;
@@ -1421,6 +1435,7 @@ export function cursor(options) {
     }
 }
 
+//FUNCTION TO ADD A NEW ELEMENT IN HTML
 export function addElement(type, classes, options = null) {
     let newDiv = document.createElement(type);
 
@@ -1471,6 +1486,7 @@ export function addElement(type, classes, options = null) {
     return newDiv;
 }
 
+//GET ALL DATAS OF A LINK
 export function getOptionLink(elem) {
     let textMyElem = elem.innerHTML;
     let linkMyElem = elem.getAttribute('href');
@@ -1487,6 +1503,7 @@ export function getOptionLink(elem) {
     }
 }
 
+//FUNCTION TO CHECK IF ELMENT IS IN VIEWPORT
 export function isElementInViewport(el) {
     let rect = el.getBoundingClientRect();
     let html = document.documentElement;
@@ -1498,6 +1515,139 @@ export function isElementInViewport(el) {
     );
 }
 
+//CREATION ANIMATION SPLITTED TEXT
+export function splitText(options) {
+
+    //PARAMS
+    let parent = options.parent;
+    let animationName = options.animationName;
+    let className = options.className;
+    let animation = options.animation ? true : false;
+    let center = animation && options.animation.center ? options.animation.center : false;
+    let reverse = animation && options.animation.reverse ? options.animation.reverse : false;
+    let word = animation && options.animation.word ? options.animation.word : false;
+    let hasKeyframe = animation && options.animation.keyframe ? true : false;
+    let keyframe = animation && options.animation.keyframe ? options.animation.keyframe : false;
+    let textWrappers = document.querySelectorAll(parent);
+    let fromCss = animation && hasKeyframe && options.animation.keyframe.from ? options.animation.keyframe.from : false;
+
+    //IMPORT BASIC CSS
+    import('fullib-js/src/css/textsplit/splitCore.css').then(({default: animationName}) => {
+    }).catch(error => 'An error occurred while loading splitCore');
+
+
+    //ADD KEYFRAME CSS FOR ANIMATION
+    if (animation && hasKeyframe) {
+        keyframe = JSON.stringify(options.animation.keyframe).replaceAll('"', '');
+        keyframe = keyframe.replaceAll('%:', '%');
+        keyframe = keyframe.replaceAll('from:', 'from');
+        keyframe = keyframe.replaceAll('to:', 'to');
+        keyframe = keyframe.replaceAll('},', '}');
+        keyframe = keyframe.replaceAll(',', ';');
+        addKeyFrame("@keyframes split-" + animationName + "" + keyframe);
+    }
+
+    //FOR EACH DIV WHO CONTAIN CLASS NAME
+    for (let i = 0, len = textWrappers.length; i < len; i++) {
+        let parent = textWrappers[i];
+        parent.classList.add('split');
+
+        //IF SPLIT BY WORDS
+        if (word) {
+            let wordsArray = parent.textContent.match(/\w+/g);
+            let htmlToReplace = "";
+            for (let wordLoop = 0, lenghtLoop = wordsArray.length; wordLoop < lenghtLoop; wordLoop++) {
+                htmlToReplace += '<span class="' + className + '">' + wordsArray[wordLoop] + '</span> ';
+            }
+            parent.innerHTML = htmlToReplace;
+
+        } else {
+            //IF SPLIT BY LETTERS
+            parent.innerHTML = parent.textContent.replace(/\S/g, "<span class='" + className + "'>$&</span>");
+        }
+
+        //PARAMS ANIMATION RELATED TO PARENT ELEMENT
+        let delay = options.animation.delay ? options.animation.delay : 0;
+        let childrens = parent.children;
+        let lenghtLetter = childrens.length;
+        let maxDelay = delay + ((delay + (delay * childrens.length)) / 2);
+
+        //IF REVERSE IS TRUE
+        if (reverse) {
+            maxDelay = delay;
+        }
+
+        //LOOP ON EACH SPAN ELEMENT
+        for (let g = 0, len2 = childrens.length; g < len2; g++) {
+
+            //ADDING DEFAULT DATA TO SPAN ELEMS
+            let elementDiv = childrens[g];
+            elementDiv.classList.add(className + "-" + g);
+            elementDiv.style.display = "inline-block";
+
+            if (animation && hasKeyframe) {
+
+                //PARAMS ANIMATION RELATED TO SPAN ELEMENT
+                let duration = options.animation.duration ? options.animation.duration : 500;
+                let iterations = options.animation.iterations ? options.animation.iterations : 1;
+
+                //ANIMATION STARTING ON CENTER
+                if (center) {
+                    //RIGHT SIDE
+                    if (g >= (lenghtLetter / 2)) {
+                        maxDelay = reverse ? maxDelay - delay : maxDelay + delay;
+                        elementDiv.style.animationDelay = maxDelay + "ms";
+
+                    } else {
+                        //LEFT SIDE
+                        maxDelay = reverse ? maxDelay + delay : maxDelay - delay;
+                        elementDiv.style.animationDelay = maxDelay + "ms";
+                    }
+                } else {
+                    //ANIMATION STARTING ON LEFT
+                    elementDiv.style.animationDelay = (delay + (delay * g)) + "ms";
+                }
+
+                //ADDING ANIMATION CSS TO SPAN ELEMENT
+                elementDiv.style.animationIterationCount = iterations;
+                elementDiv.style.animationDuration = duration + "ms";
+                elementDiv.style.animationName = 'split-' + animationName;
+                elementDiv.style.animationFillMode = 'forwards';
+                elementDiv.style.animationPlayState = 'paused';
+
+                //KEYFRAME PARAMS AVAILABLE
+                if (fromCss.opacity || fromCss.opacity === 0) {
+                    elementDiv.style.opacity = fromCss.opacity;
+                }
+                if (fromCss.transform) {
+                    elementDiv.style.transform = fromCss.transform;
+                }
+                if (fromCss["letter-spacing"]) {
+                    elementDiv.style.letterSpacing = fromCss["letter-spacing"];
+                }
+            }
+        }
+
+        //IF PARENT IN VIEWPORT ON LOAD
+        if (isElementInViewport(parent)) {
+            parent.classList.add('active');
+        }
+
+        //IF PARENT IN VIEWPORT ON SCROLL
+        window.addEventListener('scroll', function () {
+            if (isElementInViewport(parent)) {
+                parent.classList.add('active');
+            }
+        });
+    }
+}
+
+//FUNCTION TO GET RANDOM NUMBER BETWEEN TWO NUMBER
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+//FUNCTION TO ADD STYLE IN THE HEADER
+function addKeyFrame(body) {
+    document.head.insertAdjacentHTML("beforeend", '<style>' + body + '</style>')
 }

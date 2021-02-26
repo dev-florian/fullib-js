@@ -7,11 +7,9 @@
     "url": "https://github.com/dev-florian/fullib-js/issues"
   },
   "bundledDependencies": [
-    "lax.js",
     "lottie-web"
   ],
   "dependencies": {
-    "lax.js": "^2.0.3",
     "lottie-web": "^5.7.6"
   },
   "deprecated": false,
@@ -26,6 +24,7 @@
     "text",
     "effects",
     "css",
+    "gsap",
     "html",
     "full js",
     "js library"
@@ -37,5 +36,5 @@
     "type": "git",
     "url": "git+https://github.com/dev-florian/fullib-js.git"
   },
-  "version": "1.2.0"
+  "version": "1.3.0"
 }

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .row, h1 {
+        text-align: center;
+    }
+
+    .split1 span{
+        animation-play-state: paused !important;
+    }
+
+    .split1.active span{
+        animation-play-state: running !important;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<body id="body">
+<!-- HTML -->
+<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="https://dev-florian.github.io/fullib-js/">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="https://dev-florian.github.io/fullib-js/pages/scroll">Scroll</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/text">Text</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/buttons">Buttons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/reveal">Reveal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu">menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu2">menu2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu3">menu3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu4">menu4</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/menu5">menu5</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/blotter">blotter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://dev-florian.github.io/fullib-js/pages/lottie">lottie</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid" style="overflow: hidden">
+    <h1>TEXT SPLIT</h1>
+
+    <div class="row">
+        <div class="col-12 mt-5 mb-5 text-center">
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="overflow: hidden">
+    <h2 class="w-100 text-center">SPLIT 1</h2>
+
+        <div class="split1">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut magni nemo neque sequi. Architecto autem distinctio fugit incidunt ipsa, odio officiis qui quibusdam quis sequi soluta veritatis vero vitae. Numquam!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad deserunt in ipsum veniam voluptates. Ad dolor dolorem in ipsam iure laboriosam magni, modi nam natus nesciunt praesentium quod, rem reprehenderit.
+        </div>
+<br/><br/><br/>
+    <h2 class="w-100 text-center">SPLIT 2</h2>
+
+    <div class="w-100 text-center">
+        <h2 class="split2" style="font-size: 45px;">
+        I AM TRANSFORM SCALE
+        </h2>
+    </div>
+    <br/><br/><br/>
+    <div class="w-100 text-center">
+        <h2 class="w-100 text-center">SPLIT 3</h2>
+        <h2 class="split3" style="font-size: 45px;">
+        PLOPPER EFFECT
+        </h2>
+    </div>
+    <br/><br/><br/>
+    <div class="w-100 text-center">
+        <h2 class="w-100 text-center">SPLIT 4</h2>
+        <h2 class="split4" style="font-size: 45px;">
+        letterspacing EFFECT
+        </h2>
+    </div>
+    <br/><br/><br/>
+    <div class="w-100 text-center">
+        <h2 class="w-100 text-center">SPLIT 5</h2>
+        <h2 class="split5" style="font-size: 45px;">
+        letterspacing EFFECT
+        </h2>
+    </div>
+</div>
+<div class="row" style="height: 100vh"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
+<script src="../build/bundle.js"></script>
+<script>
+    if (window.innerWidth < 991) {
+        let menuButton = document.querySelector('.navbar-toggler');
+        let menuContainer = document.getElementById('navbarNav');
+
+        menuButton.onclick = function (e) {
+            menuContainer.classList.toggle('d-block');
+        }
+    }
+</script>
+</body>
+</html>
