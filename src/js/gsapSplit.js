@@ -5,18 +5,21 @@ splitText({
     parent: '.split1',
     className: 'letter',
     animation: {
-        iterations: 1,
-        duration: 1000,
+        iterations: 'infinite',
+        duration: 4000,
         delay: 10,
         word: true,
+        delayBetweenIteration: 1000,
+        smooth: '90%',
         keyframe: {
             from: {
-                transform: 'translateY(-40px)',
-                opacity: 0,
+                color: 'blue'
+            },
+            '40%': {
+                color: 'purple'
             },
             to: {
-                transform: 'translateY(0)',
-                opacity: 1
+                color: 'black'
             }
         }
     }
@@ -26,20 +29,19 @@ splitText({
     animationName: 'split2',
     parent: '.split2',
     className: 'letter',
+    word: false,
     animation: {
         iterations: "infinite",
-        duration: 4000,
+        duration: 500,
         delay: 100,
-        word: true,
+        delayBetweenIteration: 8000,
+        smooth: '90%',
         keyframe: {
             from: {
-                transform: 'scale(1)'
+                transform: 'scale(1.5) translateY(15px)'
             },
-            '20%': {
-                transform: 'scale(1.5)'
-            },
-            '40%': {
-                transform: 'scale(1)'
+            to: {
+                transform: 'scale(1) translateY(0)'
             }
         }
     }
@@ -90,18 +92,23 @@ splitText({
     animationName: 'split5',
     parent: '.split5',
     className: 'letter',
+    word: false,
     animation: {
-        center: true,
-        reverse: false,
-        iterations: 1,
-        duration: 1000,
-        delay: 100,
+        center: false,
+        reverse: true,
+        smooth: '80%',
+        iterations: 'infinite',
+        duration: 700,
+        delay: 50,
+        delayBetweenIteration: 2000,
         keyframe: {
             from: {
-                transform: 'scale(1.5)'
+                transform: 'translateX(30px) translateY(-30px)',
+                color: 'purple'
             },
             to: {
-                transform: 'scale(1)'
+                transform: 'translateX(0px) translateY(0px)',
+                color: 'black'
             }
         }
     }

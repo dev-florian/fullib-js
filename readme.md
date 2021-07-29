@@ -4,6 +4,10 @@
 Multiple animation Library in full javascript
 
 https://dev-florian.github.io/fullib-js/
+## News 1.3.1
+- Add breakpoint for cursor animation
+- Correction bugs
+
 ## News 1.3.0
 - NEW ANIMATIONS CREATION *TEXT SPLIT*
 - CORRECTION OF BUGS

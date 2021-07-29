@@ -120,24 +120,27 @@ export function generateBulb(options) {
 
 //FUNCTION TO ADD MOUSEMOOVE ANIMATION
 export function mousemove(options) {
-    document.addEventListener("mousemove", parallaxOnMouse);
+    //PARAMS
+    let selector = options && options.currentDiv ? options.currentDiv : '.mousemove';
+    let force = options && options.force ? options.force : 100;
+    let breakpoint = options && options.breakpoint ? options.breakpoint : 320;
 
-    function parallaxOnMouse(e) {
+    if(window.innerWidth > breakpoint){
+        function parallaxOnMouse(e) {
 
-        //PARAMS
-        let selector = options && options.currentDiv ? options.currentDiv : '.mousemove';
-        let force = options && options.force ? options.force : 100;
+            this.querySelectorAll(selector).forEach(layer => {
 
-        this.querySelectorAll(selector).forEach(layer => {
+                //PARAMS
+                const speed = layer.getAttribute('data-speed');
+                const x = (window.innerWidth - e.pageX * speed) / force;
+                const y = (window.innerHeight - e.pageY * speed) / force;
 
-            //PARAMS
-            const speed = layer.getAttribute('data-speed');
-            const x = (window.innerWidth - e.pageX * speed) / force;
-            const y = (window.innerHeight - e.pageY * speed) / force;
+                //ADD CSS
+                layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            })
+        }
 
-            //ADD CSS
-            layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        })
+        document.addEventListener("mousemove", parallaxOnMouse);
     }
 }
 
@@ -1525,11 +1528,16 @@ export function splitText(options) {
     let animation = options.animation ? true : false;
     let center = animation && options.animation.center ? options.animation.center : false;
     let reverse = animation && options.animation.reverse ? options.animation.reverse : false;
-    let word = animation && options.animation.word ? options.animation.word : false;
+    let word = options.word ? options.word : false;
     let hasKeyframe = animation && options.animation.keyframe ? true : false;
     let keyframe = animation && options.animation.keyframe ? options.animation.keyframe : false;
     let textWrappers = document.querySelectorAll(parent);
     let fromCss = animation && hasKeyframe && options.animation.keyframe.from ? options.animation.keyframe.from : false;
+    let delayBetweenIteration = animation && hasKeyframe && options.animation.delayBetweenIteration ? options.animation.delayBetweenIteration : false;
+    let delay = options.animation.delay ? options.animation.delay : 0;
+    let duration = options.animation.duration ? options.animation.duration : 500;
+    let iterations = options.animation.iterations ? options.animation.iterations : 1;
+    let smooth = options.animation.smooth ? options.animation.smooth : false;
 
     //IMPORT BASIC CSS
     import('fullib-js/src/css/textsplit/splitCore.css').then(({default: animationName}) => {
@@ -1544,6 +1552,28 @@ export function splitText(options) {
         keyframe = keyframe.replaceAll('to:', 'to');
         keyframe = keyframe.replaceAll('},', '}');
         keyframe = keyframe.replaceAll(',', ';');
+
+        if (delayBetweenIteration) {
+            let theDelay = 100 - ((100 * delayBetweenIteration) / (delayBetweenIteration + duration));
+            let keyframeTo = JSON.stringify(options.animation.keyframe.to).replaceAll('"', '');
+            keyframeTo = keyframeTo.replaceAll('to:', 'to');
+            keyframeTo = keyframeTo.replaceAll('},', '}');
+            keyframeTo = keyframeTo.replaceAll(',', ';');
+
+            keyframe = keyframe.replaceAll('to', theDelay + '%');
+            keyframe = keyframe.slice(0, -1) +"to"+keyframeTo+""+keyframe.slice(-1);
+        }
+
+        if(smooth){
+            let keyframeTo = JSON.stringify(options.animation.keyframe.from).replaceAll('"', '');
+            keyframeTo = keyframeTo.replaceAll('to:', 'to');
+            keyframeTo = keyframeTo.replaceAll('},', '}');
+            keyframeTo = keyframeTo.replaceAll(',', ';');
+
+            keyframe = keyframe.replaceAll('to', smooth);
+            keyframe = keyframe.slice(0, -1) +"to"+keyframeTo+""+keyframe.slice(-1);
+        }
+
         addKeyFrame("@keyframes split-" + animationName + "" + keyframe);
     }
 
@@ -1567,7 +1597,6 @@ export function splitText(options) {
         }
 
         //PARAMS ANIMATION RELATED TO PARENT ELEMENT
-        let delay = options.animation.delay ? options.animation.delay : 0;
         let childrens = parent.children;
         let lenghtLetter = childrens.length;
         let maxDelay = delay + ((delay + (delay * childrens.length)) / 2);
@@ -1586,10 +1615,6 @@ export function splitText(options) {
             elementDiv.style.display = "inline-block";
 
             if (animation && hasKeyframe) {
-
-                //PARAMS ANIMATION RELATED TO SPAN ELEMENT
-                let duration = options.animation.duration ? options.animation.duration : 500;
-                let iterations = options.animation.iterations ? options.animation.iterations : 1;
 
                 //ANIMATION STARTING ON CENTER
                 if (center) {
@@ -1610,7 +1635,15 @@ export function splitText(options) {
 
                 //ADDING ANIMATION CSS TO SPAN ELEMENT
                 elementDiv.style.animationIterationCount = iterations;
-                elementDiv.style.animationDuration = duration + "ms";
+
+                let durationInMs = duration;
+
+                if (delayBetweenIteration) {
+                    elementDiv.style.animationDuration = durationInMs+delayBetweenIteration + "ms";
+                } else {
+                    elementDiv.style.animationDuration = durationInMs + "ms";
+                }
+
                 elementDiv.style.animationName = 'split-' + animationName;
                 elementDiv.style.animationFillMode = 'forwards';
                 elementDiv.style.animationPlayState = 'paused';
