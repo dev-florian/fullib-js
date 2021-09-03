@@ -1,3 +1,24 @@
+export function customScrollBar(options) {
+    let cssScrollbar =
+        (options.currentDiv ? options.currentDiv : '.scrollbar') + "{" +
+        "scrollbar-width: " + (options.width ? options.width + 'px' : 'auto') + ";" +
+        "scrollbar-color: " + (options.scrollbarColor ? options.scrollbarColor : '#ffffff') + " " + (options.scrollbarBackground ? options.scrollbarBackground : '#000000') + ";" +
+        "}" +
+        (options.currentDiv ? options.currentDiv : '.scrollbar') + "::-webkit-scrollbar {" +
+        "width: " + (options.width ? options.width + 'px' : 'auto') + ";" +
+        "}" +
+        (options.currentDiv ? options.currentDiv : '.scrollbar') + "::-webkit-scrollbar-track {" +
+        "background: " + (options.scrollbarBackground ? options.scrollbarBackground : '#000000') + ";" +
+        "}" +
+        (options.currentDiv ? options.currentDiv : '.scrollbar') + "::-webkit-scrollbar-thumb {" +
+        "background-color: " + (options.scrollbarColor ? options.scrollbarColor : '#ffffff') + ";" +
+        "border-radius: " + (options.borderRadius ? options.borderRadius : 0) + ";" +
+        "border: " + (options.border ? options.border : 'none') + ";" +
+        "}";
+
+    document.head.insertAdjacentHTML("beforeend", '<style>' + cssScrollbar + '</style>')
+}
+
 //FUNCTION TO ADD BLOB ANIMATION TO YOUR IMAGE
 export function imageBlob(options) {
 
@@ -85,6 +106,14 @@ export function generateBulb(options) {
     let bulbsDiv = document.querySelectorAll(options.currentDiv ? options.currentDiv : '.generate-bulb');
     let minSize = options.minSize ? options.minSize : 5;
     let maxSize = options.maxSize ? options.maxSize : 30;
+    let animation = options.animation ? options.animation : false;
+    let differentSpeed = options.differentSpeed ? options.differentSpeed : false;
+    let classNames = options.classNames ? options.classNames : ['round'];
+    let referTo = options.referTo ? options.referTo : false;
+
+    if (!referTo) {
+        console.log('Missing referTo');
+    }
 
     if (bulbsDiv[0] && maxSize > minSize) {
         for (let i = 0; i < bulbsDiv.length; i++) {
@@ -92,12 +121,12 @@ export function generateBulb(options) {
             for (let g = 0; g < options.numberOfBulb; g++) {
 
                 //PARAMS RELATED FOR ONE BULB
-                let element = addElement('div', options.classNames, {addTo: containerDiv});
+                let element = addElement('div', classNames, {addTo: containerDiv});
                 let randomWith = getRandomArbitrary(minSize, maxSize);
-                let randomTop = getRandomArbitrary(0, options.referTo ? document.querySelector(options.referTo).offsetHeight : containerDiv.parentNode.offsetHeight);
+                let randomTop = getRandomArbitrary(0, options.referTo ? document.querySelector(referTo).offsetHeight : containerDiv.parentNode.offsetHeight);
                 let randomleft = getRandomArbitrary(options.fromLeft ? options.fromLeft : -200, window.innerWidth);
 
-                if (options.animationClass && options.classNames) {
+                if (options.animationClass && classNames) {
                     options.classNames.push(options.animationClass + '-' + g);
                 }
 
@@ -125,7 +154,7 @@ export function mousemove(options) {
     let force = options && options.force ? options.force : 100;
     let breakpoint = options && options.breakpoint ? options.breakpoint : 320;
 
-    if(window.innerWidth > breakpoint){
+    if (window.innerWidth > breakpoint) {
         function parallaxOnMouse(e) {
 
             this.querySelectorAll(selector).forEach(layer => {
@@ -1223,15 +1252,10 @@ export function drawsvg(options) {
     }
 }
 
-//FUNCTION TO INIT DEFAULT ANIMATION GSAP
-export function gsapScroll() {
-    import('fullib-js/src/js/gsapScroll.js').then(({default: gsapScroll}) => {
-    }).catch(error => 'An error occurred while loading gsapScroll');
-}
 
 //FUNCTION TO INIT DEFAULT ANIMATION SPLIT TEXT
-export function gsapSplit() {
-    import('fullib-js/src/js/gsapSplit.js').then(({default: gsapSplit}) => {
+export function loadSplitText() {
+    import('fullib-js/src/js/loadSplitText.js').then(({default: loadSplitText}) => {
     }).catch(error => 'An error occurred while loading gsapSplit');
 }
 
@@ -1241,12 +1265,9 @@ export function createAnimationFromTo(options) {
     if (document.querySelector(div)) {
 
         //PARAMS
-        let toggleActions = options.toggleActions ? options.toggleActions : '';
+        let toggleActions = options.toggleActions ? options.toggleActions : 'play none none reverse';
         let start = options.start ? options.start : '';
-        let scrub = options.scrub ? options.scrub : false;
-        let end = options.end ? options.end : false;
-        let pin = options.pin ? options.pin : false;
-        let snap = options.snap ? options.snap : false;
+        let onscroll = options.onscroll ? options.onscroll : false;
 
         if (!options.animation) {
             console.log('Error on gsapScroll : createAnimationFromTo');
@@ -1255,28 +1276,19 @@ export function createAnimationFromTo(options) {
 
         //CREATE GSAP ANIMATION
         gsap.utils.toArray(div).forEach(box => {
-            if (box.classList.contains('onscroll')) {
-                scrub = true;
-                if (box.classList.contains('onfull')) {
-                    end = "";
-                } else {
-                    end = "+=30%";
-                }
+            if (onscroll) {
+                let animateIn = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: box,
+                        start: start,
+                        toggleActions: toggleActions,
+                    }
+                });
+
+                animateIn.fromTo(box, options.animation.from, options.animation.to);
+            } else {
+                let animateIn = gsap.fromTo(box, options.animation.from, options.animation.to);
             }
-
-            let animateIn = gsap.timeline({
-                scrollTrigger: {
-                    trigger: box,
-                    toggleActions: toggleActions,
-                    start: start,
-                    end: end,
-                    scrub: scrub,
-                    pin: pin,
-                    snap: snap,
-                }
-            });
-
-            animateIn.fromTo(box, options.animation.from, options.animation.to);
         });
     }
 }
@@ -1339,6 +1351,7 @@ export function createAnimationTo(options) {
 }
 
 //FUNCTION TO ADD A CUSTOM CURSOR
+//FUNCTION TO ADD A CUSTOM CURSOR
 export function cursor(options) {
 
     //ONLY FOR DESKTOP BY DEFAULT
@@ -1348,22 +1361,20 @@ export function cursor(options) {
     if (window.innerWidth > removeAt) {
         if (document.querySelectorAll(options && options.currentDiv ? options.currentDiv : '.custom-cursor')[0]) {
 
-            //ADDING BASIC CSS
-            import('fullib-js/src/css/cursor/cursor.css').then(({default: cursor}) => {
-            }).catch(error => 'An error occurred while loading cursor');
-
             //CURSOR1
             let cursor1 = null;
             if (options.activeFirstCursor) {
 
                 //ADDING CSS
-                cursor1 = addElement('div', ['cursor', 'cursor-follower']);
+                cursor1 = addElement('div', ['rounded-cursor', 'cursor-follower']);
                 cursor1.style.backgroundColor = options.firstCursor && options.firstCursor.backgroundColor ? options.firstCursor.backgroundColor : "#000000";
                 cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
                 cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size + 'px' : "10px";
                 cursor1.style.border = options.firstCursor && options.firstCursor.border ? options.firstCursor.border : "";
-                cursor1.style.transition = options.firstCursor && options.firstCursor.transition ? options.firstCursor.transition : "top .1, left .1, width .5s, height .5s";
-                cursor1.style.borderRadius = options.firstCursor && options.firstCursor.type === "round" ? "50%" : options.firstCursor && options.firstCursor.type === "square" ? "0" : "50%";
+                cursor1.style.transition = options.firstCursor && options.firstCursor.transition ? options.firstCursor.transition : "top .1s, left .1s, width .5s, height .5s";
+                cursor1.style.borderRadius = options.firstCursor && options.firstCursor.type === "round" ? "50%" : options.firstCursor && options.firstCursor.type === "square" ? "0" : (options.firstCursor && options.firstCursor.type ? options.firstCursor.type : "50%");
+                cursor1.style.position = "absolute";
+                cursor1.style.zIndex = 9999;
             }
 
             //CURSOR2 ( FOLLOWED BY THE FIRST ONE )
@@ -1371,13 +1382,16 @@ export function cursor(options) {
             if (options.activeSecondCursor) {
 
                 //ADDING CSS
-                cursor2 = addElement('div', ['cursor', 'cursor-dot']);
+                cursor2 = addElement('div', ['rounded-cursor', 'cursor-dot']);
                 cursor2.style.backgroundColor = options.secondCursor && options.secondCursor.backgroundColor ? options.secondCursor.backgroundColor : "#000000";
                 cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
                 cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size + 'px' : "5px";
                 cursor2.style.border = options.secondCursor && options.secondCursor.border ? options.secondCursor.border : "";
                 cursor2.style.transition = options.secondCursor && options.secondCursor.transition ? options.secondCursor.transition : "top .25s, left .25s, width .7s, height .7s";
-                cursor2.style.borderRadius = options.secondCursor && options.secondCursor.type === "round" ? "50%" : options.secondCursor && options.secondCursor.type === "square" ? "0" : "50%";
+                cursor2.style.borderRadius = options.secondCursor && options.secondCursor.type === "round" ? "50%" : options.secondCursor && options.secondCursor.type === "square" ? "0" : (options.secondCursor && options.secondCursor.type ? options.secondCursor.type : "50%");
+                cursor2.style.position = "absolute";
+                cursor2.style.zIndex = 9999;
+
             }
 
 
@@ -1390,14 +1404,14 @@ export function cursor(options) {
                 mouseTarget.addEventListener('mouseenter', e => {
                     if (cursor1) {
                         cursor1.classList.add('focus');
-                        cursor1.style.width = options.firstCursor && options.firstCursor.size ? options.firstCursor.size * 4 + 'px' : 10 * 4 + 'px';
-                        cursor1.style.height = options.firstCursor && options.firstCursor.size ? options.firstCursor.size * 4 + 'px' : 10 * 4 + 'px';
+                        cursor1.style.width = options.firstCursor && options.firstCursor.hoverSize ? options.firstCursor.hoverSize + 'px' : options.firstCursor.size * 2 + 'px';
+                        cursor1.style.height = options.firstCursor && options.firstCursor.hoverSize ? options.firstCursor.hoverSize + 'px' : options.firstCursor.size * 2 + 'px';
                     }
 
                     if (cursor2) {
                         cursor2.classList.add('focus');
-                        cursor2.style.width = options.secondCursor && options.secondCursor.size ? options.secondCursor.size * 4 + 'px' : 5 * 4 + 'px';
-                        cursor2.style.height = options.secondCursor && options.secondCursor.size ? options.secondCursor.size * 4 + 'px' : 5 * 4 + 'px';
+                        cursor2.style.width = options.secondCursor && options.secondCursor.hoverSize ? options.secondCursor.hoverSize + 'px' : options.secondCursor.size * 2 + 'px';
+                        cursor2.style.height = options.secondCursor && options.secondCursor.hoverSize ? options.secondCursor.hoverSize + 'px' : options.secondCursor.size * 2 + 'px';
                     }
                 })
 
@@ -1534,15 +1548,16 @@ export function splitText(options) {
     let textWrappers = document.querySelectorAll(parent);
     let fromCss = animation && hasKeyframe && options.animation.keyframe.from ? options.animation.keyframe.from : false;
     let delayBetweenIteration = animation && hasKeyframe && options.animation.delayBetweenIteration ? options.animation.delayBetweenIteration : false;
-    let delay = options.animation.delay ? options.animation.delay : 0;
+    let delayBeforeFirstStart = options.animation.delayBeforeFirstStart ? options.animation.delayBeforeFirstStart : 0;
+    let delayBetweenletters = options.animation.delayBetweenletters ? options.animation.delayBetweenletters : 0;
     let duration = options.animation.duration ? options.animation.duration : 500;
     let iterations = options.animation.iterations ? options.animation.iterations : 1;
     let smooth = options.animation.smooth ? options.animation.smooth : false;
+    let hover = options.animation.hover ? options.animation.hover : false;
 
-    //IMPORT BASIC CSS
-    import('fullib-js/src/css/textsplit/splitCore.css').then(({default: animationName}) => {
-    }).catch(error => 'An error occurred while loading splitCore');
-
+    if (delayBetweenletters >= duration) {
+        console.log("delayBetweenletters can't be > to duration. Maybe it will not work as expected ");
+    }
 
     //ADD KEYFRAME CSS FOR ANIMATION
     if (animation && hasKeyframe) {
@@ -1561,20 +1576,23 @@ export function splitText(options) {
             keyframeTo = keyframeTo.replaceAll(',', ';');
 
             keyframe = keyframe.replaceAll('to', theDelay + '%');
-            keyframe = keyframe.slice(0, -1) +"to"+keyframeTo+""+keyframe.slice(-1);
+            keyframe = keyframe.slice(0, -1) + "to" + keyframeTo + "" + keyframe.slice(-1);
         }
 
-        if(smooth){
+        if (smooth) {
             let keyframeTo = JSON.stringify(options.animation.keyframe.from).replaceAll('"', '');
             keyframeTo = keyframeTo.replaceAll('to:', 'to');
             keyframeTo = keyframeTo.replaceAll('},', '}');
             keyframeTo = keyframeTo.replaceAll(',', ';');
 
             keyframe = keyframe.replaceAll('to', smooth);
-            keyframe = keyframe.slice(0, -1) +"to"+keyframeTo+""+keyframe.slice(-1);
+            keyframe = keyframe.slice(0, -1) + "to" + keyframeTo + "" + keyframe.slice(-1);
         }
 
-        addKeyFrame("@keyframes split-" + animationName + "" + keyframe);
+        window.setTimeout(() => {
+            addKeyFrame("@keyframes split-" + animationName + "" + keyframe);
+        }, delayBeforeFirstStart)
+
     }
 
     //FOR EACH DIV WHO CONTAIN CLASS NAME
@@ -1584,7 +1602,7 @@ export function splitText(options) {
 
         //IF SPLIT BY WORDS
         if (word) {
-            let wordsArray = parent.textContent.match(/\w+/g);
+            let wordsArray = parent.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim().split(' ');
             let htmlToReplace = "";
             for (let wordLoop = 0, lenghtLoop = wordsArray.length; wordLoop < lenghtLoop; wordLoop++) {
                 htmlToReplace += '<span class="' + className + '">' + wordsArray[wordLoop] + '</span> ';
@@ -1599,11 +1617,11 @@ export function splitText(options) {
         //PARAMS ANIMATION RELATED TO PARENT ELEMENT
         let childrens = parent.children;
         let lenghtLetter = childrens.length;
-        let maxDelay = delay + ((delay + (delay * childrens.length)) / 2);
+        let maxDelay = delayBetweenletters + ((delayBetweenletters + (delayBetweenletters * childrens.length)) / 2);
 
         //IF REVERSE IS TRUE
         if (reverse) {
-            maxDelay = delay;
+            maxDelay = delayBetweenletters;
         }
 
         //LOOP ON EACH SPAN ELEMENT
@@ -1620,17 +1638,17 @@ export function splitText(options) {
                 if (center) {
                     //RIGHT SIDE
                     if (g >= (lenghtLetter / 2)) {
-                        maxDelay = reverse ? maxDelay - delay : maxDelay + delay;
+                        maxDelay = reverse ? maxDelay - delayBetweenletters : maxDelay + delayBetweenletters;
                         elementDiv.style.animationDelay = maxDelay + "ms";
 
                     } else {
                         //LEFT SIDE
-                        maxDelay = reverse ? maxDelay + delay : maxDelay - delay;
+                        maxDelay = reverse ? maxDelay + delayBetweenletters : maxDelay - delayBetweenletters;
                         elementDiv.style.animationDelay = maxDelay + "ms";
                     }
                 } else {
                     //ANIMATION STARTING ON LEFT
-                    elementDiv.style.animationDelay = (delay + (delay * g)) + "ms";
+                    elementDiv.style.animationDelay = (delayBetweenletters + (delayBetweenletters * g)) + "ms";
                 }
 
                 //ADDING ANIMATION CSS TO SPAN ELEMENT
@@ -1639,14 +1657,17 @@ export function splitText(options) {
                 let durationInMs = duration;
 
                 if (delayBetweenIteration) {
-                    elementDiv.style.animationDuration = durationInMs+delayBetweenIteration + "ms";
+                    elementDiv.style.animationDuration = durationInMs + delayBetweenIteration + "ms";
                 } else {
                     elementDiv.style.animationDuration = durationInMs + "ms";
                 }
 
                 elementDiv.style.animationName = 'split-' + animationName;
                 elementDiv.style.animationFillMode = 'forwards';
-                elementDiv.style.animationPlayState = 'paused';
+
+                if (hover) {
+                    elementDiv.style.animationPlayState = 'paused';
+                }
 
                 //KEYFRAME PARAMS AVAILABLE
                 if (fromCss.opacity || fromCss.opacity === 0) {
@@ -1659,21 +1680,150 @@ export function splitText(options) {
                     elementDiv.style.letterSpacing = fromCss["letter-spacing"];
                 }
             }
+
         }
 
-        //IF PARENT IN VIEWPORT ON LOAD
-        if (isElementInViewport(parent)) {
-            parent.classList.add('active');
-        }
-
-        //IF PARENT IN VIEWPORT ON SCROLL
-        window.addEventListener('scroll', function () {
+        if (!hover) {
+            //IF PARENT IN VIEWPORT ON LOAD
             if (isElementInViewport(parent)) {
                 parent.classList.add('active');
             }
-        });
+
+            //IF PARENT IN VIEWPORT ON SCROLL
+            window.addEventListener('scroll', function () {
+                if (isElementInViewport(parent)) {
+                    parent.classList.add('active');
+                }
+            });
+        }
+
+
+        //IF ON HOVER
+        if (hover) {
+            parent.addEventListener('mouseenter', function () {
+                parent.classList.add('active');
+            });
+            parent.addEventListener('mouseleave', function () {
+                parent.classList.remove('active');
+            });
+        }
+
     }
 }
+
+// export function animation(options) {
+//     let classNames = options.classNames ? options.classNames : false;
+//     let isScroll = options.scroll ? options.scroll : false;
+//     let duration = options.duration ? options.duration : 500;
+//     let fromCss = options.from ? options.from : null;
+//     let toCss = options.to ? options.to : null;
+//     let start = options.start ? options.start : null;
+//     let end = options.end ? options.end : null;
+//     let screenHeight = window.screen.height;
+//
+//     //css
+//     let fromCssY = fromCss.y ? fromCss.y : 0;
+//     let toCssY = toCss.y ? toCss.y : 0;
+//
+//     let fromCssOpacity = fromCss.y ? fromCss.y : false;
+//     let toCssOpacity = toCss.y ? toCss.y : false;
+//
+//     let fromCssX = fromCss.x ? fromCss.x : false;
+//     let toCssX = toCss.x ? toCss.x : false;
+//
+//     let fromCssScale = fromCss.scale ? fromCss.scale : false;
+//     let toCssScale = toCss.scale ? toCss.scale : false;
+//
+//     let fromCssRotate = fromCss.rotate ? fromCss.rotate : false;
+//     let toCssRotate = toCss.rotate ? toCss.rotate : false;
+//     //end
+//
+//     if (!classNames) {
+//         console.log('classNames missing');
+//     }
+//
+//     let divs = document.querySelectorAll(classNames);
+//
+//
+//     divs.forEach((elem) => {
+//         if (fromCss.opacity || fromCss.opacity === 0) {
+//             elem.style.opacity = fromCss.opacity;
+//         }
+//
+//         let transformCss = "";
+//
+//         if(fromCssX && toCssX){
+//             transformCss += "translateX(" + fromCssX + "px) ";
+//         }
+//
+//         if(fromCssY && toCssY){
+//             transformCss += "translateY(" + fromCssY + "px) ";
+//         }
+//
+//         if(fromCssScale && toCssScale){
+//             transformCss += "scale(" + fromCssScale + "px) ";
+//         }
+//
+//         if(fromCssRotate && toCssRotate){
+//             transformCss += "rotate(" + fromCssRotate + "px) ";
+//         }
+//
+//
+//         elem.style.transform = transformCss;
+//
+//     });
+//
+//
+//     if (isScroll) {
+//
+//         window.addEventListener("scroll", (event) => {
+//             let scrollGlobal = window.scrollY;
+//             divs.forEach((elem) => {
+//                 let scrollPositionToElem = elem.getBoundingClientRect().top;
+//
+//                 if (scrollPositionToElem >= 0 && scrollPositionToElem <= screenHeight) {
+//
+//                     let currentPurcent = 100 - ((scrollPositionToElem * 100) / screenHeight);
+//                     let resPurcent = currentPurcent / 100;
+//
+//                     if (toCssOpacity) {
+//                         let opacityRes = calcCss(fromCssOpacity, toCssOpacity, resPurcent);
+//                         elem.style.opacity = opacityRes;
+//                     }
+//
+//                     let transformCss = "";
+//
+//                     if(fromCssX && toCssX){
+//                         let cssXRes = calcCss(fromCssX, toCssX, resPurcent);
+//                         transformCss += "translateX(" + cssXRes + "px) ";
+//                     }
+//
+//                     if(fromCssY && toCssY){
+//                         let cssYRes = calcCss(fromCssY, toCssY, resPurcent);
+//                         transformCss += "translateY(" + cssYRes + "px) ";
+//                     }
+//
+//                     if(fromCssScale && toCssScale){
+//                         let cssScaleRes = calcCss(fromCssScale, toCssScale, resPurcent);
+//                         transformCss += "scale(" + cssScaleRes + "px) ";
+//                     }
+//
+//                     if(fromCssRotate && toCssRotate){
+//                         let cssRotateRes = calcCss(fromCssRotate, toCssRotate, resPurcent);
+//                         transformCss += "rotate(" + cssRotateRes + "px) ";
+//                     }
+//
+//
+//                     elem.style.transform = transformCss;
+//                 }
+//             });
+//         });
+//     }
+// }
+//
+// function calcCss(from, to, purcent) {
+//     return (purcent * to) / from ? (purcent * to) / from : false;
+// }
 
 //FUNCTION TO GET RANDOM NUMBER BETWEEN TWO NUMBER
 function getRandomArbitrary(min, max) {

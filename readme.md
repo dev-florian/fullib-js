@@ -4,6 +4,23 @@
 Multiple animation Library in full javascript
 
 https://dev-florian.github.io/fullib-js/
+
+## News 1.4.0
+###[ new : custom scrollBar ]
+- Correction bugs
+- Rewrite splittext
+
+
+###[ Update : splitText ]
+- New effect : hover
+- New variables :
+    * delayBetweenIteration
+    * delayBeforeFirstStart ( replace old : delay )
+    * delayBetweenletters
+    
+###[ Update : cursor ]
+- Added hoverSize variable
+- 'type' now accept custom radius ( 'round' / 'square' / '35%', '36%' etc ) 
 ## News 1.3.1
 - Add breakpoint for cursor animation
 - Correction bugs
@@ -56,7 +73,7 @@ https://dev-florian.github.io/fullib-js/
 ## Installation
 Use yarn :
 ```python
-yard add fullib-js
+yarn add fullib-js
 ```
 Dependencies
 ```python
@@ -96,22 +113,23 @@ splitText({
     animationName: 'split4',
     parent: '.split4',
     className: 'letter',
-    animation: {
-        iterations: 1,
-        duration: 1000,
+        animation: {
+        iterations: 'infinite',
+        hover: true,
         word: true,
-        center: true,
-        reverse: true,
-        delay: 200,
+        delayBeforeFirstStart: 0, // duration of animation letter
+        delayBetweenletters: 10, // delay betwen each anim letter
+        delayBetweenIteration: 1000, // delay between full anim loop
+        smooth: '50%',
         keyframe: {
             from: {
-                'letter-spacing': '10px',
+                color: 'blue'
             },
-            "50%": {
-                'letter-spacing': '2px',
+            '40%': {
+                color: 'purple'
             },
             to: {
-                'letter-spacing': '0px',
+                color: 'tomato'
             }
         }
     }
@@ -423,7 +441,7 @@ menu1();
 ## WEBGL
 ### Blotter effect ( text distortion on scroll )
 
-List of effects 
+List of effects
 ```python
 liquid
 liquid-2
@@ -444,7 +462,7 @@ blotter();
 
 <div class="blotter" data-blotter-effect="liquid" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120" data-blotter-color="#c69f64">ABC</div>
 ```
-Warning : 
+Warning :
 -You have to put the blotter className to your element
 -You have to only put a valid string in the div
 -The font must be loaded before the plugin
