@@ -1,7 +1,7 @@
 import {
     cursor,
-    gsapScroll,
-    gsapSplit,
+    animation,
+    textSplit,
     createAnimationFromTo,
     button1,
     button3,
@@ -18,13 +18,6 @@ import {
     button14,
     button15,
     share,
-    text1,
-    text2,
-    text3,
-    text4,
-    text5,
-    text6,
-    text7,
     reveal1,
     reveal2,
     reveal3,
@@ -47,13 +40,23 @@ import {
     mousemove,
     generateBulb,
     imageBlob,
-    orbit
+    orbit,
+    customScrollBar,
+    loadScrollAnimation,
 } from "fullib-js";
 
+loadScrollAnimation();
+
+customScrollBar({
+    currentDiv: '*',
+    width: 8,
+    border: '1px solid #000', //ONLY WORK ON WEBKIT : chrome / edge
+    borderRadius: '25%', //ONLY WORK ON WEBKIT : chrome / edge
+    scrollbarBackground: 'gray',
+    scrollbarColor: 'white',
+});
 
 
-gsapScroll();
-gsapSplit();
 
 cursor({
     activeFirstCursor: true,
@@ -84,13 +87,6 @@ button13();
 button14();
 button15();
 share();
-text1();
-text2();
-text3();
-text4();
-text5();
-text6();
-text7();
 reveal1();
 reveal2();
 reveal3();
@@ -115,8 +111,8 @@ parallax({
     ]
 });
 changeBackground({
-    backgroundColor: "#ffd5ce",
-    currentDiv: ".change-background",
+    backgroundColor: "#f45365",
+    currentDiv: ".mycontainer",
     animation: "1s linear",
 });
 drawsvg();
@@ -134,12 +130,12 @@ generateBulb({
     minSize: 5,
     maxSize: 30,
     border: "1px solid #1a2b63",
-    numberOfBulb: 49,
+    numberOfBulb: 40,
     type: 'round', //round or square
     classNames: ['round'],
     animationClass: 'customanimation',
     fromLeft: -200, // if animation on better to see element arrived on screen cutted
-    differentSpeed: true //only available for lax-parallax-right and if numberOfBulb < 50
+    animate: true,
 });
 
 mousemove();

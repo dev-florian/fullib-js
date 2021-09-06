@@ -1,9 +1,17 @@
 # FULLIB-JS
 ![Pres](github-ressources/pres.jpg?raw=true "Pres")
 
-Multiple animation Library in full javascript
+Multiple animation Library 
+Only native JS
 
 https://dev-florian.github.io/fullib-js/
+
+## News 1.5
+###[ new function : animation ]
+###[ new function : customScrollBar ]
+- Correction generate-bulb
+- Added options for cursor
+- Correction bugs
 
 ## News 1.4.0
 ###[ new : custom scrollBar ]
@@ -21,54 +29,7 @@ https://dev-florian.github.io/fullib-js/
 ###[ Update : cursor ]
 - Added hoverSize variable
 - 'type' now accept custom radius ( 'round' / 'square' / '35%', '36%' etc ) 
-## News 1.3.1
-- Add breakpoint for cursor animation
-- Correction bugs
 
-## News 1.3.0
-- NEW ANIMATIONS CREATION *TEXT SPLIT*
-- CORRECTION OF BUGS
-- ADDING COMMMENTARY
-
-
-## News 1.2.0
-
-![Scroll down](github-ressources/scroll-down.jpg?raw=true "Scroll down")
-
-- NEW ANIMATION : orbit
-- UPDATE : text2
-- BIG UPDATE : parallax
-- REMOVED LAX
-- NEW ANIMATIONS GSAP
-- CORRECTION LOTTIE
-- CREATE YOUR CUSTOM ANIMATIONS
-
-## News 1.1.3
-- BLOTTER : Mobile now displaying !
-- BLOTTER : Reduce animation to avoid lags on mobile
-- CURSOR : Adding option 'removeAt'
-## News 1.1.2
-- Correction responsive for website
-- Adding autoResponsive option for imageblob
-- Removing cursor cursor for Mobile & Tablet
-## News 1.1.1
-- Removed useless dependencies
-## News 1.1.0
-
-![Rocket Power](github-ressources/rocket-power.jpg?raw=true "Rocket Power")
-
-- PUBLIC ACCESS
-- Transforming array to object on call
-- Corrections for responsive
-- Refractor for better performance
-- Adding options on all callable function {currentDiv : ".myDiv"} for better customization
-- NEW ANIMATION : mousemove
-- NEW ANIMATION : generateBulb
-- NEW ANIMATION : imageBlob
-- BIG UPDATE : cursor
-- 3 NEW BUTTONS
-- Add minify js
-- Removing WebGls hover effect (too heavy)
 
 ## Installation
 Use yarn :
@@ -80,7 +41,68 @@ Dependencies
 "lottie-web": "^5.7.6"
 ```
 
-## [NEW] TextSplit Creation
+## [NEW] animation Creation
+How To use ?
+```python
+import {animation} from "fullib-js";
+
+//BASIC EXAMPLE animation on scroll
+animation({
+    classNames: '.scroll-lefttoright',
+    scroll: true, //default true
+    start: '0%', //default 0%
+    end: '100%', //default 100%
+    measure: 'px', //default px
+    from: {
+        x: -100
+    },
+    to: {
+        x: 0,
+    }
+});
+
+<div class="scroll-lefttoright">I AM A TEST</div>
+```
+Other example ( anim without scroll trigger but on viewport )
+
+```python
+import {animation} from "fullib-js";
+
+//BASIC EXAMPLE
+animation({
+    classNames: '.scroll-lefttoright',
+    scroll: false,
+    delay: 0, //default 0
+    duration: 500, //default 500
+    measure: 'px', //default px
+    from: {
+        x: -100
+    },
+    to: {
+        x: 0,
+    }
+});
+
+<div class="scroll-lefttoright">I AM A TEST</div>
+```
+
+## [NEW] customScrollBar
+How To use ?
+```python
+import {customScrollBar} from "fullib-js";
+
+//BASIC EXAMPLE
+customScrollBar({
+    currentDiv: '*',
+    width: 8,
+    border: '1px solid #000', //ONLY WORK ON WEBKIT : chrome / edge
+    borderRadius: '25%', //ONLY WORK ON WEBKIT : chrome / edge
+    scrollbarBackground: 'gray',
+    scrollbarColor: 'white',
+});
+```
+
+## TextSplit Creation
 How To use ?
 ```python
 import {splitText} from "fullib-js";
@@ -118,7 +140,7 @@ splitText({
         hover: true,
         word: true,
         delayBeforeFirstStart: 0, // duration of animation letter
-        delayBetweenletters: 10, // delay betwen each anim letter
+        delayBetweenLetters: 10, // delay betwen each anim letter
         delayBetweenIteration: 1000, // delay between full anim loop
         smooth: '50%',
         keyframe: {
@@ -138,123 +160,20 @@ splitText({
 <div class="split4">I AM A TEST</div>
 ```
 
-## GSAP LIBRARY
-https://github.com/alexfoxy/lax.js
+## MOUSEMOOVE
 
-### List of custom classes
-```python
-scroll-lefttoright
-scroll-righttoleft
-scroll-toptobottom
-scroll-bottomtotop
-scroll-rotateleft
-scroll-rotateright
-scroll-scaleup
-scroll-scaledown
-scroll-opacity scroll-toptobottom
-scroll-parallaxleft
-scroll-parallaxright
-scroll-light-parallaxleft
-scroll-light-parallaxright
-scroll-light-parallaxtop
-scroll-light-parallaxbottom
-scroll-full-rotateleft
-scroll-full-rotateright
-```
-How To use ?
-```python
-import {gsapScroll} from "fullib-js";
-gsapScroll();
+When mooving the mouse, it mooves the content ( related to mouse position )
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
-```
-Then add the class to your div !
-
-### CUSTOM ANIMATION
 How to use ?
+
+Easy example
 ```python
-import {createAnimationFromTo} from "fullib-js";
+import {mousemove} from "fullib-js";
+mousemove();
 
-//scroll opacity 0 to 1 animation
-//reference to gsap library
-gsap.registerPlugin(ScrollTrigger);
-createAnimationFromTo({
-    div: '.scroll-opacity',
-    toggleActions: 'restart pause restart pause',
-    start: "top 100%",
-    animation: {
-        from: {
-            autoAlpha: 0
-        },
-        to: {
-            autoAlpha: 1,
-            duration: 1,
-        }
-    }
-});
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
-```
-
-How the function looks like ?
-```python
-export function createAnimationFromTo(options) {
-    let div = options.div;
-    let toggleActions = options.toggleActions ? options.toggleActions : '';
-    let start = options.start ? options.start : '';
-    let scrub = options.scrub ? options.scrub : false;
-    let end = options.end ? options.end : false;
-    let pin = options.pin ? options.pin : false;
-    let snap = options.snap ? options.snap : false;
-
-    if (!options.animation) {
-        console.log('Error on gsapScroll : createAnimationFromTo');
-        console.log(div);
-    }
-
-    gsap.utils.toArray(div).forEach(box => {
-        if (box.classList.contains('onscroll')) {
-            scrub = true;
-            if (box.classList.contains('onfull')) {
-                end = "";
-            } else {
-                end = "+=30%";
-            }
-        }
-
-        let animateIn = gsap.timeline({
-            scrollTrigger: {
-                trigger: box,
-                toggleActions: toggleActions,
-                start: start,
-                end: end,
-                scrub: scrub,
-                pin: pin,
-                snap: snap,
-            }
-        });
-
-        animateIn.fromTo(box, options.animation.from, options.animation.to);
-    });
-}
-```
-
-
-
-## DRAWSVG
-Put by default this class on your div :
-```python
-drawsvg
-```
-How To use ?
-```python
-import {drawSvg} from "fullib-js";
-drawSvg();
+<div class="firstcard mousemove" data-speed="3">
+  <img width="50" height="50" src="https://images.freeimages.com/images/large-previews/08e/up-close-personal-2-1359478.jpg">
+</div>
 ```
 
 ## CURSOR
@@ -266,10 +185,12 @@ import {cursor} from "fullib-js";
 cursor({
     activeFirstCursor: true, //essential
     activeSecondCursor: false, //essential
-    currentDiv: "#body", //essential
+    currentDiv: "*", //essential
     zoomOnDiv: ".tohover",
+    removeAt: 991,
     firstCursor: {
         size: 10,
+        hoverSize: 15,
         backgroundColor: "#000000",
         border: "1px solid #000000",
         type: 'square', // round or square
@@ -277,6 +198,7 @@ cursor({
     }
     secondCursor: {
         size: 10,
+        hoverSize: 15,
         backgroundColor: "#000000",
         border: "1px solid #000000",
         type: 'square', // round or square
@@ -284,38 +206,33 @@ cursor({
     }
 });
 ```
-Then add "custom-cursor" to your body !
-If you want to zoom cursor on elements, simply add the class "titlezoomcursor" to the elements wanted
 
-## TEXT
-Put by default one class on your div.
-
+## Change color of bg if in viewport
 ```python
-text1
-text2
-text3
-text4
-text5
-text6
-text7
+change-background
+```
+How to use ?
+
+Easy example
+```python
+import {changeBackground} from "fullib-js";
+changeBackground({
+    backgroundColor: "#ffd5ce", //bgColor
+    currentDiv: ".change-background", //divInViewPort
+    animation: "1s linear" //Animation
+});
 ```
 
+## DRAWSVG
+Put by default this class on your div :
+```python
+drawsvg
+```
 How To use ?
-
-Easy example for 'text1'
 ```python
-import {text1} from "fullib-js";
-text1();
+import {drawSvg} from "fullib-js";
+drawSvg();
 ```
-
-Exceptions [UPDATE]
-```python
-import {text2} from "fullib-js";
-text2();
-
- <div class="text2" data-backgroundImage="https://static.pexels.com/photos/4827/nature-forest-trees-fog.jpeg">NATURE</div>
-```
-Simply add the class on the text ('text1', 'text2'......) for different view or add {currentDiv: ".myDiv"} for customization.
 
 ## REVEAL
 
@@ -467,21 +384,6 @@ Warning :
 -You have to only put a valid string in the div
 -The font must be loaded before the plugin
 
-## Change color of bg if in viewport
-```python
-change-background
-```
-How to use ?
-
-Easy example
-```python
-import {changeBackground} from "fullib-js";
-changeBackground({
-    backgroundColor: "#ffd5ce", //bgColor
-    currentDiv: ".change-background", //divInViewPort
-    animation: "1s linear" //Animation
-});
-```
 
 ## LOTTIE
 https://lottiefiles.com/community
@@ -494,22 +396,6 @@ import { lottie } from "fullib-js";
 lottie();
 
 <div class="mt-5 mb-5 lottie" data-lottie-scroll="false" data-lottie-click="true" data-lottie-hover="false" data-lottie-file="../../lottie/button.json" style="width: 150px;"></div>
-```
-
-## MOUSEMOOVE
-
-When mooving the mouse, it mooves the content ( related to mouse position )
-
-How to use ?
-
-Easy example
-```python
-import {mousemove} from "fullib-js";
-mousemove();
-
-<div class="firstcard mousemove" data-speed="3">
-  <img width="50" height="50" src="https://images.freeimages.com/images/large-previews/08e/up-close-personal-2-1359478.jpg">
-</div>
 ```
 
 ## IMAGEBLOB
