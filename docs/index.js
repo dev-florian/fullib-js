@@ -32,7 +32,6 @@ import {
     drawsvg,
     menu1,
     menu2,
-    menu3,
     menu4,
     menu5,
     blotter,
@@ -59,10 +58,11 @@ customScrollBar({
 
 
 cursor({
+    removeOriginalCursor: true,
     activeFirstCursor: true,
     activeSecondCursor: false,
     currentDiv: "#index",
-    zoomOnDiv: ".chapter",
+    zoomOnDiv: ".chapter, .nav-link",
     removeAt: 991,
     firstCursor: {
         size: 10,
@@ -116,9 +116,10 @@ changeBackground({
     animation: "1s linear",
 });
 drawsvg();
-menu1();
+menu1({
+    direction: 'bottom-left'
+});
 menu2();
-menu3();
 menu4();
 menu5();
 blotter();

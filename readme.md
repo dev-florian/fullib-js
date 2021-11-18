@@ -6,6 +6,20 @@ Only native JS
 
 https://dev-florian.github.io/fullib-js/
 
+## News 1.5.4
+- [Menu] Added direction
+- [Menu3] This Menu has been removed
+- [Cursor] Placement is now on the middle of the cursor ( it was on top-left )
+- [Cursor] Added new options : removeOriginalCursor ( true / false ) to force not removing the default cursor
+
+## News 1.5.3
+- [Animation] Correction bug when scroll option was set to false
+- [Animation] Correction bug when animation was finished and the position was not clean ( eg: finish on -2px )
+- [General improvment] New better function to trigger ViewPort element
+
+## News 1.5.1
+- [Animation] Correction bug where the current scroll position was not loaded on pageLoad
+
 ## News 1.5
 ###[ new function : animation ]
 ###[ new function : customScrollBar ]
@@ -187,6 +201,7 @@ cursor({
     activeSecondCursor: false, //essential
     currentDiv: "*", //essential
     zoomOnDiv: ".tohover",
+    removeOriginalCursor: true,
     removeAt: 991,
     firstCursor: {
         size: 10,
@@ -312,7 +327,9 @@ Easy example for 'menu1'
 
 ```python
 import {menu1} from "fullib-js";
-menu1();
+menu1({
+    direction: 'bottom-left' // top-left top-right bottom-left bottom-right
+});
 
 <nav class="menu1 fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
