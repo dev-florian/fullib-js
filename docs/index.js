@@ -79,7 +79,6 @@ button12();
 button13();
 button14();
 button15();
-share();
 reveal1();
 reveal2();
 reveal3();
