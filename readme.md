@@ -6,6 +6,22 @@ Only native JS
 
 https://dev-florian.github.io/fullib-js/
 
+### FUTURE... ( priority )
+- THREE JS ANIMATION ( 3D )
+- Optimisations
+- New anim options ( trigger elem on the top / middle / bottom )
+- New split text animation
+
+## News 1.6.0
+- [Animation] Detection scroll now take full height of element ( don't stop at the top of the element )
+- [Animation] Added new function for choosing transition
+- [generateBulb] Correction of bulb was not totally in the div
+- [lottieweb] Remove depedency
+- [createAnimationTo] Remove function ( old was with gsap )
+- [loadSplitText] Remove function ( old was with gsap )
+- [loadScrollAnimation] Remove function ( old was with gsap )
+- [share button] Remove function
+
 ## News 1.5.4
 - [Menu] Added direction
 - [Menu3] This Menu has been removed

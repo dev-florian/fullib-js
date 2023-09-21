@@ -123,7 +123,7 @@ export function generateBulb(options) {
                 //PARAMS RELATED FOR ONE BULB
                 let element = addElement('div', classNames, {addTo: containerDiv});
                 let randomWith = getRandomArbitrary(minSize, maxSize);
-                let randomTop = getRandomArbitrary(0, options.referTo ? document.querySelector(referTo).offsetHeight : containerDiv.parentNode.offsetHeight);
+                let randomTop = getRandomArbitrary(-maxSize, options.referTo && document.querySelector(referTo) ? (document.querySelector(referTo).offsetHeight - maxSize) : (containerDiv.parentNode.offsetHeight - maxSize));
                 let randomleft = getRandomArbitrary(options.fromLeft ? options.fromLeft : -200, window.innerWidth);
 
                 if (options.animationClass && classNames) {
@@ -282,68 +282,72 @@ export function lottie() {
     let lottiesOnScroll = document.querySelectorAll('.lottie-player');
 
     if (lotties[0]) {
-        import('lottie-web/build/player/lottie.min').then(({default: bodymovin}) => {
-            for (let i = 0; i < lotties.length; i++) {
+        for (let i = 0; i < lotties.length; i++) {
 
-                //PARAMS
-                let mydiv = lotties[i];
-                let file = mydiv.getAttribute('data-lottie-file');
-                let click = mydiv.getAttribute('data-lottie-click');
-                let hover = mydiv.getAttribute('data-lottie-hover');
-                let scroll = mydiv.getAttribute('data-lottie-scroll');
-                let autoplay = true;
-                let loop = true;
+            //PARAMS
+            let mydiv = lotties[i];
+            let file = mydiv.getAttribute('data-lottie-file');
+            let click = mydiv.getAttribute('data-lottie-click');
+            let hover = mydiv.getAttribute('data-lottie-hover');
+            let scroll = mydiv.getAttribute('data-lottie-scroll');
+            let render = mydiv.getAttribute('data-lottie-render') ? mydiv.getAttribute('data-lottie-render') : 'canvas';
+            let speed = mydiv.getAttribute('data-lottie-speed');
+            let autoplay = true;
+            let loop = true;
 
-                if (click) {
-                    loop = false;
-                    autoplay = false;
-                }
-
-                if (hover) {
-                    loop = true;
-                    autoplay = false;
-                }
-
-                if (scroll) {
-                    loop = true;
-                    autoplay = false;
-                }
-
-                let animation = bodymovin.loadAnimation({
-                    container: mydiv,
-                    renderer: 'svg',
-                    loop: loop,
-                    autoplay: autoplay,
-                    path: file
-                });
-
-
-                if (click) {
-                    mydiv.addEventListener('click', () => {
-                        animation.play();
-                    });
-                }
-
-                if (hover) {
-                    mydiv.addEventListener("mouseenter", function (event) {
-                        animation.play();
-                    });
-                    mydiv.addEventListener("mouseover", function (event) {
-                        animation.pause();
-                    });
-                }
-
-                if (scroll) {
-                    let animationStart = 0;
-                    document.addEventListener("scroll", function (event) {
-                        if (isElementInViewport(mydiv)) {
-                            animation.playSegments([animationStart, animationStart + 1], true);
-                            animationStart++;
-                        }
-                    });
-                }
+            if (click) {
+                loop = false;
+                autoplay = false;
             }
-        }).catch(error => 'An error occurred while loading lottie web');
+
+            if (hover) {
+                loop = true;
+                autoplay = false;
+            }
+
+            if (scroll) {
+                loop = true;
+                autoplay = false;
+            }
+
+            let animation = bodymovin.loadAnimation({
+                container: mydiv,
+                renderer: render,
+                loop: loop,
+                autoplay: autoplay,
+                path: file
+            });
+
+            if (speed) {
+                animation.setSpeed(speed);
+            }
+
+
+            if (click) {
+                mydiv.addEventListener('click', () => {
+                    animation.play();
+                });
+            }
+
+            if (hover) {
+                mydiv.addEventListener("mouseenter", function (event) {
+                    animation.play();
+                });
+                mydiv.addEventListener("mouseover", function (event) {
+                    animation.pause();
+                });
+            }
+
+            if (scroll) {
+                let animationStart = 0;
+                document.addEventListener("scroll", function (event) {
+                    if (isElementInViewport(mydiv)) {
+                        animation.playSegments([animationStart, animationStart + 1], true);
+                        animationStart++;
+                    }
+                });
+            }
+        }
     }
 }
 
@@ -503,71 +507,6 @@ export function reveal9(options) {
         import('fullib-js/src/css/reveal/reveal9.css').then(({default: reveal9}) => {
         }).catch(error => 'An error occurred while loading reveal9');
     }
-}
-
-export function blotter() {
-    let blotters = document.getElementsByClassName('blotter');
-    if (blotters[0]) {
-        bottlerFirstScript();
-    }
-}
-
-function bottlerFirstScript() {
-    var url = "https://gitcdn.link/repo/codrops/TextDistortionEffects/master/js/blotter.min.js";
-
-    var script = document.createElement('script');
-    script.src = url;
-    script.type = 'text/javascript';
-    var done = false;
-    script.onload = script.onreadystatechange = function () {
-        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            bottlerSecondScript();
-        }
-    };
-    document.getElementsByTagName("head")[0].appendChild(script);
-}
-
-function bottlerSecondScript() {
-    var url = "https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/liquidDistortMaterial.min.js";
-
-    var script = document.createElement('script');
-    script.src = url;
-    script.type = 'text/javascript';
-    var done = false;
-    script.onload = script.onreadystatechange = function () {
-        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            bottlerThirdScript();
-        }
-    };
-    document.getElementsByTagName("head")[0].appendChild(script);
-}
-
-function bottlerThirdScript() {
-    var url = "https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/rollingDistortMaterial.min.js";
-
-    var script = document.createElement('script');
-    script.src = url;
-    script.type = 'text/javascript';
-    var done = false;
-    script.onload = script.onreadystatechange = function () {
-        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-            runBottler();
-        }
-    };
-    document.getElementsByTagName("head")[0].appendChild(script);
-}
-
-function runBottler() {
-    import('fullib-js/src/js/blotter/index').then(({default: indexBlotter}) => {
-    }).catch(error => 'An error occurred while loading indexBlotter');
-}
-
-export function share() {
-    import('fullib-js/src/css/share/share.css').then(({default: share}) => {
-    }).catch(error => 'An error occurred while loading share');
-
-    import('fullib-js/src/js/share.js').then(({default: sharejs}) => {
-    }).catch(error => 'An error occurred while loading sharejs');
 }
 
 export function button1(options) {
@@ -1095,109 +1034,6 @@ export function drawsvg(options) {
 }
 
 
-//FUNCTION TO INIT DEFAULT ANIMATION SPLIT TEXT
-export function loadSplitText() {
-    import('fullib-js/src/js/loadSplitText').then(({default: loadSplitText}) => {
-    }).catch(error => 'An error occurred while loading gsapSplit');
-}
-
-//FUNCTION TO INIT DEFAULT SCROLL ANIMATION
-export function loadScrollAnimation() {
-    import('fullib-js/src/js/loadScrollAnimation').then(({default: loadScrollAnimation}) => {
-    }).catch(error => 'An error occurred while loading loadScrollAnimation');
-}
-
-//FUNCTION TO CREATE CUSTOM ANIMATION
-export function createAnimationFromTo(options) {
-    let div = options.div;
-    if (document.querySelector(div)) {
-
-        //PARAMS
-        let toggleActions = options.toggleActions ? options.toggleActions : 'play none none reverse';
-        let start = options.start ? options.start : '';
-        let onscroll = options.onscroll ? options.onscroll : false;
-
-        if (!options.animation) {
-            console.log('Error on gsapScroll : createAnimationFromTo');
-            console.log(div);
-        }
-
-        //CREATE GSAP ANIMATION
-        gsap.utils.toArray(div).forEach(box => {
-            if (onscroll) {
-                let animateIn = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: box,
-                        start: start,
-                        toggleActions: toggleActions,
-                    }
-                });
-
-                animateIn.fromTo(box, options.animation.from, options.animation.to);
-            } else {
-                let animateIn = gsap.fromTo(box, options.animation.from, options.animation.to);
-            }
-        });
-    }
-}
-
-//FUNCTION HORIZONTAL && VERTICAL ANIMATION
-export function createAnimationTo(options) {
-    let div = options.div;
-    let scrub = options.scrub ? options.scrub : false;
-    let end = options.end ? options.end : false;
-    let pin = options.pin ? options.pin : false;
-    let snap = options.snap ? options.snap : false;
-    let xPercent = options.xPercent ? options.xPercent : "";
-    let ease = options.ease ? options.ease : "none";
-    let trigger = options.trigger ? options.trigger : "";
-    let container = options.container ? options.container : "";
-    let duration = options.duration ? options.duration : "";
-
-    if (options.type && options.type === "scroll-horizontal") {
-        let divs = gsap.utils.toArray(div);
-        gsap.to(divs, {
-            xPercent: -100 * (divs.length - 1),
-            ease: ease,
-            scrollTrigger: {
-                trigger: container,
-                pin: pin,
-                scrub: scrub,
-                snap: 1 / (divs.length - 1),
-                // base vertical scrolling on how wide the container is so it feels more natural.
-                end: () => "+=" + document.querySelector(container).offsetWidth
-            }
-        });
-    } else if (options.type && options.type === "scroll-vertical") {
-
-        let divs = gsap.utils.toArray(div);
-
-        function goToSection(div) {
-            gsap.to(window, {
-                scrollTo: {y: div, autoKill: false},
-                duration: duration,
-                ease: ease
-            });
-        }
-
-        divs.forEach(div => {
-            ScrollTrigger.create({
-                trigger: div,
-                onEnter: () => goToSection(div),
-            });
-
-            ScrollTrigger.create({
-                trigger: div,
-                start: "bottom bottom",
-                onEnterBack: () => goToSection(div),
-            });
-        });
-
-    } else {
-        //WORKING ON
-    }
-}
-
 //FUNCTION TO ADD A CUSTOM CURSOR
 export function cursor(options) {
 
@@ -1213,7 +1049,7 @@ export function cursor(options) {
 
             let removeOriginalCursor = options.removeOriginalCursor ? options.removeOriginalCursor : false;
 
-            if(removeOriginalCursor){
+            if (removeOriginalCursor) {
                 document.body.style.cursor = 'none';
             }
 
@@ -1581,6 +1417,7 @@ export function animation(options) {
     let toCss = options.to ? options.to : false;
     let start = options.start ? options.start : '0%';
     let end = options.end ? options.end : '100%';
+    let timingFunction = options.timingFunction ? options.timingFunction : 'ease';
     let screenHeight = window.screen.height;
     let measure = options.measure ? options.measure : 'px';
 
@@ -1621,14 +1458,14 @@ export function animation(options) {
 
         if (!isScroll) {
             if (isElementInViewport(elem)) {
-                elem.style.transition = 'all ' + duration + 'ms ' + delay + 'ms';
+                elem.style.transition = 'all ' + duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
                 elem.style.transform = cssPosition.transformToCss;
                 elem.style.opacity = cssPosition.toCssOpacity;
             }
 
             window.addEventListener("scroll", (event) => {
                 if (isElementInViewport(elem)) {
-                    elem.style.transition = 'all ' + duration + 'ms ' + delay + 'ms';
+                    elem.style.transition = 'all ' + duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
                     elem.style.transform = cssPosition.transformToCss;
                     elem.style.opacity = toCssOpacity;
                 } else {
@@ -1655,7 +1492,7 @@ function actionScroll(divs, fromCssOpacity, toCssOpacity, fromCssX, toCssX, from
     let scrollGlobal = window.scrollY;
 
     divs.forEach((elem) => {
-        let scrollPositionToElem = elem.getBoundingClientRect().top;
+        let scrollPositionToElem = elem.getBoundingClientRect().top + elem.offsetHeight;
         let currentPurcent = 100 - ((scrollPositionToElem * 100) / screenHeight);
         let resPurcent = currentPurcent / 100;
 
