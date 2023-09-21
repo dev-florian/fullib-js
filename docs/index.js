@@ -1,8 +1,6 @@
 import {
     cursor,
     animation,
-    textSplit,
-    createAnimationFromTo,
     button1,
     button3,
     button4,
@@ -17,7 +15,6 @@ import {
     button13,
     button14,
     button15,
-    share,
     reveal1,
     reveal2,
     reveal3,
@@ -34,17 +31,13 @@ import {
     menu2,
     menu4,
     menu5,
-    blotter,
     lottie,
     mousemove,
     generateBulb,
     imageBlob,
     orbit,
     customScrollBar,
-    loadScrollAnimation,
 } from "fullib-js";
-
-loadScrollAnimation();
 
 customScrollBar({
     currentDiv: '*',
@@ -122,7 +115,6 @@ menu1({
 menu2();
 menu4();
 menu5();
-blotter();
 lottie();
 generateBulb({
     currentDiv: ".generate-bulb",
@@ -157,43 +149,6 @@ orbit({
         backgroundColor: '#ffffff',
         color: '#ffffff',
         size: 50
-    }
-});
-
-if(document.querySelectorAll('.round')){
-    for (let g = 0; g < 50; g++) {
-        createAnimationFromTo({
-            div: '.customanimation-'+g,
-            toggleActions: 'restart pause restart pause',
-            start: 'top 100%',
-            end: "+=100%",
-            scrub: true,
-            animation: {
-                from: {
-                    x: '0px'
-                },
-                to: {
-                    x: g * 12 +'px'
-                }
-            }
-        });
-    }
-}
-
-createAnimationFromTo({
-    div: '.line',
-    toggleActions: 'restart pause restart pause',
-    start: 'top top',
-    end: "+=100%",
-    scrub: true,
-    pin: true,
-    animation: {
-        from: {
-            height:"0%"
-        },
-        to: {
-            height:"100%"
-        }
     }
 });
 

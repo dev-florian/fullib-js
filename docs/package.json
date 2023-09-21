@@ -5,11 +5,11 @@
   },
   "dependencies": {
     "browser-sync-webpack-plugin": "^2.3.0",
-    "fullib-js": "^1.5.4",
+    "fullib-js": "^1.6.0",
     "glslify-loader": "^2.0.0",
     "gsap": "^3.6.0",
     "lax.js": "^2.0.2",
-    "lottie-web": "^5.7.5",
+    "lottie-web": "^5.12.2",
     "raw-loader": "^4.0.2",
     "three": "0.89.0",
     "webpack-md5-hash": "0.0.6"

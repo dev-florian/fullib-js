@@ -6,12 +6,6 @@
   "bugs": {
     "url": "https://github.com/dev-florian/fullib-js/issues"
   },
-  "bundledDependencies": [
-    "lottie-web"
-  ],
-  "dependencies": {
-    "lottie-web": "^5.7.6"
-  },
   "deprecated": false,
   "description": "Full Javascript Animation Library",
   "homepage": "https://github.com/dev-florian/fullib-js",
@@ -38,5 +32,8 @@
     "type": "git",
     "url": "git+https://github.com/dev-florian/fullib-js.git"
   },
-  "version": "1.5.4"
+  "version": "1.6.0",
+  "dependencies": {
+    "lottie-web": "^5.12.2"
+  }
 }

@@ -1941,12 +1941,11 @@ fsevents@~2.3.1:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.1.tgz#b209ab14c61012636c8863507edf7fb68cc54e9f"
   integrity sha512-YR47Eg4hChJGAB1O3yEAOkGO+rlzutoICGqGo9EZ4lKWokzZRSyIW1QmTzqjtw8MJdj9srP869CuWw/hyzSiBw==
 
-fullib-js@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/fullib-js/-/fullib-js-1.2.0.tgz#36a92a7a45036767906d94b1f346c7a587b049d0"
-  integrity sha512-40aEhMaL5n28HmwKFnix66jQicjWgi7BEhqtGP1bPRB2PCzo3azDYJDIYU52Q9lxMy7yGvo4JwlutZP1wDJ1eg==
+fullib-js@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/fullib-js/-/fullib-js-1.5.4.tgz#ceac27cef8794655c6df00dddd614bd2751320c9"
+  integrity sha512-Cg3xpYz6ISuBv6tLyfsbe82jrRPjFcrQdPecKfckNg5iGiIWVmatI+LH0WKCYDd6Dt9ko+Ecr9TOoa0NXi+wBA==
   dependencies:
-    lax.js "^2.0.3"
     lottie-web "^5.7.6"
 
 function-bind@^1.1.1:
@@ -2568,7 +2567,7 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-lax.js@^2.0.2, lax.js@^2.0.3:
+lax.js@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/lax.js/-/lax.js-2.0.3.tgz#74aed57a628db42fcfa91b7a746cec443a611a38"
   integrity sha512-q2q0jVRwruvFdQZeeE3OwIszRIkey6CItPmB+BcTUFPgHd2R8LI+bntAI7d2GJEjheu79mzQ++MROkODuZoXlA==
@@ -2634,7 +2633,12 @@ lodash@^4, lodash@^4.0.0, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lod
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
-lottie-web@^5.7.5, lottie-web@^5.7.6:
+lottie-web@^5.12.2:
+  version "5.12.2"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.12.2.tgz#579ca9fe6d3fd9e352571edd3c0be162492f68e5"
+  integrity sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==
+
+lottie-web@^5.7.6:
   version "5.7.6"
   resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.6.tgz#f20e5555ff120dc1e07ba53adb40061e822f3c48"
   integrity sha512-qn/KYMI4QQvFDhtoxs0RPkn9uZKhDB9keE5BKgbJlSRfNEZpRiDlwBE9ibYz4nPhbyE+NUlt8IRIVR7g5OSX3w==
