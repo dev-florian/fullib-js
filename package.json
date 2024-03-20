@@ -32,7 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/dev-florian/fullib-js.git"
   },
-  "version": "1.6.16",
+  "version": "1.6.2",
   "dependencies": {
     "lottie-web": "^5.12.2"
   }
