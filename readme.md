@@ -12,6 +12,12 @@ https://dev-florian.github.io/fullib-js/
 - New anim options ( trigger elem on the top / middle / bottom )
 - New split text animation
 
+## News 1.6.2
+- [Animation] Rewrite calc of animation function
+
+## News 1.6.1
+- [Animation] Added data attributes to HTML and new options
+
 ## News 1.6.0
 - [Animation] Detection scroll now take full height of element ( don't stop at the top of the element )
 - [Animation] Added new function for choosing transition
@@ -66,10 +72,6 @@ Use yarn :
 ```python
 yarn add fullib-js
 ```
-Dependencies
-```python
-"lottie-web": "^5.7.6"
-```
 
 ## [NEW] animation Creation
 How To use ?
@@ -93,6 +95,7 @@ animation({
 
 <div class="scroll-lefttoright">I AM A TEST</div>
 ```
+
 Other example ( anim without scroll trigger but on viewport )
 
 ```python
@@ -105,6 +108,8 @@ animation({
     delay: 0, //default 0
     duration: 500, //default 500
     measure: 'px', //default px
+    isScrollMobile: false, //default value as 'scroll'
+    mobileBreakpoint: 991, //default 991
     from: {
         x: -100
     },
@@ -114,6 +119,41 @@ animation({
 });
 
 <div class="scroll-lefttoright">I AM A TEST</div>
+```
+Since 1.6.1, you can also use data attributes :
+```python
+animation({
+    classNames: '.scroll-lefttoright',
+    measure: 'px', //default px
+});
+
+<div class="scroll-lefttoright" data-scroll="true" data-delay="200" data-from-y="0" data-to-y="50">I AM A TEST</div>
+
+data-scroll
+data-scroll-mobile
+data-measure
+data-timing-function
+
+data-start
+data-end
+
+data-delay
+data-duration
+
+data-from-opacity
+data-to-opacity
+
+data-from-y
+data-to-y
+
+data-from-x
+data-to-x
+
+data-from-scale
+data-to-scale
+
+data-from-rotate
+data-to-rotate
 ```
 
 ## [NEW] customScrollBar

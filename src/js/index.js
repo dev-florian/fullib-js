@@ -1410,33 +1410,7 @@ export function splitText(options) {
 
 export function animation(options) {
     let classNames = options.classNames ? options.classNames : false;
-    let isScroll = options.scroll ? options.scroll : false;
-    let duration = options.duration ? options.duration : 500;
-    let delay = options.delay ? options.delay : 0;
-    let fromCss = options.from ? options.from : false;
-    let toCss = options.to ? options.to : false;
-    let start = options.start ? options.start : '0%';
-    let end = options.end ? options.end : '100%';
-    let timingFunction = options.timingFunction ? options.timingFunction : 'ease';
-    let screenHeight = window.screen.height;
-    let measure = options.measure ? options.measure : 'px';
 
-    //css
-    let fromCssY = typeof fromCss.y !== 'undefined' ? fromCss.y.toString() : false;
-    let toCssY = typeof toCss.y !== 'undefined' ? toCss.y.toString() : false;
-
-    let fromCssOpacity = typeof fromCss.opacity !== 'undefined' ? fromCss.opacity.toString() : false;
-    let toCssOpacity = typeof toCss.opacity !== 'undefined' ? toCss.opacity.toString() : false;
-
-    let fromCssX = typeof fromCss.x !== 'undefined' ? fromCss.x.toString() : false;
-    let toCssX = typeof toCss.x !== 'undefined' ? toCss.x.toString() : false;
-
-    let fromCssScale = typeof fromCss.scale !== 'undefined' ? fromCss.scale.toString() : false;
-    let toCssScale = typeof toCss.scale !== 'undefined' ? toCss.scale.toString() : false;
-
-    let fromCssRotate = typeof fromCss.rotate !== 'undefined' ? fromCss.rotate.toString() : false;
-    let toCssRotate = typeof toCss.rotate !== 'undefined' ? toCss.rotate.toString() : false;
-    //end
 
     if (!classNames) {
         console.log('classNames missing');
@@ -1444,14 +1418,119 @@ export function animation(options) {
 
     let divs = document.querySelectorAll(classNames);
 
-
     divs.forEach((elem) => {
-        if (fromCss.opacity) {
-            elem.style.opacity = fromCss.opacity;
+
+        let mobileBreakpoint, isScroll, duration, delay, fromCss, toCss, start, end, timingFunction, screenHeight, measure,
+            fromCssY, toCssY, fromCssOpacity,
+            toCssOpacity,fromCssX,toCssX,fromCssScale,toCssScale,fromCssRotate,toCssRotate;
+
+        mobileBreakpoint = options.mobileBreakpoint ? options.mobileBreakpoint : 991;
+        isScroll = options.scroll ? options.scroll : false;
+        isScroll = options.isScrollMobile && window.innerWidth < mobileBreakpoint ? options.isScrollMobile : isScroll;
+        duration = options.duration ? options.duration : 500;
+        delay = options.delay ? options.delay : 0;
+        fromCss = options.from ? options.from : false;
+        toCss = options.to ? options.to : false;
+        start = options.start ? options.start : '0%';
+        end = options.end ? options.end : '100%';
+        timingFunction = options.timingFunction ? options.timingFunction : 'ease';
+        screenHeight = window.screen.height;
+        measure = options.measure ? options.measure : 'px';
+
+        //css
+        fromCssY = typeof fromCss.y !== 'undefined' ? fromCss.y.toString() : false;
+        toCssY = typeof toCss.y !== 'undefined' ? toCss.y.toString() : false;
+
+        fromCssOpacity = typeof fromCss.opacity !== 'undefined' ? fromCss.opacity.toString() : false;
+        toCssOpacity = typeof toCss.opacity !== 'undefined' ? toCss.opacity.toString() : false;
+
+        fromCssX = typeof fromCss.x !== 'undefined' ? fromCss.x.toString() : false;
+        toCssX = typeof toCss.x !== 'undefined' ? toCss.x.toString() : false;
+
+        fromCssScale = typeof fromCss.scale !== 'undefined' ? fromCss.scale.toString() : false;
+        toCssScale = typeof toCss.scale !== 'undefined' ? toCss.scale.toString() : false;
+
+        fromCssRotate = typeof fromCss.rotate !== 'undefined' ? fromCss.rotate.toString() : false;
+        toCssRotate = typeof toCss.rotate !== 'undefined' ? toCss.rotate.toString() : false;
+        //end
+
+        if (elem.hasAttribute('data-scroll')) {
+            isScroll = elem.getAttribute('data-scroll') === 'true';
+        }
+
+        if (elem.hasAttribute('data-scroll-mobile')) {
+            isScroll = elem.getAttribute('data-scroll-mobile') === 'true' && window.innerWidth < mobileBreakpoint ? true : (elem.getAttribute('data-scroll-mobile') === 'false' && window.innerWidth < mobileBreakpoint ? false : isScroll);
+        }
+
+        if (elem.hasAttribute('data-measure')) {
+            measure = elem.getAttribute('data-measure');
+        }
+
+        if (elem.hasAttribute('data-timing-function')) {
+            timingFunction = elem.getAttribute('data-timing-function');
+        }
+
+        if (elem.hasAttribute('data-start')) {
+            start = elem.getAttribute('data-start');
+        }
+
+        if (elem.hasAttribute('data-end')) {
+            end = elem.getAttribute('data-end');
+        }
+
+        if (elem.hasAttribute('data-delay')) {
+            delay = parseFloat(elem.getAttribute('data-delay'));
+        }
+
+        if (elem.hasAttribute('data-duration')) {
+            duration = parseFloat(elem.getAttribute('data-duration'));
+        }
+
+        if (elem.hasAttribute('data-from-opacity')) {
+            fromCssOpacity = parseFloat(elem.getAttribute('data-from-opacity'));
+        }
+
+        if (elem.hasAttribute('data-to-opacity')) {
+            toCssOpacity = parseFloat(elem.getAttribute('data-to-opacity'));
+        }
+
+        if (elem.hasAttribute('data-from-y')) {
+            fromCssY = parseFloat(elem.getAttribute('data-from-y'));
+        }
+
+        if (elem.hasAttribute('data-to-y') || elem.getAttribute('data-to-y') === '0') {
+            toCssY = parseFloat(elem.getAttribute('data-to-y'));
+        }
+
+        if (elem.hasAttribute('data-from-x')) {
+            fromCssX = parseFloat(elem.getAttribute('data-from-x'));
+        }
+
+        if (elem.hasAttribute('data-to-x')) {
+            toCssX = parseFloat(elem.getAttribute('data-to-x'));
+        }
+
+        if (elem.hasAttribute('data-from-scale')) {
+            fromCssScale = parseFloat(elem.getAttribute('data-from-scale'));
+        }
+
+        if (elem.hasAttribute('data-to-scale')) {
+            toCssScale = parseFloat(elem.getAttribute('data-to-scale'));
+        }
+
+        if (elem.hasAttribute('data-from-rotate')) {
+            fromCssRotate = parseFloat(elem.getAttribute('data-from-rotate'));
+        }
+
+        if (elem.hasAttribute('data-to-rotate')) {
+            toCssRotate = parseFloat(elem.getAttribute('data-to-rotate'));
+        }
+
+        if (fromCssOpacity) {
+            elem.style.opacity = fromCssOpacity;
         }
 
         let cssPosition = getDefaultPosition(fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, measure);
-
 
         elem.style.transform = cssPosition.transformFromCss;
         elem.style.opacity = cssPosition.fromCssOpacity;
@@ -1474,105 +1553,115 @@ export function animation(options) {
                 }
             });
         }
+
+        if (isScroll) {
+            window.addEventListener('load', function () {
+                actionScroll(elem, fromCssOpacity, toCssOpacity, fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, start, end, measure, screenHeight);
+            });
+
+            window.addEventListener("scroll", (event) => {
+                actionScroll(elem, fromCssOpacity, toCssOpacity, fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, start, end, measure, screenHeight)
+            });
+        }
     });
+}
+
+function actionScroll(elem, fromCssOpacity, toCssOpacity, fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, start, end, measure, screenHeight) {
+    let scrollGlobal = window.scrollY;
 
 
-    if (isScroll) {
-        window.addEventListener('load', function () {
-            actionScroll(divs, fromCssOpacity, toCssOpacity, fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, start, end, measure, screenHeight);
-        });
+    let elemHeight = elem.offsetHeight;
+    let windowHeight = window.innerHeight;
+    let scrollPositionToElem = elem.getBoundingClientRect().bottom - elemHeight;
+    let currentPurcent = ((windowHeight - scrollPositionToElem) * 100) / (windowHeight + elemHeight);
+    let resPurcent = Math.max(0, Math.min(100, currentPurcent));
 
-        window.addEventListener("scroll", (event) => {
-            actionScroll(divs, fromCssOpacity, toCssOpacity, fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, start, end, measure, screenHeight)
-        });
+    if (currentPurcent >= 0 && scrollPositionToElem <= screenHeight && currentPurcent >= parseFloat(start) && currentPurcent <= parseFloat(end)) {
+
+        let scrollPurcentInView = ((currentPurcent - parseFloat(start)) * 100) / (parseFloat(end) - parseFloat(start));
+
+        if (toCssOpacity >= 0) {
+            let opacityRes = calcCss(fromCssOpacity, toCssOpacity, scrollPurcentInView, parseFloat(start), parseFloat(end));
+            elem.style.opacity = opacityRes;
+        }
+
+        let transformCss = "";
+
+        if (validNumber(fromCssX) && validNumber(toCssX)) {
+
+            let cssXRes = calcCss(fromCssX, toCssX, scrollPurcentInView, parseFloat(start), parseFloat(end));
+            transformCss += "translateX(" + cssXRes + measure + ") ";
+        }
+
+        if (validNumber(fromCssY) && validNumber(toCssY)) {
+            let cssYRes = calcCss(fromCssY, toCssY, scrollPurcentInView, parseFloat(start), parseFloat(end));
+            transformCss += "translateY(" + cssYRes + measure + ") ";
+        }
+
+        if (validNumber(fromCssScale) && validNumber(toCssScale)) {
+            let cssScaleRes = calcCss(fromCssScale, toCssScale, scrollPurcentInView, parseFloat(start), parseFloat(end));
+            transformCss += "scale(" + cssScaleRes + ")";
+        }
+
+        if (validNumber(fromCssRotate) && validNumber(toCssRotate)) {
+            let cssRotateRes = calcCss(fromCssRotate, toCssRotate, scrollPurcentInView, parseFloat(start), parseFloat(end));
+            transformCss += "rotate(" + cssRotateRes + "deg)";
+        }
+
+
+        elem.style.transform = transformCss;
+    }
+
+    let cssPosition = getDefaultPosition(fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, measure);
+
+    if (currentPurcent < parseFloat(start) && currentPurcent < parseFloat(end)) {
+        if (validNumber(toCssOpacity)) {
+            elem.style.opacity = fromCssOpacity;
+        }
+        if (cssPosition.transformToCss) {
+            elem.style.transform = cssPosition.transformFromCss;
+        }
+    }
+
+    if (currentPurcent > parseFloat(start) && currentPurcent > parseFloat(end)) {
+        if (validNumber(toCssOpacity)) {
+            elem.style.opacity = toCssOpacity;
+        }
+        if (cssPosition.transformFromCss) {
+            elem.style.transform = cssPosition.transformToCss;
+        }
     }
 }
 
-function actionScroll(divs, fromCssOpacity, toCssOpacity, fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, start, end, measure, screenHeight) {
-    let scrollGlobal = window.scrollY;
+function validNumber(number){
+    if(parseFloat(number) == 0){
+        return true;
+    }
 
-    divs.forEach((elem) => {
-        let scrollPositionToElem = elem.getBoundingClientRect().top + elem.offsetHeight;
-        let currentPurcent = 100 - ((scrollPositionToElem * 100) / screenHeight);
-        let resPurcent = currentPurcent / 100;
-
-        if (scrollPositionToElem >= 0 && scrollPositionToElem <= screenHeight && currentPurcent >= parseFloat(start) && currentPurcent <= parseFloat(end)) {
-            let scrollPurcentInView = ((currentPurcent - parseFloat(start)) * 100) / (parseFloat(end) - parseFloat(start));
-
-            if (toCssOpacity) {
-                let opacityRes = calcCss(fromCssOpacity, toCssOpacity, scrollPurcentInView, parseFloat(start), parseFloat(end));
-                elem.style.opacity = opacityRes;
-            }
-
-            let transformCss = "";
-
-            if (fromCssX && toCssX) {
-
-                let cssXRes = calcCss(fromCssX, toCssX, scrollPurcentInView, parseFloat(start), parseFloat(end));
-                transformCss += "translateX(" + cssXRes + measure + ") ";
-            }
-
-            if (fromCssY && toCssY) {
-                let cssYRes = calcCss(fromCssY, toCssY, scrollPurcentInView, parseFloat(start), parseFloat(end));
-                transformCss += "translateY(" + cssYRes + measure + ") ";
-            }
-
-            if (fromCssScale && toCssScale) {
-                let cssScaleRes = calcCss(fromCssScale, toCssScale, scrollPurcentInView, parseFloat(start), parseFloat(end));
-                transformCss += "scale(" + cssScaleRes + ")";
-            }
-
-            if (fromCssRotate && toCssRotate) {
-                let cssRotateRes = calcCss(fromCssRotate, toCssRotate, scrollPurcentInView, parseFloat(start), parseFloat(end));
-                transformCss += "rotate(" + cssRotateRes + "deg)";
-            }
-
-
-            elem.style.transform = transformCss;
-        }
-
-        let cssPosition = getDefaultPosition(fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, measure);
-
-        if (currentPurcent < parseFloat(start) && currentPurcent < parseFloat(end)) {
-            if (toCssOpacity) {
-                elem.style.opacity = fromCssOpacity;
-            }
-            if (cssPosition.transformToCss) {
-                elem.style.transform = cssPosition.transformFromCss;
-            }
-        }
-
-        if (currentPurcent > parseFloat(start) && currentPurcent > parseFloat(end)) {
-            if (toCssOpacity) {
-                elem.style.opacity = toCssOpacity;
-            }
-            if (cssPosition.transformFromCss) {
-                elem.style.transform = cssPosition.transformToCss;
-            }
-        }
-    });
+    return number;
 }
+
 
 function getDefaultPosition(fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, measure) {
     let transformFromCss = "";
     let transformToCss = "";
 
-    if (fromCssX && toCssX) {
+    if (validNumber(fromCssX) && validNumber(toCssX)) {
         transformFromCss += "translateX(" + fromCssX + measure + ") ";
         transformToCss += "translateX(" + toCssX + measure + ") ";
     }
 
-    if (fromCssY && toCssY) {
+    if (validNumber(fromCssY) && validNumber(toCssY)) {
         transformFromCss += "translateY(" + fromCssY + measure + ") ";
         transformToCss += "translateY(" + toCssY + measure + ") ";
     }
 
-    if (fromCssScale && toCssScale) {
+    if (validNumber(fromCssScale) && validNumber(toCssScale)) {
         transformFromCss += "scale(" + fromCssScale + ") ";
         transformToCss += "scale(" + toCssScale + ") ";
     }
 
-    if (fromCssRotate && toCssRotate) {
+    if (validNumber(fromCssRotate) && validNumber(toCssRotate)) {
         transformFromCss += "rotate(" + fromCssRotate + "deg)";
         transformToCss += "rotate(" + toCssRotate + "deg)";
     }
