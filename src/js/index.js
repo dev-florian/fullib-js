@@ -1533,13 +1533,13 @@ export function animation(options) {
         let cssPosition = getDefaultPosition(fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, measure);
 
         elem.style.transform = cssPosition.transformFromCss;
-        elem.style.opacity = cssPosition.fromCssOpacity;
+        elem.style.opacity = fromCssOpacity;
 
         if (!isScroll) {
             if (isElementInViewport(elem)) {
                 elem.style.transition = 'all ' + duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
                 elem.style.transform = cssPosition.transformToCss;
-                elem.style.opacity = cssPosition.toCssOpacity;
+                elem.style.opacity = toCssOpacity;
             }
 
             window.addEventListener("scroll", (event) => {
