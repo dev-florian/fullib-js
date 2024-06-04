@@ -12,7 +12,7 @@ https://dev-florian.github.io/fullib-js/
 - New anim options ( trigger elem on the top / middle / bottom )
 - New split text animation
 
-## News 1.6.21
+## News 1.6.22
 - [Animation] Correc bug opacity when scroll = false
 
 ## News 1.6.2

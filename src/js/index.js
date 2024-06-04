@@ -1441,8 +1441,8 @@ export function animation(options) {
         fromCssY = typeof fromCss.y !== 'undefined' ? fromCss.y.toString() : false;
         toCssY = typeof toCss.y !== 'undefined' ? toCss.y.toString() : false;
 
-        fromCssOpacity = typeof fromCss.opacity !== 'undefined' ? fromCss.opacity.toString() : false;
-        toCssOpacity = typeof toCss.opacity !== 'undefined' ? toCss.opacity.toString() : false;
+        fromCssOpacity = typeof fromCss.opacity !== 'undefined' ? parseFloat(fromCss.opacity) : 1;
+        toCssOpacity = typeof toCss.opacity !== 'undefined' ? parseFloat(toCss.opacity) : 1;
 
         fromCssX = typeof fromCss.x !== 'undefined' ? fromCss.x.toString() : false;
         toCssX = typeof toCss.x !== 'undefined' ? toCss.x.toString() : false;
@@ -1526,14 +1526,11 @@ export function animation(options) {
             toCssRotate = parseFloat(elem.getAttribute('data-to-rotate'));
         }
 
-        if (fromCssOpacity) {
-            elem.style.opacity = fromCssOpacity;
-        }
+        elem.style.opacity = fromCssOpacity;
 
         let cssPosition = getDefaultPosition(fromCssX, toCssX, fromCssY, toCssY, fromCssScale, toCssScale, fromCssRotate, toCssRotate, measure);
 
         elem.style.transform = cssPosition.transformFromCss;
-        elem.style.opacity = fromCssOpacity;
 
         if (!isScroll) {
             if (isElementInViewport(elem)) {
@@ -1546,10 +1543,15 @@ export function animation(options) {
                 if (isElementInViewport(elem)) {
                     elem.style.transition = 'all ' + duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
                     elem.style.transform = cssPosition.transformToCss;
-                    elem.style.opacity = toCssOpacity;
+
+                    if(toCssOpacity){
+                        elem.style.opacity = toCssOpacity;
+                    }
                 } else {
                     elem.style.transform = cssPosition.transformFromCss;
-                    elem.style.opacity = fromCssOpacity;
+                    if(fromCssOpacity){
+                        elem.style.opacity = fromCssOpacity;
+                    }
                 }
             });
         }
