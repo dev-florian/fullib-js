@@ -1420,9 +1420,10 @@ export function animation(options) {
 
     divs.forEach((elem) => {
 
-        let mobileBreakpoint, isScroll, duration, delay, fromCss, toCss, start, end, timingFunction, screenHeight, measure,
+        let mobileBreakpoint, isScroll, duration, delay, fromCss, toCss, start, end, timingFunction, screenHeight,
+            measure,
             fromCssY, toCssY, fromCssOpacity,
-            toCssOpacity,fromCssX,toCssX,fromCssScale,toCssScale,fromCssRotate,toCssRotate;
+            toCssOpacity, fromCssX, toCssX, fromCssScale, toCssScale, fromCssRotate, toCssRotate;
 
         mobileBreakpoint = options.mobileBreakpoint ? options.mobileBreakpoint : 991;
         isScroll = options.scroll ? options.scroll : false;
@@ -1543,15 +1544,10 @@ export function animation(options) {
                 if (isElementInViewport(elem)) {
                     elem.style.transition = 'all ' + duration + 'ms ' + timingFunction + ' ' + delay + 'ms';
                     elem.style.transform = cssPosition.transformToCss;
-
-                    if(toCssOpacity){
-                        elem.style.opacity = toCssOpacity;
-                    }
+                    elem.style.opacity = toCssOpacity;
                 } else {
                     elem.style.transform = cssPosition.transformFromCss;
-                    if(fromCssOpacity){
-                        elem.style.opacity = fromCssOpacity;
-                    }
+                    elem.style.opacity = fromCssOpacity;
                 }
             });
         }
@@ -1635,8 +1631,8 @@ function actionScroll(elem, fromCssOpacity, toCssOpacity, fromCssX, toCssX, from
     }
 }
 
-function validNumber(number){
-    if(parseFloat(number) == 0){
+function validNumber(number) {
+    if (parseFloat(number) == 0) {
         return true;
     }
 
