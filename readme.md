@@ -1,7 +1,7 @@
 # FULLIB-JS
 ![Pres](github-ressources/pres.jpg?raw=true "Pres")
 
-Multiple animation Library 
+Multiple animation Library
 Only native JS
 
 https://dev-florian.github.io/fullib-js/
@@ -10,7 +10,15 @@ https://dev-florian.github.io/fullib-js/
 - THREE JS ANIMATION ( 3D )
 - Optimisations
 - New anim options ( trigger elem on the top / middle / bottom )
-- New split text animation
+
+## News 2.0.0
+- Simple and light slider with threejs shaders
+- Lighter and faster loading
+- Rewrited, optimized as classes
+- 'classNames' : new call => 'elems' for all classes
+- Removed : buttons, menus, splittext, reveals, generateBulb, drawsvg, parallax
+- New doc
+- [Animation] Added skewX and SkewY
 
 ## News 1.6.22
 - [Animation] Correc bug opacity when scroll = false
@@ -61,13 +69,13 @@ https://dev-florian.github.io/fullib-js/
 ###[ Update : splitText ]
 - New effect : hover
 - New variables :
-    * delayBetweenIteration
-    * delayBeforeFirstStart ( replace old : delay )
-    * delayBetweenletters
-    
+  * delayBetweenIteration
+  * delayBeforeFirstStart ( replace old : delay )
+  * delayBetweenletters
+
 ###[ Update : cursor ]
 - Added hoverSize variable
-- 'type' now accept custom radius ( 'round' / 'square' / '35%', '36%' etc ) 
+- 'type' now accept custom radius ( 'round' / 'square' / '35%', '36%' etc )
 
 
 ## Installation
@@ -79,15 +87,16 @@ yarn add fullib-js
 ## [NEW] animation Creation
 How To use ?
 ```python
-import {animation} from "fullib-js";
+import Animation from "fullib-js/src/js/Basic/Animation";
 
 //BASIC EXAMPLE animation on scroll
-animation({
-    classNames: '.scroll-lefttoright',
+new Animation({
+    elems: '.scroll-lefttoright',
     scroll: true, //default true
     start: '0%', //default 0%
     end: '100%', //default 100%
     measure: 'px', //default px
+    transition: 'all .2s ease', //default all .1s linear
     from: {
         x: -100
     },
@@ -102,11 +111,11 @@ animation({
 Other example ( anim without scroll trigger but on viewport )
 
 ```python
-import {animation} from "fullib-js";
+import Animation from "fullib-js/src/js/Basic/Animation";
 
 //BASIC EXAMPLE
-animation({
-    classNames: '.scroll-lefttoright',
+new Animation({
+    elems: '.scroll-lefttoright',
     scroll: false,
     delay: 0, //default 0
     duration: 500, //default 500
@@ -122,115 +131,23 @@ animation({
 });
 
 <div class="scroll-lefttoright">I AM A TEST</div>
-```
-Since 1.6.1, you can also use data attributes :
-```python
-animation({
-    classNames: '.scroll-lefttoright',
-    measure: 'px', //default px
-});
 
-<div class="scroll-lefttoright" data-scroll="true" data-delay="200" data-from-y="0" data-to-y="50">I AM A TEST</div>
-
-data-scroll
-data-scroll-mobile
-data-measure
-data-timing-function
-
-data-start
-data-end
-
-data-delay
-data-duration
-
-data-from-opacity
-data-to-opacity
-
-data-from-y
-data-to-y
-
-data-from-x
-data-to-x
-
-data-from-scale
-data-to-scale
-
-data-from-rotate
-data-to-rotate
 ```
 
 ## [NEW] customScrollBar
 How To use ?
 ```python
-import {customScrollBar} from "fullib-js";
+import ScrollBar from "fullib-js/src/js/Basic/ScrollBar";
 
 //BASIC EXAMPLE
-customScrollBar({
-    currentDiv: '*',
-    width: 8,
+new ScrollBar({
+    elem: '*', //default .scrollbar
+    width: 8, //default as 'auto'
     border: '1px solid #000', //ONLY WORK ON WEBKIT : chrome / edge
     borderRadius: '25%', //ONLY WORK ON WEBKIT : chrome / edge
-    scrollbarBackground: 'gray',
-    scrollbarColor: 'white',
+    scrollbarBackground: 'gray', //default black
+    scrollbarColor: 'white', //default white
 });
-```
-
-## TextSplit Creation
-How To use ?
-```python
-import {splitText} from "fullib-js";
-
-//BASIC EXAMPLE
-splitText({
-    animationName: 'split5',
-    parent: '.split5',
-    className: 'letter',
-    animation: {
-        keyframe: {
-            from: {
-                transform: 'scale(1.5)'
-            },
-            to: {
-                transform: 'scale(1)'
-            }
-        }
-    }
-});
-
-<div class="split5">I AM A TEST</div>
-```
-Other example
-```python
-import {splitText} from "fullib-js";
-
-//ADVANCED EXEMPLE
-splitText({
-    animationName: 'split4',
-    parent: '.split4',
-    className: 'letter',
-        animation: {
-        iterations: 'infinite',
-        hover: true,
-        word: true,
-        delayBeforeFirstStart: 0, // duration of animation letter
-        delayBetweenLetters: 10, // delay betwen each anim letter
-        delayBetweenIteration: 1000, // delay between full anim loop
-        smooth: '50%',
-        keyframe: {
-            from: {
-                color: 'blue'
-            },
-            '40%': {
-                color: 'purple'
-            },
-            to: {
-                color: 'tomato'
-            }
-        }
-    }
-});
-
-<div class="split4">I AM A TEST</div>
 ```
 
 ## MOUSEMOOVE
@@ -241,12 +158,32 @@ How to use ?
 
 Easy example
 ```python
-import {mousemove} from "fullib-js";
-mousemove();
+import Mousemoove from "fullib-js/src/js/Basic/Mousemoove";
 
-<div class="firstcard mousemove" data-speed="3">
+new Mousemoove({
+  elems: '.test', //default .mousemove
+  force: 100, //default 100
+  speed: 3, //default 3
+  inverse: false, //default false
+  breakpoint: 767, //default 320
+});
+
+<div class="firstcard test">
   <img width="50" height="50" src="https://images.freeimages.com/images/large-previews/08e/up-close-personal-2-1359478.jpg">
 </div>
+
+
+Or another example, simplier :
+
+import Mousemoove from "fullib-js/src/js/Basic/Mousemoove";
+
+new Mousemoove();
+
+<div class="firstcard mousemove" data-speed="3" data-force="50">
+  <img width="50" height="50" src="https://images.freeimages.com/images/large-previews/08e/up-close-personal-2-1359478.jpg">
+</div>
+
+
 ```
 
 ## CURSOR
@@ -254,11 +191,11 @@ Display a custom cursor
 
 How To use ?
 ```python
-import {cursor} from "fullib-js";
-cursor({
+import Cursor from "fullib-js/src/js/Basic/Cursor";
+new Cursor({
     activeFirstCursor: true, //essential
     activeSecondCursor: false, //essential
-    currentDiv: "*", //essential
+    elems: "*", //essential
     zoomOnDiv: ".tohover",
     removeOriginalCursor: true,
     removeAt: 991,
@@ -269,7 +206,7 @@ cursor({
         border: "1px solid #000000",
         type: 'square', // round or square
         transition: "top .1s, left .1s, width .5s, height .5s",
-    }
+    },
     secondCursor: {
         size: 10,
         hoverSize: 15,
@@ -289,177 +226,28 @@ How to use ?
 
 Easy example
 ```python
-import {changeBackground} from "fullib-js";
-changeBackground({
+import DynamicBackground from "fullib-js/src/js/Basic/DynamicBackground";
+new DynamicBackground({
+    elems: ".change-background", //default .dynamic-background
     backgroundColor: "#ffd5ce", //bgColor
-    currentDiv: ".change-background", //divInViewPort
     animation: "1s linear" //Animation
 });
-```
 
-## DRAWSVG
-Put by default this class on your div :
-```python
-drawsvg
-```
-How To use ?
-```python
-import {drawSvg} from "fullib-js";
-drawSvg();
-```
+//WHEN ENTER IN DIV, CHANGE THE BODY BACKGROUND
+<div class='change-background' style='height: 100vh'>
+  My content 100vh
+</div>
 
-## REVEAL
+Or another example
 
-Put by default one class on your div.
+import DynamicBackground from "fullib-js/src/js/Basic/DynamicBackground";
 
-```python
-reveal1
-reveal2
-reveal3
-reveal4
-reveal5
-reveal6
-reveal7
-reveal8
-reveal9
-```
+new DynamicBackground();
 
-How To use ?
-
-Easy example for 'reveal1'
-```python
-import {reveal1} from "fullib-js";
-reveal1();
-
-<div class="reveal1 d-inline-block">REVEALING TEXT</div>
-```
-
-
-### BUTTONS
-
-How To use ?
-
-Put by default one class on your 'a' balise.
-
-```python
-button1
-button3
-button4
-button5
-button6
-button7
-button8
-button9
-button10
-button11
-button12
-button13
-button14
-button15
-```
-
-Easy example for 'button1'
-
-```python
-import {button1} from "fullib-js";
-button1();
-
-<a class="button1 text-center" href="https://www.npmjs.com/package/animation-felix" target="_blank">CLICK ME</a>
-```
-
-
-## MENU
-
-How to use ?
-
-Put by default one class on your div.
-
-```python
-menu1
-menu2
-menu3
-menu4
-menu5
-```
-
-Easy example for 'menu1'
-
-```python
-import {menu1} from "fullib-js";
-menu1({
-    direction: 'bottom-left' // top-left top-right bottom-left bottom-right
-});
-
-<nav class="menu1 fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
-                </div>
-            </div>
-        </button>
-    </div>
-</nav>
-
-<div id="main-navigation-nav" class="collapse">
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item level-1 text-center active" itemscope="itemscope" itemtype="http://www.schema.org/SiteNavigationElement">
-            <a class="nav-link link-level-1 active" href="" id="navbar-link-14" title="Accueil" data-toggle="preloader" itemprop="url">
-                <span itemprop="name">Accueil</span>
-            </a>
-        </li>
-        <li class="nav-item level-1 dropdown text-center">
-            <a class="nav-link link-level-1" href="" id="navbar-link-7" title="Offre de soins" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Offre de soins
-            </a>
-        </li>
-        <li class="nav-item level-1 text-center text-lg-left"itemscope="itemscope" itemtype="http://www.schema.org/SiteNavigationElement">
-            <a class="nav-link link-level-1 text-center" href="" id="navbar-link-9" title="Patients" data-toggle="preloader" itemprop="url">
-                <span itemprop="name">Patients</span>
-            </a>
-        </li>
-        <li class="nav-item level-1 dropdown text-center">
-            <a class="nav-link link-level-1 " href="" id="navbar-link-11" title="Carrière" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Carrière
-            </a>
-        </li>
-    </ul>
+<div class='dynamic-background' data-background-color='#000000' style='height: 100vh'>
+  My content 100vh
 </div>
 ```
-
-## WEBGL
-### Blotter effect ( text distortion on scroll )
-
-List of effects
-```python
-liquid
-liquid-2
-rolling
-rolling-2
-rolling-3
-rolling-4
-rolling-5
-```
-
-How to use ?
-
-Easy example for 'liquid'
-
-```python
-import {blotter} from "fullib-js";
-blotter();
-
-<div class="blotter" data-blotter-effect="liquid" data-blotter-font="'Russo One', sans-serif" data-blotter-size="120" data-blotter-color="#c69f64">ABC</div>
-```
-Warning :
--You have to put the blotter className to your element
--You have to only put a valid string in the div
--The font must be loaded before the plugin
-
 
 ## LOTTIE
 https://lottiefiles.com/community
@@ -468,10 +256,14 @@ How to use ?
 
 Easy example
 ```python
-import { lottie } from "fullib-js";
-lottie();
+import LottieHelper from "fullib-js/src/js/Basic/LottieHelper";
+new LottieHelper({
+  'elems': '.lottie-helper' // default .lottie-helper
+});
 
-<div class="mt-5 mb-5 lottie" data-lottie-scroll="false" data-lottie-click="true" data-lottie-hover="false" data-lottie-file="../../lottie/button.json" style="width: 150px;"></div>
+<div class="mt-5 mb-5 lottie-helper" data-lottie-scroll="false" data-lottie-click="true" data-lottie-hover="false" data-lottie-file="../../lottie/button.json" style="width: 150px;"></div>
+
+renderer: 'svg' / 'canvas' / 'html' //DEFAULT IS CANVAS
 ```
 
 ## IMAGEBLOB
@@ -482,40 +274,14 @@ How to use ?
 
 Easy example
 ```python
-import {imageBlob} from "fullib-js";
-imageBlob();
+import ImageBlob from "fullib-js/src/js/Basic/ImageBlob";
+new ImageBlob();
 
 <img class="blobed" alt="blob" width="400" height="400" src="https://outsmartlabs.com/medias/images/redcharlie-fCRFjmM8Ll4-unsplash.jpg">
 ```
 
 Warning :
 Don't forget to add with and height attribute ( default take 400 x 400 )
-
-## GENERATE BULBS
-
-Add a round blob effect to your image
-
-How to use ?
-
-Easy example
-```python
-import {generateBulb} from "fullib-js";
-generateBulb({
-    currentDiv: ".generate-bulb", //default
-    referTo: ".mycontainer", //parentDiv ( default take the parent )
-    backgroundColor: "transparent",
-    minSize: 5,
-    maxSize: 30,
-    border: "1px solid #1a2b63",
-    numberOfBulb: 49, // number of elem to create
-    type: 'round', //round or square
-    classNames: ['round', 'lax-parallax-right'], // add classes for all elems created
-    fromLeft: -200, // if animation on better to see element arrived on screen cutted
-    differentSpeed: true //only available for lax-parallax-right and if numberOfBulb < 50
-});
-
-<div class="generate-bulb"></div>
-```
 
 ## ORBIT
 
@@ -525,9 +291,9 @@ How to use ?
 
 Easy example
 ```python
-import {orbit} from "fullib-js";
-orbit({
-    currentDiv: '.circlewhite',
+import Orbit from "fullib-js/src/js/Basic/Orbit";
+new Orbit({
+    elems: '.circlewhite',
     position: 'right-top', //right-top right-bottom left-top left-bottom
     indexPixel: 150,
     inverseRotation: true,
@@ -548,31 +314,41 @@ orbit({
 <div class="circlewhite"></div>
 ```
 
-## PARALLAX
+## UTILS
 
-Add an orbit on your page !
+Need some usefull tools?
 
 How to use ?
 
 Easy example
 ```python
-import {parallax} from "fullib-js";
-parallax({
-    currentDiv: ".parallax",
-    force: 8,
-    height: 250,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundDirection: 'center', //left center right 0% 50%.....
-    responsive: [{
-        mediaQuery: 767,
-        force: 2,
-        height: 100,
-    }
-    ]
-});
+import Utils from "fullib-js/src/js/Utils/Utils";
+let utils = new Utils();
 
- <div class="parallax" data-backgroundImage="./img/parallax.jpg"></div>
+list : 
+- utils.isElementInViewport(div); //CHECK IF IN VIEWPORT
+- utils.validNumber(numberOrString); //CHECK IF IS A NUMBER
+- utils.addElement(type, classes, options); //ADDING DIV TO DOM
+
+Example :
+
+let parentElem = document.querySelector('body');
+let higther = this.addElement('div', 'myClass', {
+    id: 'myId',
+    addTo: parentElem,
+})
+
+higther.style.backgroundColor = 'red';
+higther.style.height = '100vh';
+higther.style.width = '100vw';
+
+List options :
+- text ( innerHtml )
+- id ( #id )
+- href ( link )
+- rel ( eg : noopener noreferer )
+- target ( eg : _blank )
+- type ( eg : button )
+- src ( eg : media )
 ```
-
 
