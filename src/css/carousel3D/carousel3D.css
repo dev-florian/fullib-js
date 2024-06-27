@@ -1,0 +1,84 @@
+.fullib-carousel-3d {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.fullib-carousel-3d .next, .fullib-carousel-3d .prev {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.fullib-carousel-3d .next {
+    right: 10px;
+}
+
+.fullib-carousel-3d .prev {
+    left: 10px;
+}
+
+.fullib-carousel-3d .slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.fullib-carousel-3d .slide.is-visible {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+.fullib-carousel-3d .dots {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fullib-carousel-3d .dots .dot.with-bulb {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 8px;
+    background-color: white;
+    opacity: .5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity .5s;
+}
+
+.fullib-carousel-3d .dots .dot.with-text {
+    cursor: pointer;
+    margin: 8px;
+    color: white;
+    opacity: .5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity .5s;
+}
+
+.fullib-carousel-3d .dots .dot.active {
+    transform: scale(1.2);
+    opacity: 1;
+    transition: opacity, transform .5s;
+}

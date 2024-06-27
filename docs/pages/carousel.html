@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Fullib-js : Scroll animation</title>
+    <!-- Meta Description -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .row, h1 {
+        text-align: center;
+    }
+
+    h2{
+        font-size: 100px !important;
+        font-weight: bold !important;
+        color: #fff;
+        /*text-shadow: 2px 7px 1px #9d9d9d;*/
+    }
+
+    p{
+        font-size: 26px;
+        color: #fff;
+    }
+
+    .slide{
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding-bottom: 50px;
+        padding-left: 50px;
+    }
+
+    .slide{
+        transform: translateX(-50px);
+        transition: all 1s !important;
+    }
+
+    .slide.is-visible{
+        transform: translateX(0);
+        transition: all 1s !important;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<body id="body" class="">
+
+
+<div id="content">
+
+
+    <!-- HTML -->
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://dev-florian.github.io/fullib-js/">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="https://dev-florian.github.io/fullib-js/pages/scroll">Scroll</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="https://dev-florian.github.io/fullib-js/pages/lottie">Lottie</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="carousel-3d">
+        <svg class="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/>
+        </svg>
+        <svg class="prev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#ffffff" style="transform: scale(-1)">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/>
+        </svg>
+
+        <div class="slide slide-1" data-media="http://fullib-js-dev.local/img/carousel3d-1.jpg" data-dot-text="slide 1">
+            <h2>Carousel-slide-1</h2>
+            <p>Carousel-text-custom</p>
+        </div>
+        <div class="slide slide-2" data-media="http://fullib-js-dev.local/img/carousel3d-2.jpg" data-dot-text="slide 2">
+            <h2>Carousel-slide-2</h2>
+            <p>Carousel-text-custom</p>
+        </div>
+        <div class="slide slide-3" data-media="http://fullib-js-dev.local/img/carousel3d-3.jpg" data-dot-text="slide 3">
+            <h2>Carousel-slide-3</h2>
+            <p>Carousel-text-custom</p>
+        </div>
+    </div>
+</div>
+
+<script src="../build/bundle.js" async></script>
+<script>
+    if (window.innerWidth < 991) {
+        let menuButton = document.querySelector('.navbar-toggler');
+        let menuContainer = document.getElementById('navbarNav');
+
+        menuButton.onclick = function (e) {
+            menuContainer.classList.toggle('d-block');
+        }
+    }
+</script>
+</body>
+</html>

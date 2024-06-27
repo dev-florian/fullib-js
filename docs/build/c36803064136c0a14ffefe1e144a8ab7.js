@@ -38,7 +38,7 @@ new Cursor({
         backgroundColor: "#000000",
         border: "1px solid #000000",
         type: 'round', // round or square
-        transition: "top .0s, left .0s, width .0s, height .0s",
+        transition: "top .1s, left .1s, width .5s, height .5s",
     },
     secondCursor: {
         size: 5,
@@ -88,28 +88,7 @@ new Orbit({
 
 
 import Carousel from "./fullib-js/src/js/3D/Carousel";
-let carousel = new Carousel({
-    elem: '.carousel-3d', //default is carousel-3d
-    autoplay: true, //default is true
-    preset: '04', //default is true
-    speed: 500, //default is 750, transition between slides
-    pause: 5000, //default is 3000, pause between slides when autoplay
-    dots: true, //default is 3000, pause between slides when autoplay
-    beforeTransition: false,
-    uniforms: {
-        intensity: {value: .2, type: 'f', min: 0, max: 2},
-        width: {value: 1, type: 'f', min: 0, max: 10},
-        scaleX: {value: 5, type: 'f', min: 0.1, max: 100},
-        scaleY: {value: 5, type: 'f', min: 0.1, max: 100},
-        radius: {value: 0.2, type: 'f', min: 0.1, max: 2},
-    }
-
-});
-
-carousel.onSlideChange = (index) => {
-    console.log(index);
-};
-
+new Carousel();
 
 
 import Animation from "./fullib-js/src/js/Basic/Animation";
