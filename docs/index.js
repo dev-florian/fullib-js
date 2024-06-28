@@ -25,29 +25,16 @@ new Mousemoove({
 
 
 import Cursor from "./fullib-js/src/js/Basic/Cursor";
-new Cursor({
-    activeFirstCursor: true, //essential
-    activeSecondCursor: true, //essential
-    elems: "*", //essential
-    zoomOnDiv: ".nav-link",
-    removeOriginalCursor: true,
-    removeAt: 991,
-    firstCursor: {
-        size: 10,
-        hoverSize: 40,
-        backgroundColor: "#000000",
-        border: "1px solid #000000",
-        type: 'round', // round or square
-        transition: "top .0s, left .0s, width .0s, height .0s",
-    },
-    secondCursor: {
-        size: 5,
-        hoverSize: 40,
-        backgroundColor: "#000000",
-        border: "1px solid #000000",
-        type: 'round', // round or square
-        transition: "top .25s, left .25s, width .7s, height .7s",
-    }
+let cursor = new Cursor({
+    elems: 'body',
+    position: 'center center',
+    imageWidth: 200,
+    imageHeight: 300,
+    keepCursor: true,
+    // offsetY: -50,
+    // imageCover: false,
+    // offsetX: 50,
+    imagePath: './img/cursor.jpg',
 });
 
 import DynamicBackground from "./fullib-js/src/js/Basic/DynamicBackground";
@@ -107,7 +94,7 @@ let carousel = new Carousel({
 });
 
 carousel.onSlideChange = (index) => {
-    console.log(index);
+
 };
 
 

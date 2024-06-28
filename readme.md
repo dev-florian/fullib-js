@@ -1,4 +1,5 @@
 # FULLIB-JS
+![Pres](github-ressources/pres.jpg?raw=true "Pres")
 
 Multiple animation Library
 Only native JS
@@ -83,7 +84,100 @@ Use yarn :
 yarn add fullib-js
 ```
 
-## [NEW] animation Creation
+## 3D transitions carousel Creation
+How To use ?
+```python;
+
+//BASIC EXAMPLE animation on scroll
+import Carousel from "./fullib-js/src/js/3D/Carousel";
+
+new Carousel({
+    elem: '.carousel-3d', //default is carousel-3d
+    autoplay: true, //default is true
+    speed: 500, //default is 750, transition between slides
+    pause: 3000, //default is 3000, pause between slides when autoplay
+    beforeTransition: true, //default is false, add class to the current slide before or after transition
+});
+
+//AUTOMATIC HANDLE OF ARROW RIGHT WHEN CLASS .next
+//AUTOMATIC HANDLE OF ARROW LEFT WHEN CLASS .prev
+
+<div class="carousel-3d">
+        <svg class="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/>
+        </svg>
+        <svg class="prev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#ffffff" style="transform: scale(-1)">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z"/>
+        </svg>
+
+        <div class="slide slide-1" data-media="https://images.unsplash.com/photo-1718095744838-dace5469b218?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></div>
+        <div class="slide slide-2" data-media="https://plus.unsplash.com/premium_photo-1716975574438-e816527cb415?q=80&w=2062&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></div>
+        <div class="slide slide-3" data-media="https://images.unsplash.com/photo-1718524767488-10ee93e05e9c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></div>
+</div>
+
+//ADVANCED BEG
+//THERE ARE 7 PRESETS FULL CUSTOMISABLE
+new Carousel({
+    elem: '.carousel-3d', //default is carousel-3d
+    autoplay: true, //default is true
+    speed: 500, //default is 750, transition between slides
+    pause: 3000, //default is 3000, pause between slides when autoplay
+    vertex: `varying vec2 vUv;void main() {vUv = uv;gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);}`,
+    fragment: `
+uniform float time;
+uniform float progress;
+uniform float intensity;
+uniform float width;
+uniform float scaleX;
+uniform float scaleY;
+uniform float transition;
+uniform float radius;
+uniform float swipe;
+uniform sampler2D texture1;
+uniform sampler2D texture2;
+uniform sampler2D displacement;
+uniform vec4 resolution;
+varying vec2 vUv;
+mat2 rotate(float a) {
+    float s = sin(a);
+    float c = cos(a);
+    return mat2(c, -s, s, c);
+}
+const float PI = 3.1415;
+const float angle1 = PI *0.25;
+const float angle2 = -PI *0.75;
+
+
+void main(){
+    vec2 newUV = (vUv - vec2(0.5))*resolution.zw + vec2(0.5);
+
+    vec2 uvDivided = fract(newUV*vec2(intensity,0));
+
+
+    vec2 uvDisplaced1 = newUV + rotate(3.1415926/10.)*uvDivided*progress*0.1;
+    vec2 uvDisplaced2 = newUV + rotate(3.1415926/10.)*uvDivided*(1. - progress)*0.1;
+
+    vec4 t1 = texture2D(texture1,uvDisplaced1);
+    vec4 t2 = texture2D(texture2,uvDisplaced2);
+
+    gl_FragColor = mix(t1, t2, progress);
+
+}
+`,
+    uniforms: {
+        intensity: {value: 50, type:'f', min:0, max:2},
+        width: {value: 0, type:'f', min:0, max:10},
+        scaleX: {value: 0, type:'f', min:0.1, max:60},
+        scaleY: {value: 0, type:'f', min:0.1, max:60},
+        radius: {value: 0, type:'f', min:0.1, max:2},
+    },
+});
+
+```
+
+## animation Creation
 How To use ?
 ```python
 import Animation from "fullib-js/src/js/Basic/Animation";
@@ -131,9 +225,19 @@ new Animation({
 
 <div class="scroll-lefttoright">I AM A TEST</div>
 
+Options :
+x
+y
+rotate
+opacity
+scaleX
+scaleY
+skewX
+skewY
+
 ```
 
-## [NEW] customScrollBar
+## customScrollBar
 How To use ?
 ```python
 import ScrollBar from "fullib-js/src/js/Basic/ScrollBar";
@@ -192,28 +296,15 @@ How To use ?
 ```python
 import Cursor from "fullib-js/src/js/Basic/Cursor";
 new Cursor({
-    activeFirstCursor: true, //essential
-    activeSecondCursor: false, //essential
-    elems: "*", //essential
-    zoomOnDiv: ".tohover",
-    removeOriginalCursor: true,
-    removeAt: 991,
-    firstCursor: {
-        size: 10,
-        hoverSize: 15,
-        backgroundColor: "#000000",
-        border: "1px solid #000000",
-        type: 'square', // round or square
-        transition: "top .1s, left .1s, width .5s, height .5s",
-    },
-    secondCursor: {
-        size: 10,
-        hoverSize: 15,
-        backgroundColor: "#000000",
-        border: "1px solid #000000",
-        type: 'square', // round or square
-        transition: "top .25s, left .25s, width .7s, height .7s",
-    }
+    elems: 'body', //needed
+    imagePath: './img/cursor.jpg', //needed
+    position: 'top right', //default center center : top left; top right; bottom left; bottom right
+    imageWidth: 200, //optional
+    imageHeight: 300, //optional
+    offsetY: -50, //optional
+    offsetX: 50, //optional
+    imageCover: false, // default true
+    keepCursor: false, // default false
 });
 ```
 

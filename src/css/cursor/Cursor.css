@@ -1,0 +1,19 @@
+.cursor-hover{
+    opacity: 0;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 9999;
+    transition: opacity .5s, transform .25s cubic-bezier(.25, .46, .45, .94);
+}
+
+.cursor-hover.active{
+    opacity: 1;
+    transition: opacity .5s, transform .25s cubic-bezier(.25, .46, .45, .94);
+}
+
+.cursor-hover.is-cover img{
+    object-fit: cover;
+    object-position: center;
+}
