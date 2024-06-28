@@ -1,5 +1,13 @@
 # FULLIB-JS
-![Pres](github-ressources/pres.jpg?raw=true "Pres")
+
+[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
+
+[![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)](https://GitHub.com/Naereen/StrapDown.js/commit/)
+[![Npm package monthly downloads](https://badgen.net/npm/dm/express)](https://npmjs.ccom/package/express)
+
+[![Naereen's github trophy](https://github-profile-trophy.vercel.app/?username=Naereen&row=1)](https://github.com/ryo-ma/github-profile-trophy)
+
 
 Multiple animation Library
 Only native JS
