@@ -11,6 +11,13 @@ https://dev-florian.github.io/fullib-js/
 - Optimisations
 - New anim options ( trigger elem on the top / middle / bottom )
 
+## News 2.0.2
+- [Animation] Removed .tostring() to avoid errors
+- [Animation] Added dynamic example in readme
+
+## News 2.0.1
+- [Animation] Added elem option to the animation function ( able to anim only one HTML element in a foreach for example )
+
 ## News 2.0.0
 - Simple and light slider with threejs shaders
 - Lighter and faster loading
@@ -235,6 +242,50 @@ scaleY
 skewX
 skewY
 
+Dynamic example :
+
+<h2 class="auto-animate" data-scroll="true" data-scroll-mobile="false" data-start="25%" data-end="75%" data-from-x="-50" data-to-x="-150" data-from-x-mobile="-25" data-to-x-mobile="-50" data-from-y="-50" data-to-y="0">
+    auto-anim
+</h2>
+
+let windowWidth = window.innerWidth;
+let breakpoint = 991;
+let autoAnimateDivs = document.querySelectorAll('.auto-animate');
+autoAnimateDivs.forEach(autoAnimateDiv => {
+
+    let yFromDesktop = autoAnimateDiv.getAttribute('data-from-y') ? autoAnimateDiv.getAttribute('data-from-y') : 0;
+    let yFromMobile = autoAnimateDiv.getAttribute('data-from-y-mobile') ? autoAnimateDiv.getAttribute('data-from-y-mobile') : yFromDesktop;
+    let yToDesktop = autoAnimateDiv.getAttribute('data-to-y') ? autoAnimateDiv.getAttribute('data-to-y') : 0;
+    let yToMobile = autoAnimateDiv.getAttribute('data-to-y-mobile') ? autoAnimateDiv.getAttribute('data-to-y-mobile') : yToDesktop;
+
+    let xFromDesktop = autoAnimateDiv.getAttribute('data-from-x') ? autoAnimateDiv.getAttribute('data-from-x') : 0;
+    let xFromMobile = autoAnimateDiv.getAttribute('data-from-x-mobile') ? autoAnimateDiv.getAttribute('data-from-x-mobile') : xFromDesktop;
+    let xToDesktop = autoAnimateDiv.getAttribute('data-to-x') ? autoAnimateDiv.getAttribute('data-to-x') : 0;
+    let xToMobile = autoAnimateDiv.getAttribute('data-to-x-mobile') ? autoAnimateDiv.getAttribute('data-to-x-mobile') : xToDesktop;
+
+    let start = autoAnimateDiv.getAttribute('data-start') ? autoAnimateDiv.getAttribute('data-start') : '0%';
+    let end = autoAnimateDiv.getAttribute('data-end') ? autoAnimateDiv.getAttribute('data-end') : '100%';
+
+    let scroll = autoAnimateDiv.getAttribute('data-scroll') === 'false' ? false : true;
+    let isScrollMobile = autoAnimateDiv.getAttribute('data-scroll-mobile') === 'false' ? false : true;
+
+
+    new Animation({
+        elem: autoAnimateDiv,
+        scroll: scroll,
+        isScrollMobile: isScrollMobile,
+        start: start,
+        end: end,
+        measure: 'px', /** default px */
+        from: {
+            y: windowWidth > breakpoint ? parseFloat(yFromDesktop) : parseFloat(yFromMobile),
+            x: windowWidth > breakpoint ? parseFloat(xFromDesktop) : parseFloat(xFromMobile),
+        },
+        to: {
+            y: windowWidth > breakpoint ? parseFloat(yToDesktop) : parseFloat(yToMobile),
+            x: windowWidth > breakpoint ? parseFloat(xToDesktop) : parseFloat(xToMobile),
+        }
+    });
 ```
 
 ## customScrollBar

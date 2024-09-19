@@ -69,26 +69,26 @@ export default class Animation extends Utils {
 
     convertVariables() {
         //CONVERT
-        this.fromCssY = typeof this.fromCss.y !== 'undefined' ? this.fromCss.y.toString() : false;
-        this.toCssY = typeof this.toCss.y !== 'undefined' ? this.toCss.y.toString() : false;
+        this.fromCssY = typeof this.fromCss.y !== 'undefined' ? this.fromCss.y : false;
+        this.toCssY = typeof this.toCss.y !== 'undefined' ? this.toCss.y : false;
 
-        this.fromCssOpacity = typeof this.fromCss.opacity !== 'undefined' ? parseFloat(this.fromCss.opacity) : 1;
-        this.toCssOpacity = typeof this.toCss.opacity !== 'undefined' ? parseFloat(this.toCss.opacity) : 1;
+        this.fromCssOpacity = typeof this.fromCss.opacity !== 'undefined' ? this.fromCss.opacity : 1;
+        this.toCssOpacity = typeof this.toCss.opacity !== 'undefined' ? this.toCss.opacity : 1;
 
-        this.fromCssX = typeof this.fromCss.x !== 'undefined' ? this.fromCss.x.toString() : false;
-        this.toCssX = typeof this.toCss.x !== 'undefined' ? this.toCss.x.toString() : false;
+        this.fromCssX = typeof this.fromCss.x !== 'undefined' ? this.fromCss.x : false;
+        this.toCssX = typeof this.toCss.x !== 'undefined' ? this.toCss.x : false;
 
-        this.fromCssScale = typeof this.fromCss.scale !== 'undefined' ? this.fromCss.scale.toString() : false;
-        this.toCssScale = typeof this.toCss.scale !== 'undefined' ? this.toCss.scale.toString() : false;
+        this.fromCssScale = typeof this.fromCss.scale !== 'undefined' ? this.fromCss.scale : false;
+        this.toCssScale = typeof this.toCss.scale !== 'undefined' ? this.toCss.scale : false;
 
-        this.fromCssRotate = typeof this.fromCss.rotate !== 'undefined' ? this.fromCss.rotate.toString() : false;
-        this.toCssRotate = typeof this.toCss.rotate !== 'undefined' ? this.toCss.rotate.toString() : false;
+        this.fromCssRotate = typeof this.fromCss.rotate !== 'undefined' ? this.fromCss.rotate : false;
+        this.toCssRotate = typeof this.toCss.rotate !== 'undefined' ? this.toCss.rotate : false;
 
-        this.fromCssSkewX = typeof this.fromCss.skewX !== 'undefined' ? this.fromCss.skewX.toString() : false;
-        this.toCssSkewX = typeof this.toCss.skewX !== 'undefined' ? this.toCss.skewX.toString() : false;
+        this.fromCssSkewX = typeof this.fromCss.skewX !== 'undefined' ? this.fromCss.skewX : false;
+        this.toCssSkewX = typeof this.toCss.skewX !== 'undefined' ? this.toCss.skewX : false;
 
-        this.fromCssSkewY = typeof this.fromCss.skewY !== 'undefined' ? this.fromCss.skewY.toString() : false;
-        this.toCssSkewY = typeof this.toCss.skewY !== 'undefined' ? this.toCss.skewY.toString() : false;
+        this.fromCssSkewY = typeof this.fromCss.skewY !== 'undefined' ? this.fromCss.skewY : false;
+        this.toCssSkewY = typeof this.toCss.skewY !== 'undefined' ? this.toCss.skewY : false;
 
         this.start = parseFloat(this.start);
         this.end = parseFloat(this.end);
@@ -167,6 +167,7 @@ export default class Animation extends Utils {
 
             if (this.validNumber(this.fromCssScale) && this.validNumber(this.toCssScale)) {
                 let cssScaleRes = this.calcCss(this.fromCssScale, this.toCssScale, scrollPurcentInView);
+
                 transformCss += "scale(" + cssScaleRes + ")";
             }
 
