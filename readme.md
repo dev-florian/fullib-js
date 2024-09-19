@@ -241,9 +241,10 @@ scaleX
 scaleY
 skewX
 skewY
+```
 
-Dynamic example :
-
+Dynamic example, with HTML element and data-attributes :
+```python
 <h2 class="auto-animate" data-scroll="true" data-scroll-mobile="false" data-start="25%" data-end="75%" data-from-x="-50" data-to-x="-150" data-from-x-mobile="-25" data-to-x-mobile="-50" data-from-y="-50" data-to-y="0">
     auto-anim
 </h2>
