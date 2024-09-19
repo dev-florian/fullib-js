@@ -1,37 +1,43 @@
 {
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch --mode development"
+  "author": {
+    "name": "Florian Thubé",
+    "url": "thube.florian@gmail.com"
   },
+  "bugs": {
+    "url": "https://github.com/dev-florian/fullib-js/issues"
+  },
+  "deprecated": false,
+  "description": "Full Javascript Animation Library",
+  "homepage": "https://github.com/dev-florian/fullib-js",
+  "keywords": [
+    "threejs",
+    "threejs animation",
+    "javascript",
+    "anim",
+    "animation",
+    "hover",
+    "button",
+    "text",
+    "effects",
+    "css",
+    "es6",
+    "parallax",
+    "scroll animation",
+    "html",
+    "full js",
+    "js library"
+  ],
+  "license": "MIT",
+  "main": "src/js/index.js",
+  "name": "fullib-js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-florian/fullib-js.git"
+  },
+  "version": "2.0.2",
   "dependencies": {
-    "browser-sync-webpack-plugin": "^2.3.0",
-    "file-loader": "^6.2.0",
-    "fullib-js": "^1.6.22",
-    "glslify-hex": "^2.1.1",
-    "glslify-loader": "^2.0.0",
-    "gsap": "^3.6.0",
-    "lax.js": "^2.0.2",
     "lottie-web": "^5.12.2",
-    "raw-loader": "^4.0.2",
-    "simplex-noise": "^4.0.1",
     "three": "^0.165.0",
-    "webpack-md5-hash": "0.0.6"
-  },
-  "devDependencies": {
-    "@babel/core": "7.18.6",
-    "@babel/preset-env": "^7.12.11",
-    "babel-loader": "^8.2.2",
-    "copy-webpack-plugin": "^7.0.0",
-    "css-loader": "^5.0.1",
-    "html-webpack-plugin": "^4.5.0",
-    "mini-css-extract-plugin": "^1.3.3",
-    "node-sass": "^5.0.0",
-    "sass": "^1.30.0",
-    "sass-loader": "^10.1.0",
-    "style-loader": "^2.0.0",
-    "webpack": "5.76.0",
-    "webpack-cli": "^4.3.0",
-    "webpack-glsl-loader": "^1.0.1"
+    "glslify-hex": "^2.1.1"
   }
 }
