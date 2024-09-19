@@ -3,7 +3,8 @@ import Utils from "./../Utils/Utils";
 export default class Animation extends Utils {
     constructor(options = {}) {
         super();
-        this.elems = options.elems ? (options.elems instanceof HTMLCollection ? options.elems : document.querySelectorAll(options.elems)) : false;
+        this.elems = options.elems ? (options.elems instanceof HTMLCollection ? options.elems : document.querySelectorAll(options.elems)) : [];
+        this.elem = options.elem && (options.elem instanceof Element || options.elem instanceof HTMLDocument ) ? this.elems.push(options.elem) : false;
         this.mobileBreakpoint = options.mobileBreakpoint ? options.mobileBreakpoint : 991;
         this.isScroll = options.scroll ? options.scroll : false;
         this.isScroll = options.isScrollMobile && window.innerWidth < this.mobileBreakpoint ? options.isScrollMobile : this.isScroll;
@@ -19,7 +20,7 @@ export default class Animation extends Utils {
         this.measure = options.measure ? options.measure : 'px';
         this.currentPurcent = 0;
 
-        if(this.elems){
+        if(this.elems.length){
             this.init();
         }
     }
