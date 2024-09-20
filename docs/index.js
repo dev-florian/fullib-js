@@ -95,10 +95,6 @@ let carousel = new Carousel({
     }
 });
 
-carousel.onSlideChange = (index) => {
-
-};
-
 let carousel2 = new Carousel({
     elem: '.carousel-3d-2', //default is carousel-3d
     autoplay: true, //default is true

@@ -18,9 +18,6 @@ export default class Carousel extends Utils {
         //BASIC
         this.elem = options.elem ? (options.elem instanceof Element ? options.elem : document.querySelector(options.elem)) : document.querySelector('.carousel-3d');
 
-        //EVENTS
-        this.onSlideChange = null;
-
         if (this.elem) {
             this.currentIndex = 0
             this.preset = options.preset ? options.preset : false;
@@ -316,8 +313,6 @@ export default class Carousel extends Utils {
                     this.dotElements[this.currentIndex].classList.add('active');
                 }
             }
-
-            this.onSlideChange(this.currentIndex);
 
             this.animateValue({
                 duration: this.speed,

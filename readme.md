@@ -11,6 +11,9 @@ https://dev-florian.github.io/fullib-js/
 - Optimisations
 - New anim options ( trigger elem on the top / middle / bottom )
 
+## News 2.0.4
+- [Carousel] Fixed error on load and add readme to handle errors
+
 ## News 2.0.3
 - [Animation] Replace checking isScrollMobile by typeof
 
@@ -99,7 +102,7 @@ How To use ?
 ```python;
 
 //BASIC EXAMPLE animation on scroll
-import Carousel from "./fullib-js/src/js/3D/Carousel";
+import Carousel from "fullib-js/src/js/3D/Carousel";
 
 new Carousel({
     elem: '.carousel-3d', //default is carousel-3d
@@ -185,6 +188,50 @@ void main(){
     },
 });
 
+```
+
+Errors lit
+```python
+WEBPACK
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+Install those packages
+        "glslify": "^7.1.1",
+        "glslify-import-loader": "^0.1.2",
+        "glslify-loader": "^2.0.0",
+        "raw-loader": "^4.0.2",
+
+And configure :
+
+WEBPACK ENCORE
+Encore
+    .addRule({
+        test: /\.(glsl|frag|vert)$/,
+        use: ['glslify-import-loader', 'raw-loader', 'glslify-loader']
+    })
+    
+SIMPLE WEBPACK
+module.exports = {
+    .....
+    module: {
+        rules: [
+            {
+                test: /\.(glsl|frag|vert)$/,
+                exclude: /node_modules/,
+                use: [
+                    'raw-loader',
+                    {
+                        loader: 'glslify-loader',
+                        options: {
+                            transform: [
+                                ['glslify-hex', { 'option-1': true, 'option-2': 42 }]
+                            ]
+                        }
+                    }
+                ]
+            },
+        ]
+    },
+};
 ```
 
 ## animation Creation
