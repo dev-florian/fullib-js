@@ -106,9 +106,11 @@ import Carousel from "fullib-js/src/js/3D/Carousel";
 
 new Carousel({
     elem: '.carousel-3d', //default is carousel-3d
+    preset: '04', //default is 04 ( 01 to 07 )
     autoplay: true, //default is true
-    speed: 500, //default is 750, transition between slides
-    pause: 3000, //default is 3000, pause between slides when autoplay
+    speed: 750, //default is 750, transition between slides
+    pause: 5000, //default is 3000, pause between slides when autoplay
+    dots: false, //default is true
     beforeTransition: true, //default is false, add class to the current slide before or after transition
 });
 
