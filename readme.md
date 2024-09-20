@@ -11,6 +11,9 @@ https://dev-florian.github.io/fullib-js/
 - Optimisations
 - New anim options ( trigger elem on the top / middle / bottom )
 
+## News 2.0.3
+- [Animation] Replace checking isScrollMobile by typeof
+
 ## News 2.0.2
 - [Animation] Removed .tostring() to avoid errors
 - [Animation] Added dynamic example in readme

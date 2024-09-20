@@ -7,7 +7,7 @@ export default class Animation extends Utils {
         this.elem = options.elem && (options.elem instanceof Element || options.elem instanceof HTMLDocument ) ? this.elems.push(options.elem) : false;
         this.mobileBreakpoint = options.mobileBreakpoint ? options.mobileBreakpoint : 991;
         this.isScroll = options.scroll ? options.scroll : false;
-        this.isScroll = options.isScrollMobile && window.innerWidth < this.mobileBreakpoint ? options.isScrollMobile : this.isScroll;
+        this.isScroll = typeof options.isScrollMobile !== 'undefined' && window.innerWidth < this.mobileBreakpoint ? options.isScrollMobile : this.isScroll;
         this.transition = options.transition ? options.transition : 'all 0.1s linear';
         this.duration = options.duration ? options.duration : 500;
         this.delay = options.delay ? options.delay : 0;
