@@ -101,7 +101,7 @@ yarn add fullib-js
 How To use ?
 ```python;
 
-//BASIC EXAMPLE animation on scroll
+//BASIC EXAMPLE
 import Carousel from "fullib-js/src/js/3D/Carousel";
 
 new Carousel({
@@ -133,7 +133,6 @@ new Carousel({
 </div>
 
 //ADVANCED BEG
-//THERE ARE 7 PRESETS FULL CUSTOMISABLE
 new Carousel({
     elem: '.carousel-3d', //default is carousel-3d
     autoplay: true, //default is true
