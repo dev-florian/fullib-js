@@ -86,11 +86,6 @@ export default class Carousel extends Utils {
     createScene() {
         this.scene = new THREE.Scene();
         this.renderer = new THREE.WebGLRenderer();
-
-        this.scene = new THREE.Scene();
-        this.renderer = new THREE.WebGLRenderer();
-        // this.width = window.innerWidth;
-        // this.height = window.innerHeight;
          this.width = this.elem.innerWidth;
          this.height = this.elem.innerHeight;
         this.renderer.setPixelRatio(window.devicePixelRatio);

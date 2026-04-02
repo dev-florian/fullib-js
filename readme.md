@@ -11,6 +11,9 @@ https://dev-florian.github.io/fullib-js/
 - Optimisations
 - New anim options ( trigger elem on the top / middle / bottom )
 
+## News 2.0.5
+- [Animation] Remove default 'transition', related to a bug on new SAFARI versions
+
 ## News 2.0.4
 - [Carousel] Fixed error on load and add readme to handle errors
 

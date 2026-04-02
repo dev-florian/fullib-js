@@ -8,7 +8,7 @@ export default class Animation extends Utils {
         this.mobileBreakpoint = options.mobileBreakpoint ? options.mobileBreakpoint : 991;
         this.isScroll = options.scroll ? options.scroll : false;
         this.isScroll = typeof options.isScrollMobile !== 'undefined' && window.innerWidth < this.mobileBreakpoint ? options.isScrollMobile : this.isScroll;
-        this.transition = options.transition ? options.transition : 'all 0.1s linear';
+        this.transition = options.transition ? options.transition : false;
         this.duration = options.duration ? options.duration : 500;
         this.delay = options.delay ? options.delay : 0;
         this.fromCss = options.from ? options.from : false;
@@ -58,7 +58,9 @@ export default class Animation extends Utils {
 
             if (this.isScroll) {
                 this.currentPurcent = this.actionScroll(elem);
-                elem.style.transition = this.transition;
+                if(this.transition){
+                    elem.style.transition = this.transition;
+                }
 
                 window.addEventListener("scroll", (event) => {
                     localStorage.currentPurcent = localStorage.actionScroll(elem);
