@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/dev-florian/fullib-js.git"
   },
-  "version": "2.0.41",
+  "version": "2.0.5",
   "dependencies": {
     "glslify-hex": "^2.1.1",
     "lottie-web": "^5.12.2",
